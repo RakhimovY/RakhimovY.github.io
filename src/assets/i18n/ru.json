@@ -1,0 +1,11 @@
+{
+  "NAVBAR": {
+    "CALCULATOR": "Калькулятор стоимости",
+    "ADVANTAGES": "Преимущества",
+    "FAQ": "FAQ’s",
+    "AUTHORIZATION": "Вход / Регистрация",
+    "CONTACT": "Связаться"
+  },
+  "AUTHORIZATION": {
+  }
+}

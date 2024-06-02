@@ -1,0 +1,29 @@
+/* width */
+::ng-deep::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+/* Track */
+::ng-deep::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::ng-deep::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+::ng-deep::-webkit-scrollbar-button {
+  background: transparent;
+}
+
+/* Handle */
+::ng-deep::-webkit-scrollbar-thumb {
+  background: #999999;
+  border-radius: 7px;
+}
+
+/* Handle on hover */
+::ng-deep::-webkit-scrollbar-thumb:hover {
+  background: #888888;
+}

@@ -1,0 +1,63 @@
+button {
+  padding: 12px 40px 12px 40px;
+  gap: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: none;
+  color: var(--orange);
+
+  &.primary {
+    background: var(--orange);
+    color: white;
+  }
+}
+
+.glare-btn {
+  margin: auto;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  display: block;
+  left: auto;
+  top: auto;
+  transition: all 0.3s linear;
+}
+
+.glare-btn:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.glare-btn:hover .glare {
+  right: -50%;
+  -webkit-transition: all 0.6s linear;
+  transition: all 0.6s linear;
+}
+
+.glare:active {
+  opacity: 0.95;
+}
+
+.glare {
+  position: absolute;
+  width: 45px;
+  height: 200%;
+  -webkit-transform: rotate(25deg);
+  -ms-transform: rotate(25deg);
+  transform: rotate(25deg);
+  background-color: rgba(255, 255, 255, 0.3);
+  top: -50%;
+  right: 120%;
+}
+
+.glare:after {
+  content: "";
+  display: none;
+  position: absolute;
+  width: 20px;
+  height: 100%;
+  background: inherit;
+  right: -15px;
+  top: 0;
+}
