@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { NgClass } from '@angular/common';
 
 @Component({
@@ -7,6 +13,7 @@ import { NgClass } from '@angular/common';
   imports: [NgClass],
   templateUrl: './common-button.component.html',
   styleUrl: './common-button.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CommonButtonComponent {
   @Input() text!: string;
