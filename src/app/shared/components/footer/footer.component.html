@@ -1,0 +1,51 @@
+<footer class="footer">
+  <section class="footer__question">
+    <h1>{{ "FOOTER.QUESTION.TITLE" | translate }}</h1>
+    <p>{{ "FOOTER.QUESTION.SUBTITLE" | translate }}</p>
+    <app-common-button
+      [text]="'FOOTER.QUESTION.CONTACT_BTN' | translate"
+      [type]="'primary'"
+    ></app-common-button>
+  </section>
+
+  <section class="footer__main">
+    <div class="first">
+      <img src="./assets/img/LOGO.svg" />
+      <h4 [innerHTML]="'FOOTER.MAIN.FIRST_COL.T1' | translate"></h4>
+      <h5>{{ "FOOTER.MAIN.FIRST_COL.T2" | translate }}</h5>
+    </div>
+    <div class="second">
+      <h2>{{ "FOOTER.MAIN.SECOND_COL.MENU" | translate }}</h2>
+      <nav class="navbar">
+        <ul class="navbar-links">
+          <li>
+            <a routerLink="/CALCULATOR">{{
+              "NAVBAR.CALCULATOR" | translate
+            }}</a>
+          </li>
+          <li>
+            <a routerLink="/ADVANTAGES">{{
+              "NAVBAR.ADVANTAGES" | translate
+            }}</a>
+          </li>
+          <li>
+            <a routerLink="/FAQ">{{ "NAVBAR.FAQ" | translate }}</a>
+          </li>
+          <li>
+            <a routerLink="/AUTHORIZATION">{{
+              "NAVBAR.AUTHORIZATION" | translate
+            }}</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="third">
+      <h2>{{ "FOOTER.MAIN.THIRD_COL.SM" | translate }}</h2>
+      <div class="socialMedia">
+        <img alt="Instagram" src="./assets/img/Instagram.svg" />
+        <img alt="WhatsUp" src="./assets/img/WhatsUp.svg" />
+        <img alt="Telegram" src="./assets/img/Telegram.svg" />
+      </div>
+    </div>
+  </section>
+</footer>

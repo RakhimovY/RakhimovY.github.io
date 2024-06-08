@@ -1,12 +1,18 @@
 header {
   display: grid;
   align-items: center;
-  position: relative;
+  position: sticky;
+  top: 0;
+  left: 0;
   padding-bottom: 16px;
+  margin-top: 60px;
+  padding-top: 20px;
   grid-auto-flow: column;
-  gap: 16p;
+  gap: 16px;
+  background: white;
 
-  logo {
+  .logo {
+    cursor: pointer;
   }
 
   .navbar {
