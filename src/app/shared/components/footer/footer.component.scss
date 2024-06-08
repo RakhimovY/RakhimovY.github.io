@@ -7,6 +7,7 @@
     padding: 64px 87px;
 
     h1 {
+      font-weight: 450;
     }
 
     p {
@@ -15,15 +16,98 @@
   }
 
   &__main {
+    color: var(--footer-text);
     border-radius: 60px 60px 0 0;
     margin: -43vh 27px 0;
     background-color: var(--lite-black);
-    height: 50vh;
+    height: 40vh;
     position: relative;
     background-image: url("/assets/img/boxes.svg");
     background-repeat: no-repeat;
     background-position: bottom;
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 2fr 1.5fr 1.5fr;
+    padding: 48px 60px;
+
+    h2 {
+      font-weight: 450;
+      color: var(--white);
+    }
+
+    .first {
+      h5 {
+        padding-top: 48px;
+      }
+    }
+
+    .second {
+      .navbar {
+        &-links {
+          display: grid;
+          list-style-type: none;
+          align-items: center;
+          padding: 0;
+          margin: 0;
+          gap: 16px;
+          transition: any 0.8s ease;
+
+          li {
+            a {
+              position: relative;
+              text-decoration: none;
+              color: inherit;
+
+              &:hover {
+                font-weight: 550;
+              }
+
+              &::before {
+                content: "";
+                position: absolute;
+                width: 100%;
+                transform: scaleX(0);
+                height: 2px;
+                bottom: 0;
+                left: 0;
+                background-color: var(--footer-text);
+                transform-origin: bottom right;
+                transition: transform 0.25s ease-out;
+              }
+
+              &:hover::before {
+                transform: scaleX(1);
+                transform-origin: bottom left;
+              }
+            }
+          }
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          border: 1px solid var(--gray-borders);
+          left: 0;
+          right: 0;
+          bottom: 0;
+        }
+      }
+    }
+
+    .third {
+      .socialMedia {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+        gap: 16px;
+
+        img {
+          cursor: pointer;
+          transition: all 0.3s ease;
+
+          &:hover {
+            transform: scale(1.2);
+          }
+        }
+      }
+    }
   }
 }
