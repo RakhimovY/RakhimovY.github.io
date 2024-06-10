@@ -10,6 +10,7 @@ header {
   grid-auto-flow: column;
   gap: 16px;
   background: white;
+  z-index: 99;
 
   .logo {
     cursor: pointer;

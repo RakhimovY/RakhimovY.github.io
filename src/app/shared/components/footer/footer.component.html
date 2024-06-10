@@ -1,7 +1,7 @@
 <footer class="footer">
   <section class="footer__question">
     <h1>{{ "FOOTER.QUESTION.TITLE" | translate }}</h1>
-    <p>{{ "FOOTER.QUESTION.SUBTITLE" | translate }}</p>
+    <h3>{{ "FOOTER.QUESTION.SUBTITLE" | translate }}</h3>
     <app-common-button
       [text]="'FOOTER.QUESTION.CONTACT_BTN' | translate"
       [type]="'primary'"
@@ -15,7 +15,7 @@
       <h5>{{ "FOOTER.MAIN.FIRST_COL.T2" | translate }}</h5>
     </div>
     <div class="second">
-      <h2>{{ "FOOTER.MAIN.SECOND_COL.MENU" | translate }}</h2>
+      <h3>{{ "FOOTER.MAIN.SECOND_COL.MENU" | translate }}</h3>
       <nav class="navbar">
         <ul class="navbar-links">
           <li>
@@ -40,11 +40,17 @@
       </nav>
     </div>
     <div class="third">
-      <h2>{{ "FOOTER.MAIN.THIRD_COL.SM" | translate }}</h2>
+      <h3>{{ "FOOTER.MAIN.THIRD_COL.SM" | translate }}</h3>
       <div class="socialMedia">
-        <img alt="Instagram" src="./assets/img/Instagram.svg" />
-        <img alt="WhatsUp" src="./assets/img/WhatsUp.svg" />
-        <img alt="Telegram" src="./assets/img/Telegram.svg" />
+        <button>
+          <img alt="Instagram" src="./assets/img/Instagram.svg" />
+        </button>
+        <button>
+          <img alt="WhatsUp" src="./assets/img/WhatsUp.svg" />
+        </button>
+        <button>
+          <img alt="Telegram" src="./assets/img/Telegram.svg" />
+        </button>
       </div>
     </div>
   </section>

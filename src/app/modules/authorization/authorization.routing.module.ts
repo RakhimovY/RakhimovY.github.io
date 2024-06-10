@@ -1,11 +1,11 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { AuthorizationComponent } from './components/authorization/authorization.component';
+import { SignInComponent } from './components/pages/sign-in/sign-in.component';
 
 export const authorizationRoutingModule: Routes = [
   {
     path: '',
-    component: AuthorizationComponent,
+    component: SignInComponent,
   },
 ];
 

@@ -5,19 +5,21 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { NgClass } from '@angular/common';
+import { NgClass, NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-common-button',
   standalone: true,
-  imports: [NgClass],
+  imports: [NgClass, NgStyle],
   templateUrl: './common-button.component.html',
   styleUrl: './common-button.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CommonButtonComponent {
   @Input() text!: string;
-  @Input() type: 'primary' = 'primary';
+  @Input() type: 'primary' | 'secondary' = 'primary';
+  @Input() disabled: boolean = false;
+  @Input() withFullWidth: boolean = false;
   @Output() clickBTN: EventEmitter<any> = new EventEmitter();
 
   clickBtn() {

@@ -1,0 +1,43 @@
+<section>
+  <h2>Вход в SILK CARGO</h2>
+
+  <div class="field">
+    <h4>E-mail</h4>
+    <input placeholder="Введите вашу почту" type="email" />
+  </div>
+
+  <div class="field">
+    <h4>Пароль</h4>
+    <div class="field__input">
+      <input
+        id="passwordInput"
+        placeholder="Введите вашь пароль"
+        type="password"
+      />
+      <img
+        (click)="showOrHidePass()"
+        [hidden]="!passwordHidden"
+        alt="Hide"
+        src="./assets/img/Hide.svg"
+      />
+      <img
+        (click)="showOrHidePass()"
+        [hidden]="passwordHidden"
+        alt="Eye"
+        src="./assets/img/Eye.svg"
+      />
+    </div>
+    <p>Забыли пароль?</p>
+  </div>
+
+  <app-common-button
+    [disabled]="true"
+    [text]="'Войти'"
+    [withFullWidth]="true"
+  ></app-common-button>
+  <app-common-button
+    [text]="'Регистрация'"
+    [type]="'secondary'"
+    [withFullWidth]="true"
+  ></app-common-button>
+</section>
