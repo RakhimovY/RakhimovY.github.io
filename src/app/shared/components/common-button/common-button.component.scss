@@ -9,6 +9,9 @@ button {
 
   &:disabled {
     background-color: var(--orange-lite) !important;
+    cursor: not-allowed !important;
+    transition: none !important;
+    transform: none !important;
   }
 
   &.primary {
@@ -37,6 +40,10 @@ button {
   right: -50%;
   -webkit-transition: all 0.6s linear;
   transition: all 0.6s linear;
+}
+
+.glare-btn:disabled .glare {
+  transition: none !important;
 }
 
 .glare:active {

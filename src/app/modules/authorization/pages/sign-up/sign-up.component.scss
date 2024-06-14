@@ -1,0 +1,21 @@
+section {
+  display: grid;
+  justify-content: center;
+  gap: 16px;
+  border: 1px solid var(--gray-borders);
+  border-radius: 30px;
+  margin: 180px auto;
+  padding: 32px 87px;
+  max-width: 500px;
+  text-align: center;
+  width: fit-content;
+
+
+  h2 {
+    padding-bottom: 16px;
+    align-self: center;
+    width: 100%;
+  }
+}
+
+
