@@ -26,5 +26,46 @@
     }
   },
   "AUTHORIZATION": {
+    "TITLE": {
+      "SIGN_IN": "Вход в SILK CARGO",
+      "PASSWORD_RESET": "Забыли пароль? ",
+      "SIGN_UP": "Регистрация"
+    },
+    "INPUTS": {
+      "EMAIL": {
+        "TITLE": "E-mail",
+        "PLACEHOLDER": "Введите ваш почтовый адрес"
+      },
+      "PASSWORD": {
+        "TITLE": "Пароль",
+        "PLACEHOLDER": "Введите ваш пароль",
+        "P": "Забыли пароль?"
+      },
+      "PASSWORD_RESET": {
+        "TITLE": "Код для сброса пароля"
+      },
+      "FULL_NAME": {
+        "TITLE": "ФИО",
+        "PLACEHOLDER": "Введите ваше ФИО"
+      },
+      "PHONE": {
+        "TITLE": "Номер телефона"
+      },
+      "CITY": {
+        "TITLE": "Город",
+        "PLACEHOLDER": "Выберите город"
+      },
+      "PASSWORD_CREAT": {
+        "TITLE": "Пароль",
+        "PLACEHOLDER": "Создайте пароль"
+      }
+    },
+    "BUTTONS": {
+      "SIGN_IN": "Войти",
+      "SIGN_UP": "Регистрация",
+      "RESET_PASSWORD": "Обновить пароль",
+      "RESET_PASSWORD_TIMER": "Отправить повторно через {{ count }}",
+      "RESET_PASSWORD_SEND": "Отправить код"
+    }
   }
 }

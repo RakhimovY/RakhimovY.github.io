@@ -1,0 +1,21 @@
+<section>
+  <h2>{{ "AUTHORIZATION.TITLE.SIGN_UP" | translate }}</h2>
+  <app-input-full-name></app-input-full-name>
+
+  <app-input-phone [phoneFormControl]="phoneFormControl"></app-input-phone>
+
+  <app-input-email></app-input-email>
+
+  <app-input-password [isSignUp]="true"></app-input-password>
+
+  <app-common-button
+    [disabled]="true"
+    [text]="'AUTHORIZATION.BUTTONS.SIGN_UP' | translate"
+    [withFullWidth]="true"
+  ></app-common-button>
+  <app-common-button
+    [text]="'AUTHORIZATION.BUTTONS.SIGN_IN' | translate"
+    [type]="'secondary'"
+    [withFullWidth]="true"
+  ></app-common-button>
+</section>

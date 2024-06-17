@@ -10,8 +10,8 @@
       font-weight: 450;
     }
 
-    p {
-      margin-bottom: 32px;
+    h3 {
+      margin: 0 0 32px 0;
     }
   }
 
@@ -99,9 +99,17 @@
         grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
         gap: 16px;
 
+        button {
+          background: inherit;
+          border: none;
+          padding: 0;
+          width: fit-content;
+        }
+
         img {
           cursor: pointer;
           transition: all 0.3s ease;
+          display: flex;
 
           &:hover {
             transform: scale(1.2);

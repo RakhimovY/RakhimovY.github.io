@@ -1,6 +1,8 @@
 <button
   (click)="clickBtn()"
+  [disabled]="disabled"
   [ngClass]="{ primary: type === 'primary' }"
+  [ngStyle]="{ width: withFullWidth ? '100%' : 'auto' }"
   class="glare-btn"
 >
   <div class="glare"></div>

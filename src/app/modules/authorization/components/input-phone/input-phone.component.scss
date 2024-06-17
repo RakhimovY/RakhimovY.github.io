@@ -1,0 +1,30 @@
+.field {
+  display: grid;
+  gap: 4px;
+  text-align: left;
+
+  h4 {
+    margin: 0;
+    color: var(--common-text);
+    font-weight: 400;
+  }
+
+  &__input {
+    position: relative;
+  }
+
+  input {
+    padding: 12px;
+    border-radius: 8px;
+    width: 328px;
+    border: 1px solid var(--gray-borders);
+
+    &:focus {
+      border: 1px solid var(--common-text);
+    }
+  }
+}
+
+.grey-color {
+  color: var(--gray-borders) !important;
+}
