@@ -1,1 +1,14 @@
-<p>input-city works!</p>
+<div class="field">
+  <h4>{{ "AUTHORIZATION.INPUTS.CITY.TITLE" | translate }}</h4>
+  <div class="field__input">
+    <p-dropdown
+      [formControl]="selectedCity"
+      [options]="cities"
+      [placeholder]="'AUTHORIZATION.INPUTS.CITY.PLACEHOLDER' | translate"
+      [showClear]="true"
+      class="ng-dirty ng-invalid"
+      dropdownIcon
+      optionLabel="name"
+    />
+  </div>
+</div>

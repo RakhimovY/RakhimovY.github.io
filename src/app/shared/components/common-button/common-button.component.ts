@@ -20,6 +20,7 @@ export class CommonButtonComponent {
   @Input() type: 'primary' | 'secondary' = 'primary';
   @Input() disabled: boolean = false;
   @Input() withFullWidth: boolean = false;
+  @Input() to!: string;
   @Output() clickBTN: EventEmitter<any> = new EventEmitter();
 
   clickBtn() {

@@ -1,5 +1,5 @@
-<section>
-  <h2>{{ 'AUTHORIZATION.TITLE.SIGN_IN' | translate }}</h2>
+<section #authorization>
+  <h2>{{ "AUTHORIZATION.TITLE.SIGN_IN" | translate }}</h2>
 
   <app-input-email></app-input-email>
 
@@ -7,11 +7,12 @@
 
   <app-common-button
     [disabled]="true"
-    [text]="'AUTHORIZATION.BUTTONS.SIGN_UP' | translate"
+    [text]="'AUTHORIZATION.BUTTONS.SIGN_IN' | translate"
     [withFullWidth]="true"
   ></app-common-button>
   <app-common-button
-    [text]="'AUTHORIZATION.BUTTONS.SIGN_IN' | translate"
+    (clickBTN)="navToSignUp()"
+    [text]="'AUTHORIZATION.BUTTONS.SIGN_UP' | translate"
     [type]="'secondary'"
     [withFullWidth]="true"
   ></app-common-button>

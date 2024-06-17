@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { CommonButtonComponent } from '../common-button/common-button.component';
+import { ERouting } from '../../enums/routing.enum';
 
 @Component({
   selector: 'app-header',
@@ -10,4 +11,10 @@ import { CommonButtonComponent } from '../common-button/common-button.component'
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  constructor(private router: Router) {}
+
+  navToAuth() {
+    this.router.navigate([ERouting.AUTH]);
+  }
+}
