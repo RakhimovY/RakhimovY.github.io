@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ERouting } from '../../../../shared/enums/routing.enum';
 
 @Component({
@@ -15,9 +15,11 @@ export class InputPasswordComponent {
   passwordHidden: boolean = true;
   protected readonly ERouting = ERouting;
 
+  constructor(private router: Router) {}
+
   showOrHidePass() {
     const passwordInput: HTMLInputElement | null = document.getElementById(
-      'passwordInput'
+      'passwordInput',
     ) as HTMLInputElement;
     if (passwordInput?.type === 'password') {
       passwordInput.type = 'text';
@@ -25,5 +27,9 @@ export class InputPasswordComponent {
       passwordInput.type = 'password';
     }
     this.passwordHidden = !this.passwordHidden;
+  }
+
+  navToResetPassword() {
+    this.router.navigate([ERouting.AUTH, ERouting.PASSWORD_RESET]);
   }
 }

@@ -65,7 +65,19 @@
       "SIGN_UP": "Регистрация",
       "RESET_PASSWORD": "Обновить пароль",
       "RESET_PASSWORD_TIMER": "Отправить повторно через {{ count }}",
-      "RESET_PASSWORD_SEND": "Отправить код"
+      "RESET_PASSWORD_SEND": "Отправить код",
+      "SIGN_IN_TO_ACC": "Войти в аккаунт",
+      "SIGN_UP_TO_ACC": "Зарегистрироваться"
+    }
+  },
+  "MAIN": {
+    "PREVIEW": {
+      "TITLE": "Доставка из Китая в Казахстан",
+      "SUBTITLE": "4$ за кг",
+      "BUTTONS": {
+        "CONNECT": "Связаться",
+        "CALCULATE": "Посчитать доставку"
+      }
     }
   }
 }

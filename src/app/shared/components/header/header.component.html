@@ -1,5 +1,5 @@
 <header>
-  <div class="logo">
+  <div class="logo" routerLink="./">
     <img alt="cargo logo" src="./assets/img/LOGO.svg" />
   </div>
   <nav class="navbar">
@@ -14,9 +14,7 @@
         <a routerLink="/FAQ">{{ "NAVBAR.FAQ" | translate }}</a>
       </li>
       <li>
-        <a routerLink="/AUTHORIZATION">{{
-          "NAVBAR.AUTHORIZATION" | translate
-        }}</a>
+        <a href="/auth">{{ "NAVBAR.AUTHORIZATION" | translate }}</a>
       </li>
       <app-common-button
         [text]="'NAVBAR.CONTACT' | translate"

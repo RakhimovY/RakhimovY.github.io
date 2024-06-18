@@ -2,8 +2,14 @@ import { Routes } from '@angular/router';
 import { ERouting } from './shared/enums/routing.enum';
 
 export const routes: Routes = [
+  { path: '', redirectTo: ERouting.MAIN, pathMatch: 'full' },
   {
-    path: '',
+    path: ERouting.MAIN,
+    loadChildren: () =>
+      import('./modules/main/main.module').then((m) => m.MainModule),
+  },
+  {
+    path: ERouting.AUTH,
     loadChildren: () =>
       import('./modules/main/main.module').then((m) => m.MainModule),
   },

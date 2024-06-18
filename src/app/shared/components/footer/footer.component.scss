@@ -1,6 +1,6 @@
 .footer {
   &__question {
-    height: 60vh;
+    height: 71vh;
     background-color: var(--light-yellow-10-oppacity);
     border-radius: 60px;
     text-align: center;
@@ -18,9 +18,9 @@
   &__main {
     color: var(--footer-text);
     border-radius: 60px 60px 0 0;
-    margin: -43vh 27px 0;
+    margin: -40vh 27px 0;
     background-color: var(--lite-black);
-    height: 40vh;
+    height: 55vh;
     position: relative;
     background-image: url("/assets/img/boxes.svg");
     background-repeat: no-repeat;
