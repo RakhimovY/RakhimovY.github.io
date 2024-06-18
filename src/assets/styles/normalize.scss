@@ -204,6 +204,7 @@ input:focus {
 button,
 input {
   /* 1 */
+  box-sizing: border-box;
   overflow: visible;
 }
 
