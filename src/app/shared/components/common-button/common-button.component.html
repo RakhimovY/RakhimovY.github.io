@@ -1,10 +1,15 @@
 <button
   (click)="clickBtn()"
   [disabled]="disabled"
-  [ngClass]="{ primary: type === 'primary' }"
-  [ngStyle]="{ width: withFullWidth ? '100%' : 'auto' }"
+  [ngClass]="{ primary: type === 'primary', secondary: type === 'secondary' }"
+  [ngStyle]="{
+    width: withFullWidth ? '100%' : width ? width : 'auto'
+  }"
   class="glare-btn"
 >
   <div class="glare"></div>
+  @if (src) {
+  <img [ngClass]="{ shakeIcon: shakeIcon }" [src]="src" alt="src" />
+  }
   {{ text }}
 </button>

@@ -11,11 +11,6 @@ export const routes: Routes = [
   {
     path: ERouting.AUTH,
     loadChildren: () =>
-      import('./modules/main/main.module').then((m) => m.MainModule),
-  },
-  {
-    path: ERouting.AUTH,
-    loadChildren: () =>
       import('./modules/authorization/authorization.module').then(
         (m) => m.AuthorizationModule
       ),

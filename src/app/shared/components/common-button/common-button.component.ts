@@ -17,9 +17,12 @@ import { NgClass, NgStyle } from '@angular/common';
 })
 export class CommonButtonComponent {
   @Input() text!: string;
-  @Input() type: 'primary' | 'secondary' = 'primary';
+  @Input() type: 'primary' | 'tertiary' | 'secondary' = 'primary';
   @Input() disabled: boolean = false;
   @Input() withFullWidth: boolean = false;
+  @Input() shakeIcon!: boolean;
+  @Input() src!: string;
+  @Input() width!: string;
   @Input() to!: string;
   @Output() clickBTN: EventEmitter<any> = new EventEmitter();
 

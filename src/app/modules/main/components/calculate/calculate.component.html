@@ -8,7 +8,13 @@
       <div class="calc-box__input">
         <h3>Напишите количество в кг</h3>
         <div>
-          <input />
+          <input
+            [formControl]="rateControl"
+            [max]="100"
+            [min]="0"
+            required
+            type="number"
+          />
         </div>
         <p>Мин 0 - Макс 100</p>
       </div>
