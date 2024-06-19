@@ -2,6 +2,8 @@ section {
   padding: 84px;
   background-color: var(--lite-black);
   border-radius: 60px;
+  margin-right: 28px;
+  margin-left: 28px;
 
   .info {
     display: grid;
@@ -12,7 +14,7 @@ section {
 
     .calc-box {
       background-color: white;
-      border-radius: 12px;
+      border-radius: 30px;
       padding: 32px 43px;
       display: grid;
       grid-template-rows: auto;
@@ -25,6 +27,9 @@ section {
 
         div {
           position: relative;
+          display: flex;
+          justify-content: space-between;
+          padding: 13.5px;
 
           input {
             width: 100%;
@@ -32,6 +37,28 @@ section {
             border: 1px solid var(--orange);
             padding: 13.5px;
             text-align: center;
+            min-height: 48px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+          }
+
+          button {
+            width: 24px;
+            height: 24px;
+            z-index: 2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            background-color: var(--orange);
+            align-items: center;
+            cursor: pointer;
+
+            &:disabled {
+              cursor: not-allowed;
+              background-color: var(--orange-lite);
+            }
           }
         }
 
@@ -59,10 +86,12 @@ section {
       h2 {
         text-align: center;
         padding-bottom: 32px;
+        font-weight: 500;
       }
 
-      h3 {
+      h4 {
         margin: 0;
+        font-weight: 450;
       }
     }
 
@@ -72,6 +101,10 @@ section {
       h2 {
         font-size: 40px;
         line-height: 52px;
+      }
+
+      h4 {
+        font-weight: 450;
       }
     }
   }
