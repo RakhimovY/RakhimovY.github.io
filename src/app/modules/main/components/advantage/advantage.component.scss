@@ -1,0 +1,48 @@
+section {
+  text-align: center;
+  margin: 180px auto;
+  display: grid;
+  grid-auto-flow: row;
+  gap: 80px;
+
+  .boxes {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-between;
+    gap: 20px;
+
+    .box {
+      width: 100%;
+      height: 328px;
+      border-radius: 60px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+
+      &:hover .img {
+        cursor: pointer;
+        transform: scale(1.2);
+      }
+
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: all 0.3s ease;
+      }
+
+      h2 {
+        font-size: 44px;
+        line-height: 40px;
+        text-align: center;
+        font-weight: 450;
+        z-index: 2;
+        color: rgba(255, 255, 255, 1);
+        padding: 60px;
+      }
+    }
+  }
+}

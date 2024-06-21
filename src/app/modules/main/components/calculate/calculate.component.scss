@@ -1,4 +1,4 @@
-section {
+.calc {
   padding: 84px;
   background-color: var(--lite-black);
   border-radius: 60px;
@@ -107,5 +107,23 @@ section {
         font-weight: 450;
       }
     }
+  }
+}
+
+.advantage {
+  padding: 56px;
+  background-color: var(--light-yellow-10-oppacity);
+  border-radius: 60px;
+  min-height: 50vh;
+  margin-top: -30vh;
+  z-index: -1;
+  position: relative;
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-around;
+  align-items: end;
+
+  div {
+    text-align: center;
   }
 }

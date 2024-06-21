@@ -7,11 +7,12 @@ import {
 } from '@angular/forms';
 import { BehaviorSubject, tap } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-calculate',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, AsyncPipe],
+  imports: [FormsModule, ReactiveFormsModule, AsyncPipe, TranslateModule],
   templateUrl: './calculate.component.html',
   styleUrl: './calculate.component.scss',
 })
@@ -21,6 +22,24 @@ export class CalculateComponent implements OnInit {
   isIncrementBtnDisabled$: BehaviorSubject<boolean> = new BehaviorSubject(
     false
   );
+
+  advantages = [
+    {
+      id: 1,
+      title: '5 лет',
+      subtitle: 'На рынке',
+    },
+    {
+      id: 2,
+      title: '123546',
+      subtitle: 'Доставленных товаров',
+    },
+    {
+      id: 3,
+      title: '200',
+      subtitle: 'Довольных клиентов',
+    },
+  ];
 
   ngOnInit(): void {
     this.rateControl.valueChanges

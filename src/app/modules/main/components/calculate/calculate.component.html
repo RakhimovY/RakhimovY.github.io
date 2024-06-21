@@ -1,12 +1,12 @@
-<section>
+<section class="calc">
   <img src="" />
 
   <div class="info">
     <div class="calc-box">
-      <h2>Калькулятор</h2>
+      <h2>{{ "MAIN.CALCULATE.CALC.TITLE" | translate }}</h2>
 
       <div class="calc-box__input">
-        <h4>Напишите количество в кг</h4>
+        <h4>{{ "MAIN.CALCULATE.CALC.INPUT.TITLE" | translate }}</h4>
         <div>
           <button
             (click)="onDecrement()"
@@ -30,16 +30,27 @@
             +
           </button>
         </div>
-        <p>Мин 0 - Макс 100</p>
+        <p>{{ "MAIN.CALCULATE.CALC.INPUT.SUBTITLE" | translate }}</p>
       </div>
       <div class="calc-box__sum">
-        <h4>Итоговая сумма</h4>
+        <h4>{{ "MAIN.CALCULATE.CALC.AMOUNT" | translate }}</h4>
         <div class="calc-box__sum_count">0.0</div>
       </div>
     </div>
     <div class="text">
-      <h2>Узнайте цену доставки груза из Китая в Казахстан</h2>
-      <h4>Тариф розничные заказы от 1990тг за кг</h4>
+      <h2>{{ "MAIN.CALCULATE.CALC.TEXT.TITLE" | translate }}</h2>
+      <h4>
+        {{ "MAIN.CALCULATE.CALC.TEXT.SUBTITLE" | translate: { sum: "1990" } }}
+      </h4>
     </div>
   </div>
+</section>
+
+<section class="advantage">
+  @for (advantage of advantages; track advantage.id; ) {
+  <div>
+    <h1>{{ advantage.title }}</h1>
+    <p>{{ advantage.subtitle }}</p>
+  </div>
+  }
 </section>
