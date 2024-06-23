@@ -1,21 +1,18 @@
-<section>
-  <h1>Наши преимущества</h1>
+<section id="advantage">
+  <h1>{{ "MAIN.ADVANTAGE.TITLE" | translate }}</h1>
 
   <div class="boxes">
     <div class="box">
       <img alt="containers" class="img" src="assets/img/containers.svg" />
-      <h2>Быстрая доставка грузов</h2>
+      <h2>{{ "MAIN.ADVANTAGE.BOXES.BOX_1" | translate }}</h2>
     </div>
     <div class="box">
       <img alt="containers" class="img" src="assets/img/ship.svg" />
-      <h2>
-        Сроки <br />
-        7-12 дней
-      </h2>
+      <h2 [innerHTML]="'MAIN.ADVANTAGE.BOXES.BOX_2' | translate"></h2>
     </div>
     <div class="box">
       <img alt="container_air" class="img" src="assets/img/container_air.svg" />
-      <h2>Персональный код</h2>
+      <h2>{{ "MAIN.ADVANTAGE.BOXES.BOX_3" | translate }}</h2>
     </div>
   </div>
 </section>

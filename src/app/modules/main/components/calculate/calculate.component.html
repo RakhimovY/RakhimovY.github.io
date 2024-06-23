@@ -1,5 +1,5 @@
-<section class="calc">
-  <img src="" />
+<section class="calc" id="calculate">
+  <img alt="ellipse" class="ellipse" src="assets/img/Ellipse.svg" />
 
   <div class="info">
     <div class="calc-box">
@@ -47,10 +47,10 @@
 </section>
 
 <section class="advantage">
-  @for (advantage of advantages; track advantage.id; ) {
-  <div>
-    <h1>{{ advantage.title }}</h1>
-    <p>{{ advantage.subtitle }}</p>
-  </div>
+  @for (advantage of advantages; track advantage.id) {
+    <div>
+      <h1>{{ advantage.title }}</h1>
+      <p>{{ advantage.subtitle }}</p>
+    </div>
   }
 </section>

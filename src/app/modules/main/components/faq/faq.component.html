@@ -1,0 +1,15 @@
+<section id="FAQ">
+  <h1>Часто задаваемые вопросы</h1>
+
+  @for (FAQ of FAQ_List; track FAQ.id) {
+    <div class="FAQ">
+      <div class="FAQ__question">
+        <h3>{{ FAQ.question }}</h3>
+        <img alt="down_square.svg" src="assets/img/down_square.svg" />
+      </div>
+      <div class="FAQ__answer">
+        {{ FAQ.answer }}
+      </div>
+    </div>
+  }
+</section>

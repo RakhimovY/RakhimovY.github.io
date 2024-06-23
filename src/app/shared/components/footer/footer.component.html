@@ -19,17 +19,17 @@
       <nav class="navbar">
         <ul class="navbar-links">
           <li>
-            <a routerLink="/CALCULATOR">{{
+            <a (click)="navToSection('calculate')">{{
               "NAVBAR.CALCULATOR" | translate
             }}</a>
           </li>
           <li>
-            <a routerLink="/ADVANTAGES">{{
+            <a (click)="navToSection('advantage')">{{
               "NAVBAR.ADVANTAGES" | translate
             }}</a>
           </li>
           <li>
-            <a routerLink="/FAQ">{{ "NAVBAR.FAQ" | translate }}</a>
+            <a (click)="navToSection('FAQ')">{{ "NAVBAR.FAQ" | translate }}</a>
           </li>
           <li>
             <a href="/auth">{{ "NAVBAR.AUTHORIZATION" | translate }}</a>

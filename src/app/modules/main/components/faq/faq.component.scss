@@ -1,0 +1,43 @@
+section {
+  max-width: 680px;
+  margin: 0 auto;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .FAQ {
+    &__question {
+      color: var(--orange);
+      display: grid;
+      grid-auto-flow: column;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+
+      h3 {
+        margin: 16px 0;
+      }
+    }
+
+    &__answer {
+      max-height: 0;
+      overflow: hidden;
+      width: calc(100% - 88px);
+      transition: max-height 0.3s ease-in-out;
+    }
+  }
+
+  .active {
+    .FAQ__question {
+      img {
+        transform: rotate(180deg);
+      }
+    }
+
+    .FAQ__answer {
+      max-height: 1000px;
+    }
+  }
+}
