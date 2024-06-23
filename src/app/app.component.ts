@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { LayoutComponent } from '../core/layout/layout.component';
 import { RouterOutlet } from '@angular/router';
+import AOS from 'aos';
 
 @Component({
   selector: 'app-root',
@@ -12,5 +13,7 @@ import { RouterOutlet } from '@angular/router';
 export class AppComponent {
   title = 'project_Cargo';
 
-  constructor() {}
+  constructor() {
+    AOS.init();
+  }
 }

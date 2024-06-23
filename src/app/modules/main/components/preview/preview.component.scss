@@ -2,28 +2,34 @@
   text-align: center;
 }
 
-.subtitle {
-  display: grid;
-  grid-auto-flow: column;
-  justify-content: center;
-  margin-top: 8px;
-  gap: 6px;
-  color: var(--orange);
-}
+section {
+  scroll-snap-align: start;
 
-.actions {
-  display: grid;
-  grid-auto-flow: column;
-  justify-content: center;
-  gap: 16px;
-  padding: 32px 0;
+  margin: 80px 0;
 
-  img {
-    cursor: pointer;
-    transition: all 0.3s linear;
+  .subtitle {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: center;
+    margin-top: 8px;
+    gap: 6px;
+    color: var(--orange);
+  }
 
-    &:hover {
-      transform: scale(1.05);
+  .actions {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: center;
+    gap: 16px;
+    padding: 32px 0;
+
+    img {
+      cursor: pointer;
+      transition: all 0.3s linear;
+
+      &:hover {
+        transform: scale(1.05);
+      }
     }
   }
 }

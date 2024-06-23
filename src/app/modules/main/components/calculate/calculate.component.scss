@@ -1,5 +1,9 @@
+section {
+  scroll-snap-align: start;
+}
+
 .calc {
-  padding: 84px;
+  padding: 180px 84px 84px;
   background-color: var(--lite-black);
   border-radius: 60px;
   margin-right: 28px;
@@ -17,7 +21,7 @@
   .info {
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1.2fr;
     gap: 60px;
     align-items: center;
 
