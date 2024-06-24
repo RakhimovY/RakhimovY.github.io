@@ -1,0 +1,82 @@
+<section
+  class="calc"
+  data-aos="fade-up"
+  data-aos-anchor-placement="center-center"
+  data-aos-duration="800"
+  id="calculate"
+>
+  <img alt="ellipse" class="ellipse" src="assets/img/Ellipse.svg" />
+
+  <div class="info">
+    <div
+      class="calc-box"
+      data-aos-duration="800"
+      data-aos-easing="ease-in-sine"
+      data-aos-offset="300"
+    >
+      <h2>{{ "MAIN.CALCULATE.CALC.TITLE" | translate }}</h2>
+
+      <div class="calc-box__input">
+        <h4>{{ "MAIN.CALCULATE.CALC.INPUT.TITLE" | translate }}</h4>
+        <div>
+          <button
+            (click)="onDecrement()"
+            [disabled]="isDecrementBtnDisabled$ | async"
+            class="calc-box__input_decrement"
+          >
+            -
+          </button>
+          <input
+            [formControl]="rateControl"
+            [max]="100"
+            [min]="0"
+            required
+            type="number"
+          />
+          <button
+            (click)="onIncrement()"
+            [disabled]="isIncrementBtnDisabled$ | async"
+            class="calc-box__input_increment"
+          >
+            +
+          </button>
+        </div>
+        <p>{{ "MAIN.CALCULATE.CALC.INPUT.SUBTITLE" | translate }}</p>
+      </div>
+      <div class="calc-box__sum">
+        <h4>{{ "MAIN.CALCULATE.CALC.AMOUNT" | translate }}</h4>
+        <div class="calc-box__sum_count">0.0</div>
+      </div>
+    </div>
+
+    <div
+      class="text"
+      data-aos="fade-right"
+      data-aos-anchor-placement="center-center"
+      data-aos-duration="800"
+    >
+      <h2>{{ "MAIN.CALCULATE.CALC.TEXT.TITLE" | translate }}</h2>
+      <h4>
+        {{ "MAIN.CALCULATE.CALC.TEXT.SUBTITLE" | translate: { sum: "1990" } }}
+      </h4>
+    </div>
+  </div>
+</section>
+
+<section
+  class="advantage"
+  data-aos="fade-up"
+  data-aos-anchor-placement="center-center"
+  data-aos-duration="800"
+>
+  @for (advantage of advantages; track advantage.id) {
+  <div
+    data-aos="fade-down"
+    data-aos-anchor-placement="center-center"
+    data-aos-duration="800"
+  >
+    <h1>{{ advantage.title }}</h1>
+    <p>{{ advantage.subtitle }}</p>
+  </div>
+  }
+</section>

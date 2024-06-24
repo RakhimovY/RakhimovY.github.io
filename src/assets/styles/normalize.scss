@@ -8,10 +8,16 @@
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
 
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
 html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
-  scroll-behavior: smooth;
+  scroll-behavior: smooth !important;
 }
 
 /* Sections
@@ -204,7 +210,20 @@ input:focus {
 button,
 input {
   /* 1 */
+  box-sizing: border-box;
   overflow: visible;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 /**

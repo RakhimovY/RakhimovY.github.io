@@ -1,4 +1,4 @@
-<section>
+<section #authorization>
   <h2>{{ "AUTHORIZATION.TITLE.SIGN_UP" | translate }}</h2>
   <app-input-full-name></app-input-full-name>
 
@@ -6,16 +6,19 @@
 
   <app-input-email></app-input-email>
 
+  <app-input-city></app-input-city>
+
   <app-input-password [isSignUp]="true"></app-input-password>
 
   <app-common-button
     [disabled]="true"
-    [text]="'AUTHORIZATION.BUTTONS.SIGN_UP' | translate"
+    [text]="'AUTHORIZATION.BUTTONS.SIGN_UP_TO_ACC' | translate"
     [withFullWidth]="true"
   ></app-common-button>
   <app-common-button
-    [text]="'AUTHORIZATION.BUTTONS.SIGN_IN' | translate"
-    [type]="'secondary'"
+    (clickBTN)="navToSignIn()"
+    [text]="'AUTHORIZATION.BUTTONS.SIGN_IN_TO_ACC' | translate"
+    [type]="'tertiary'"
     [withFullWidth]="true"
   ></app-common-button>
 </section>

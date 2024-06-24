@@ -1,13 +1,20 @@
-import {Component} from '@angular/core';
-import {CommonButtonComponent} from "../../../../shared/components/common-button/common-button.component";
-import {InputEmailComponent} from "../../components/input-email/input-email.component";
-import {InputPasswordComponent} from "../../components/input-password/input-password.component";
-import {TranslateModule} from "@ngx-translate/core";
-import {InputPasswordResetComponent} from "../../components/input-password-reset/input-password-reset.component";
-import {FormControl, Validators} from "@angular/forms";
-import {BehaviorSubject, filter, map, Observable, timer, withLatestFrom} from "rxjs";
-import {AsyncPipe, DatePipe, NgIf} from "@angular/common";
-import {SubscriptionAccumulator} from "../../../../core/helpers/SubscriptionAccumulator";
+import { Component } from '@angular/core';
+import { CommonButtonComponent } from '../../../../shared/components/common-button/common-button.component';
+import { InputEmailComponent } from '../../components/input-email/input-email.component';
+import { InputPasswordComponent } from '../../components/input-password/input-password.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { InputPasswordResetComponent } from '../../components/input-password-reset/input-password-reset.component';
+import { FormControl, Validators } from '@angular/forms';
+import {
+  BehaviorSubject,
+  filter,
+  map,
+  Observable,
+  timer,
+  withLatestFrom,
+} from 'rxjs';
+import { AsyncPipe, DatePipe, NgIf } from '@angular/common';
+import { SubscriptionAccumulator } from '../../../../core/helpers/SubscriptionAccumulator';
 
 @Component({
   selector: 'app-password-reset',
@@ -20,21 +27,22 @@ import {SubscriptionAccumulator} from "../../../../core/helpers/SubscriptionAccu
     InputPasswordResetComponent,
     DatePipe,
     AsyncPipe,
-    NgIf
+    NgIf,
   ],
   templateUrl: './password-reset.component.html',
-  styleUrl: './password-reset.component.scss'
+  styleUrl: './password-reset.component.scss',
 })
 export class PasswordResetComponent extends SubscriptionAccumulator {
-  passwordResendFormControl: FormControl = new FormControl('', [Validators.required, Validators.min(6)]);
+  passwordResendFormControl: FormControl = new FormControl('', [
+    Validators.required,
+    Validators.min(6),
+  ]);
 
-  countDownMilliseconds$: BehaviorSubject<number> = new BehaviorSubject(
-    0);
+  countDownMilliseconds$: BehaviorSubject<number> = new BehaviorSubject(0);
   onCodeError: string | null = null;
   ableToResendOTP$: Observable<boolean> = this.countDownMilliseconds$.pipe(
-    map(countDown => countDown <= 0)
+    map((countDown) => countDown <= 0),
   );
-
 
   resendOTP() {
     this.countDownMilliseconds$.next(120000);
@@ -47,8 +55,7 @@ export class PasswordResetComponent extends SubscriptionAccumulator {
     this.countDownMilliseconds$.next(120000);
     this.passwordResendFormControl.reset();
     this.passwordResendFormControl.enable();
-    this.startTimer()
-
+    this.startTimer();
   }
 
   private startTimer(): void {
@@ -58,11 +65,10 @@ export class PasswordResetComponent extends SubscriptionAccumulator {
           withLatestFrom(this.countDownMilliseconds$),
           filter(([, countDown]) => countDown > 0),
           map(([, countDown]) =>
-            this.countDownMilliseconds$.next(countDown - 1000)
-          )
+            this.countDownMilliseconds$.next(countDown - 1000),
+          ),
         )
-        .subscribe()
+        .subscribe(),
     );
   }
-
 }

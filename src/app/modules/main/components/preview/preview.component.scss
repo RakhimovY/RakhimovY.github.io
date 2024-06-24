@@ -1,0 +1,35 @@
+* {
+  text-align: center;
+}
+
+section {
+  scroll-snap-align: start;
+
+  margin: 80px 0;
+
+  .subtitle {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: center;
+    margin-top: 8px;
+    gap: 6px;
+    color: var(--orange);
+  }
+
+  .actions {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: center;
+    gap: 16px;
+    padding: 32px 0;
+
+    img {
+      cursor: pointer;
+      transition: all 0.3s linear;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+}

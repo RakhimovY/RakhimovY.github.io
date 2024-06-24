@@ -1,0 +1,33 @@
+<section
+  data-aos="fade-down"
+  data-aos-anchor-placement="center-center"
+  data-aos-duration="800"
+  id="advantage"
+>
+  <h1>{{ "MAIN.ADVANTAGE.TITLE" | translate }}</h1>
+
+  <div class="boxes">
+    <div
+      class="box"
+      data-aos="fade-up-right"
+      data-aos-anchor-placement="center-center"
+      data-aos-duration="800"
+    >
+      <img alt="containers" class="img" src="assets/img/containers.svg" />
+      <h2>{{ "MAIN.ADVANTAGE.BOXES.BOX_1" | translate }}</h2>
+    </div>
+    <div class="box" data-aos="zoom-in" data-aos-duration="800">
+      <img alt="containers" class="img" src="assets/img/ship.svg" />
+      <h2 [innerHTML]="'MAIN.ADVANTAGE.BOXES.BOX_2' | translate"></h2>
+    </div>
+    <div
+      class="box"
+      data-aos="fade-up-left"
+      data-aos-anchor-placement="center-center"
+      data-aos-duration="800"
+    >
+      <img alt="container_air" class="img" src="assets/img/container_air.svg" />
+      <h2>{{ "MAIN.ADVANTAGE.BOXES.BOX_3" | translate }}</h2>
+    </div>
+  </div>
+</section>

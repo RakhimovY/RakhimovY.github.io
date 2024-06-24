@@ -1,22 +1,24 @@
 <header>
-  <div class="logo">
+  <div (click)="navToSection('preview')" class="logo">
     <img alt="cargo logo" src="./assets/img/LOGO.svg" />
   </div>
   <nav class="navbar">
     <ul class="navbar-links">
       <li>
-        <a routerLink="/CALCULATOR">{{ "NAVBAR.CALCULATOR" | translate }}</a>
-      </li>
-      <li>
-        <a routerLink="/ADVANTAGES">{{ "NAVBAR.ADVANTAGES" | translate }}</a>
-      </li>
-      <li>
-        <a routerLink="/FAQ">{{ "NAVBAR.FAQ" | translate }}</a>
-      </li>
-      <li>
-        <a routerLink="/AUTHORIZATION">{{
-          "NAVBAR.AUTHORIZATION" | translate
+        <a (click)="navToSection('calculate')">{{
+          "NAVBAR.CALCULATOR" | translate
         }}</a>
+      </li>
+      <li>
+        <a (click)="navToSection('advantage')">{{
+          "NAVBAR.ADVANTAGES" | translate
+        }}</a>
+      </li>
+      <li>
+        <a (click)="navToSection('FAQ')">{{ "NAVBAR.FAQ" | translate }}</a>
+      </li>
+      <li>
+        <a href="/auth">{{ "NAVBAR.AUTHORIZATION" | translate }}</a>
       </li>
       <app-common-button
         [text]="'NAVBAR.CONTACT' | translate"

@@ -1,0 +1,28 @@
+<section id="preview">
+  <h1 data-aos="fade-right" data-aos-duration="800">
+    {{ "MAIN.PREVIEW.TITLE" | translate }}
+  </h1>
+
+  <div class="subtitle" data-aos="fade-left" data-aos-duration="800">
+    <img alt="Box" src="assets/img/Box.svg" />
+    <h1>{{ "MAIN.PREVIEW.SUBTITLE" | translate }}</h1>
+  </div>
+
+  <div class="actions" data-aos="fade-right" data-aos-duration="800">
+    <app-common-button
+      [shakeIcon]="true"
+      [src]="'assets/img/calling.svg'"
+      [text]="'MAIN.PREVIEW.BUTTONS.CONNECT' | translate"
+      [type]="'secondary'"
+      [width]="'200px'"
+    ></app-common-button>
+    <app-common-button
+      [shakeIcon]="true"
+      [src]="'assets/img/calculate.svg'"
+      [text]="'MAIN.PREVIEW.BUTTONS.CALCULATE' | translate"
+      [type]="'secondary'"
+      [width]="'200px'"
+    ></app-common-button>
+    <img alt="dark-instagram" src="assets/img/dark-instagram.svg" />
+  </div>
+</section>
