@@ -1,12 +1,14 @@
 <section id="preview">
-  <h1 data-aos="fade-right">{{ "MAIN.PREVIEW.TITLE" | translate }}</h1>
+  <h1 data-aos="fade-right" data-aos-duration="800">
+    {{ "MAIN.PREVIEW.TITLE" | translate }}
+  </h1>
 
-  <div class="subtitle" data-aos="fade-left">
+  <div class="subtitle" data-aos="fade-left" data-aos-duration="800">
     <img alt="Box" src="assets/img/Box.svg" />
     <h1>{{ "MAIN.PREVIEW.SUBTITLE" | translate }}</h1>
   </div>
 
-  <div class="actions" data-aos="fade-right">
+  <div class="actions" data-aos="fade-right" data-aos-duration="800">
     <app-common-button
       [shakeIcon]="true"
       [src]="'assets/img/calling.svg'"

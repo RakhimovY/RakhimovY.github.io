@@ -2,12 +2,18 @@
   class="calc"
   data-aos="fade-up"
   data-aos-anchor-placement="center-center"
+  data-aos-duration="800"
   id="calculate"
 >
   <img alt="ellipse" class="ellipse" src="assets/img/Ellipse.svg" />
 
   <div class="info">
-    <div class="calc-box" data-aos-easing="ease-in-sine" data-aos-offset="300">
+    <div
+      class="calc-box"
+      data-aos-duration="800"
+      data-aos-easing="ease-in-sine"
+      data-aos-offset="300"
+    >
       <h2>{{ "MAIN.CALCULATE.CALC.TITLE" | translate }}</h2>
 
       <div class="calc-box__input">
@@ -47,6 +53,7 @@
       class="text"
       data-aos="fade-right"
       data-aos-anchor-placement="center-center"
+      data-aos-duration="800"
     >
       <h2>{{ "MAIN.CALCULATE.CALC.TEXT.TITLE" | translate }}</h2>
       <h4>
@@ -60,11 +67,16 @@
   class="advantage"
   data-aos="fade-up"
   data-aos-anchor-placement="center-center"
+  data-aos-duration="800"
 >
   @for (advantage of advantages; track advantage.id) {
-    <div data-aos="fade-down" data-aos-anchor-placement="center-center">
-      <h1>{{ advantage.title }}</h1>
-      <p>{{ advantage.subtitle }}</p>
-    </div>
+  <div
+    data-aos="fade-down"
+    data-aos-anchor-placement="center-center"
+    data-aos-duration="800"
+  >
+    <h1>{{ advantage.title }}</h1>
+    <p>{{ advantage.subtitle }}</p>
+  </div>
   }
 </section>

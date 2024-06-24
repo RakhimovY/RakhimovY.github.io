@@ -1,14 +1,19 @@
 <section id="FAQ">
-  <h1 data-aos="fade-down" data-aos-anchor-placement="center-center">
+  <h1
+    data-aos="fade-down"
+    data-aos-anchor-placement="center-center"
+    data-aos-duration="800"
+  >
     Часто задаваемые вопросы
   </h1>
 
-  @for (FAQ of FAQ_List; track FAQ.id) {
-    <div
-      class="FAQ"
-      data-aos="fade-up"
-      data-aos-anchor-placement="center-center"
-    >
+  <div
+    data-aos="fade-up"
+    data-aos-anchor-placement="center-center"
+    data-aos-duration="800"
+  >
+    @for (FAQ of FAQ_List; track FAQ.id) {
+    <div class="FAQ">
       <div class="FAQ__question">
         <h3>{{ FAQ.question }}</h3>
         <img alt="down_square.svg" src="assets/img/down_square.svg" />
@@ -17,5 +22,6 @@
         {{ FAQ.answer }}
       </div>
     </div>
-  }
+    }
+  </div>
 </section>
