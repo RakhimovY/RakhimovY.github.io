@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { Router, RouterLink } from '@angular/router';
-import { ERouting } from '../../../../shared/enums/routing.enum';
+import { ERouting } from '../../enums/routing.enum';
 
 @Component({
   selector: 'app-input-password',
@@ -19,7 +19,7 @@ export class InputPasswordComponent {
 
   showOrHidePass() {
     const passwordInput: HTMLInputElement | null = document.getElementById(
-      'passwordInput',
+      'passwordInput'
     ) as HTMLInputElement;
     if (passwordInput?.type === 'password') {
       passwordInput.type = 'text';

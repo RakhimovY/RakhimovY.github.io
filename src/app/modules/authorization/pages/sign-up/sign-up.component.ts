@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { CommonButtonComponent } from '../../../../shared/components/common-button/common-button.component';
-import { InputEmailComponent } from '../../components/input-email/input-email.component';
-import { InputPasswordComponent } from '../../components/input-password/input-password.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { InputFullNameComponent } from '../../components/input-full-name/input-full-name.component';
-import { InputPhoneComponent } from '../../components/input-phone/input-phone.component';
 import { FormControl, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { ERouting } from '../../../../shared/enums/routing.enum';
-import { InputCityComponent } from '../../components/input-city/input-city.component';
+import { InputEmailComponent } from '../../../../shared/components/input-email/input-email.component';
+import { InputPasswordComponent } from '../../../../shared/components/input-password/input-password.component';
+import { InputFullNameComponent } from '../../../../shared/components/input-full-name/input-full-name.component';
+import { InputPhoneComponent } from '../../../../shared/components/input-phone/input-phone.component';
+import { InputCityComponent } from '../../../../shared/components/input-city/input-city.component';
 
 @Component({
   selector: 'app-sign-up',
@@ -23,6 +23,7 @@ import { InputCityComponent } from '../../components/input-city/input-city.compo
     RouterLink,
     InputCityComponent,
   ],
+
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.scss',
 })
