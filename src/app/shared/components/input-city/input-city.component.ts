@@ -24,7 +24,7 @@ interface City {
 export class InputCityComponent implements OnInit {
   cities: City[] | undefined;
 
-  selectedCity!: FormControl<City | null>;
+  selectedCity: FormControl<City | null> = new FormControl<City | null>(null);
 
   ngOnInit() {
     this.cities = [

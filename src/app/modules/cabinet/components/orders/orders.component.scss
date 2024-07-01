@@ -9,9 +9,9 @@ section {
   gap: 48px;
   flex-direction: column;
 
-  .input-container {
+  .title {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 328px);
+    grid-template-columns: repeat(2, auto);
     justify-content: space-between;
     row-gap: 20px;
   }

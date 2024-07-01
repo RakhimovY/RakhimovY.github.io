@@ -2,7 +2,7 @@
   display: grid;
   gap: 4px;
   text-align: left;
-
+  max-width: 328px;
 
   h4 {
     margin: 0;
@@ -25,5 +25,4 @@
       border: 1px solid var(--common-text);
     }
   }
-
 }

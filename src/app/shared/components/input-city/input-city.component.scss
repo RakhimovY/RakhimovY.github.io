@@ -2,6 +2,7 @@
   display: grid;
   gap: 4px;
   text-align: left;
+  max-width: 328px;
 
   ::ng-deep.p-dropdown {
     width: 100%;
