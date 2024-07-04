@@ -34,7 +34,5 @@ export class InputCityComponent implements OnInit {
       { name: 'Istanbul', code: 'IST' },
       { name: 'Paris', code: 'PRS' },
     ];
-
-    console.log(document.getElementsByClassName('p-dropdown-trigger-icon'));
   }
 }

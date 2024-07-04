@@ -10,9 +10,27 @@ section {
   flex-direction: column;
 
   .title {
-    display: grid;
-    grid-template-columns: repeat(2, auto);
+    display: flex;
+    flex-direction: row;
     justify-content: space-between;
-    row-gap: 20px;
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+
+      button {
+        padding: 6px 16px 6px 16px;
+        gap: 10px;
+        border-radius: 8px;
+        border: 1px solid var(--orange);
+        color: var(--orange);
+        cursor: pointer;
+      }
+
+      .active {
+        color: #fff;
+        background-color: var(--orange);
+      }
+    }
   }
 }
