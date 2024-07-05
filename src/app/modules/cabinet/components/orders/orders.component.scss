@@ -4,33 +4,7 @@ section {
   background-color: var(--gray-lite);
   border-radius: 8px;
   width: 100%;
-
   display: flex;
   gap: 48px;
   flex-direction: column;
-
-  .title {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-
-    .buttons {
-      display: flex;
-      gap: 12px;
-
-      button {
-        padding: 6px 16px 6px 16px;
-        gap: 10px;
-        border-radius: 8px;
-        border: 1px solid var(--orange);
-        color: var(--orange);
-        cursor: pointer;
-      }
-
-      .active {
-        color: #fff;
-        background-color: var(--orange);
-      }
-    }
-  }
 }
