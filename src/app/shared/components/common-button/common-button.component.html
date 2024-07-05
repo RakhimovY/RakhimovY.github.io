@@ -3,7 +3,8 @@
   [disabled]="disabled"
   [ngClass]="{ primary: type === 'primary', secondary: type === 'secondary' }"
   [ngStyle]="{
-    width: withFullWidth ? '100%' : width ? width : 'auto'
+    width: withFullWidth ? '100%' : width ? width : 'auto',
+    padding: '12px' + padding
   }"
   class="glare-btn"
 >

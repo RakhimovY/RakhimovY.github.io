@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonButtonComponent } from '../../../../shared/components/common-button/common-button.component';
-import { InputEmailComponent } from '../../components/input-email/input-email.component';
-import { InputPasswordComponent } from '../../components/input-password/input-password.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { InputPasswordResetComponent } from '../../components/input-password-reset/input-password-reset.component';
 import { FormControl, Validators } from '@angular/forms';
 import {
   BehaviorSubject,
@@ -15,6 +12,9 @@ import {
 } from 'rxjs';
 import { AsyncPipe, DatePipe, NgIf } from '@angular/common';
 import { SubscriptionAccumulator } from '../../../../core/helpers/SubscriptionAccumulator';
+import { InputEmailComponent } from '../../../../shared/components/input-email/input-email.component';
+import { InputPasswordComponent } from '../../../../shared/components/input-password/input-password.component';
+import { InputPasswordResetComponent } from '../../../../shared/components/input-password-reset/input-password-reset.component';
 
 @Component({
   selector: 'app-password-reset',
@@ -41,7 +41,7 @@ export class PasswordResetComponent extends SubscriptionAccumulator {
   countDownMilliseconds$: BehaviorSubject<number> = new BehaviorSubject(0);
   onCodeError: string | null = null;
   ableToResendOTP$: Observable<boolean> = this.countDownMilliseconds$.pipe(
-    map((countDown) => countDown <= 0),
+    map((countDown) => countDown <= 0)
   );
 
   resendOTP() {
@@ -65,10 +65,10 @@ export class PasswordResetComponent extends SubscriptionAccumulator {
           withLatestFrom(this.countDownMilliseconds$),
           filter(([, countDown]) => countDown > 0),
           map(([, countDown]) =>
-            this.countDownMilliseconds$.next(countDown - 1000),
-          ),
+            this.countDownMilliseconds$.next(countDown - 1000)
+          )
         )
-        .subscribe(),
+        .subscribe()
     );
   }
 }

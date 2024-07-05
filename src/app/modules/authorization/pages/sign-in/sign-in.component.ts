@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonButtonComponent } from '../../../../shared/components/common-button/common-button.component';
-import { InputEmailComponent } from '../../components/input-email/input-email.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { InputPasswordComponent } from '../../components/input-password/input-password.component';
 import { Router, RouterLink } from '@angular/router';
 import { ERouting } from '../../../../shared/enums/routing.enum';
+import { InputEmailComponent } from '../../../../shared/components/input-email/input-email.component';
+import { InputPasswordComponent } from '../../../../shared/components/input-password/input-password.component';
 
 @Component({
   selector: 'app-sign-in',

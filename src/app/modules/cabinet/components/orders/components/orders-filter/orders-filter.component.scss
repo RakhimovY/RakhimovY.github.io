@@ -1,0 +1,40 @@
+h4 {
+  font-weight: 400;
+  margin: 0 0 4px 0;
+}
+
+.filter-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 16px;
+
+  &__field {
+    position: relative;
+    width: 100%;
+
+    img {
+      position: absolute;
+      top: 50%;
+      left: 12px;
+      transform: translateY(-50%);
+    }
+
+    input {
+      padding: 12px 12px 12px 52px;
+      width: 100%;
+      border: 1px solid var(--gray-borders);
+      border-radius: 8px;
+    }
+  }
+
+  button {
+    background-color: var(--orange);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 200px;
+    cursor: pointer;
+  }
+}

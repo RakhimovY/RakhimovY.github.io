@@ -24,7 +24,7 @@ interface City {
 export class InputCityComponent implements OnInit {
   cities: City[] | undefined;
 
-  selectedCity!: FormControl<City | null>;
+  selectedCity: FormControl<City | null> = new FormControl<City | null>(null);
 
   ngOnInit() {
     this.cities = [
@@ -34,7 +34,5 @@ export class InputCityComponent implements OnInit {
       { name: 'Istanbul', code: 'IST' },
       { name: 'Paris', code: 'PRS' },
     ];
-
-    console.log(document.getElementsByClassName('p-dropdown-trigger-icon'));
   }
 }

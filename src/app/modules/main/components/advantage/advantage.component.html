@@ -1,10 +1,11 @@
-<section
-  data-aos="fade-down"
-  data-aos-anchor-placement="center-center"
-  data-aos-duration="800"
-  id="advantage"
->
-  <h1>{{ "MAIN.ADVANTAGE.TITLE" | translate }}</h1>
+<section id="advantage">
+  <h1
+    data-aos="fade-down"
+    data-aos-anchor-placement="center-center"
+    data-aos-duration="800"
+  >
+    {{ "MAIN.ADVANTAGE.TITLE" | translate }}
+  </h1>
 
   <div class="boxes">
     <div
@@ -16,7 +17,12 @@
       <img alt="containers" class="img" src="assets/img/containers.svg" />
       <h2>{{ "MAIN.ADVANTAGE.BOXES.BOX_1" | translate }}</h2>
     </div>
-    <div class="box" data-aos="zoom-in" data-aos-duration="800">
+    <div
+      class="box"
+      data-aos="fade-up"
+      data-aos-anchor-placement="center-center"
+      data-aos-duration="800"
+    >
       <img alt="containers" class="img" src="assets/img/ship.svg" />
       <h2 [innerHTML]="'MAIN.ADVANTAGE.BOXES.BOX_2' | translate"></h2>
     </div>

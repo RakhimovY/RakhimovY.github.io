@@ -1,0 +1,18 @@
+section {
+  margin: 50px auto;
+  padding: 40px 88px;
+  background-color: var(--gray-lite);
+  border-radius: 8px;
+  width: 100%;
+
+  display: flex;
+  gap: 48px;
+  flex-direction: column;
+
+  .input-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 328px);
+    justify-content: space-between;
+    row-gap: 20px;
+  }
+}
