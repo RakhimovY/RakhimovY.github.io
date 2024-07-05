@@ -6,10 +6,22 @@ import { PasswordResetComponent } from './pages/password-reset/password-reset.co
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 
 export const authorizationRoutingModule: Routes = [
-  { path: '', redirectTo: ERouting.SIGN_IN, pathMatch: 'full' },
-  { path: ERouting.SIGN_IN, component: SignInComponent },
-  { path: ERouting.PASSWORD_RESET, component: PasswordResetComponent },
-  { path: ERouting.SIGN_UP, component: SignUpComponent },
+  // { path: '', redirectTo: ERouting.SIGN_IN, pathMatch: 'full' },
+  // { path: ERouting.SIGN_IN, component: SignInComponent },
+  // { path: ERouting.PASSWORD_RESET, component: PasswordResetComponent },
+  // { path: ERouting.SIGN_UP, component: SignUpComponent },
+  {
+    path: '',
+    children: [
+      { path: '', redirectTo: ERouting.SIGN_IN, pathMatch: 'full' },
+      { path: ERouting.SIGN_IN, component: SignInComponent },
+      { path: ERouting.PASSWORD_RESET, component: PasswordResetComponent },
+      {
+        path: ERouting.SIGN_UP,
+        component: SignUpComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({

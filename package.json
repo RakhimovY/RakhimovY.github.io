@@ -24,6 +24,7 @@
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
     "aos": "^2.3.4",
+    "firebase": "^10.12.3",
     "gsap": "^3.12.5",
     "ngx-mask": "17.0.8",
     "primeng": "^17.18.1",
