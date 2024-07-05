@@ -37,4 +37,45 @@ h4 {
     max-width: 200px;
     cursor: pointer;
   }
+
+  p-dialog {
+    .product-body {
+      display: flex;
+      gap: 4px;
+      flex-direction: column;
+
+      &:not(:last-child) {
+        padding-bottom: 16px;
+      }
+
+      h4 {
+      }
+
+      .product-filed {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+
+        input {
+          gap: 8px;
+          border-radius: 8px;
+          border: 1px solid #909090;
+          padding: 13px 12px;
+          font-weight: 450;
+        }
+
+        img {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+::ng-deep.glare-btn {
+  margin: 0 !important;
+}
+
+::ng-deep.p-dialog .p-dialog-footer {
+  padding: 1.5rem;
 }
