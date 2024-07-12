@@ -31,6 +31,10 @@ section {
 
   .active {
     .FAQ__question {
+      display: flex;
+      flex-direction: row;
+      gap: 12px;
+
       img {
         transform: rotate(180deg);
       }

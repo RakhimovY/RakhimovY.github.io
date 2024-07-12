@@ -1,12 +1,10 @@
 <header>
-  <div
+  <img
     (click)="navToSection('preview')"
+    alt="cargo logo"
     class="logo"
-    data-aos="flip-left"
-    data-aos-duration="800"
-  >
-    <img alt="cargo logo" src="./assets/img/LOGO.svg" />
-  </div>
+    src="./assets/img/LOGO.svg"
+  />
   <nav class="navbar">
     <ul class="navbar-links">
       <li>
@@ -28,7 +26,19 @@
       <app-common-button
         [text]="'NAVBAR.CONTACT' | translate"
         [type]="'primary'"
+        [withFullWidth]="true"
+        style="width: 100%"
       ></app-common-button>
     </ul>
   </nav>
+
+  <div class="burger-body">
+    <input
+      (click)="showMobileNavbar()"
+      class="burger-checkbox"
+      id="burger-checkbox"
+      type="checkbox"
+    />
+    <label class="burger" for="burger-checkbox"></label>
+  </div>
 </header>
