@@ -22,3 +22,26 @@ section {
     transition: all 0.3s ease-in-out;
   }
 }
+
+
+@media (max-width: 900px) {
+  section {
+    .strange-arrow {
+      position: absolute;
+      top: 0;
+      left: 24px;
+      right: 26px;
+      width: 100%;
+      width: -moz-available; /* WebKit-based browsers will ignore this. */
+      width: -webkit-fill-available; /* Mozilla-based browsers will ignore this. */
+      width: fill-available;
+      max-height: 310px;
+    }
+
+    .animated-image {
+      margin-bottom: auto;
+      max-width: calc(100dvw - 105px);
+      padding-left: 32px;
+    }
+  }
+}

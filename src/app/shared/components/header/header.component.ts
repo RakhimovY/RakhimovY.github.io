@@ -1,9 +1,9 @@
-import { AfterViewInit, Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
-import { CommonButtonComponent } from '../common-button/common-button.component';
-import { ERouting } from '../../enums/routing.enum';
-import { navToElement } from '../../functions/nav-functions';
+import {AfterViewInit, Component} from '@angular/core';
+import {Router, RouterLink} from '@angular/router';
+import {TranslateModule} from '@ngx-translate/core';
+import {CommonButtonComponent} from '../common-button/common-button.component';
+import {ERouting} from '../../enums/routing.enum';
+import {navToElement} from '../../functions/nav-functions';
 
 @Component({
   selector: 'app-header',
@@ -13,23 +13,27 @@ import { navToElement } from '../../functions/nav-functions';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent implements AfterViewInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+  }
 
   ngAfterViewInit(): void {
     const header = document.getElementsByTagName('header')[0] as HTMLElement;
     const navbarLinks = document.querySelector('.navbar-links') as HTMLElement;
 
-    navbarLinks.style.paddingTop = header.offsetHeight + 16 + 'px';
+    if (header.offsetWidth < 900) {
+      navbarLinks.style.paddingTop = header.offsetHeight + 16 + 'px';
+    }
+
   }
 
   navToSection(tag: string) {
     this.router.url.includes(ERouting.MAIN)
       ? navToElement(tag)
       : this.router.navigate([ERouting.MAIN]).then((_) => {
-          setTimeout(() => {
-            navToElement(tag);
-          }, 100);
-        });
+        setTimeout(() => {
+          navToElement(tag);
+        }, 100);
+      });
   }
 
   showMobileNavbar() {

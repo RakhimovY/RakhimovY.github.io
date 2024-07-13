@@ -10,7 +10,7 @@
 >
   <div class="glare"></div>
   @if (src) {
-  <img [ngClass]="{ shakeIcon: shakeIcon }" [src]="src" alt="src" />
+    <img [ngClass]="{ shakeIcon: shakeIcon }" [src]="src" [alt]="src"/>
   }
   {{ text }}
 </button>
