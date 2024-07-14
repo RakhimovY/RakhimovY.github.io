@@ -127,8 +127,8 @@ section {
   padding: 56px;
   background-color: var(--light-yellow-10-oppacity);
   border-radius: 60px;
-  min-height: 50vh;
-  margin-top: -30vh;
+  min-height: 514px;
+  margin-top: -300px;
   z-index: -1;
   position: relative;
   display: grid;
@@ -193,6 +193,8 @@ section {
     padding: 32px 22px;
     gap: 8px;
     grid-template-columns: 1fr 2fr 1fr;
+    min-height: 516px;
+    margin-top: -365px;
 
     div {
       h1 {
