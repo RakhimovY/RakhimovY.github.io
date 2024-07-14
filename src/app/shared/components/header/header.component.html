@@ -9,19 +9,19 @@
     <ul class="navbar-links">
       <li>
         <a (click)="navToSection('calculate')">{{
-          "NAVBAR.CALCULATOR" | translate
-        }}</a>
+            "NAVBAR.CALCULATOR" | translate
+          }}</a>
       </li>
       <li>
         <a (click)="navToSection('advantage')">{{
-          "NAVBAR.ADVANTAGES" | translate
-        }}</a>
+            "NAVBAR.ADVANTAGES" | translate
+          }}</a>
       </li>
       <li>
         <a (click)="navToSection('FAQ')">{{ "NAVBAR.FAQ" | translate }}</a>
       </li>
       <li>
-        <a href="/auth">{{ "NAVBAR.AUTHORIZATION" | translate }}</a>
+        <a (click)="navToSection('authorization')">{{ "NAVBAR.AUTHORIZATION" | translate }}</a>
       </li>
       <app-common-button
         [text]="'NAVBAR.CONTACT' | translate"
