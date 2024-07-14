@@ -1,13 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  FormControl,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
-import { BehaviorSubject, tap } from 'rxjs';
-import { AsyncPipe } from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormsModule, ReactiveFormsModule, Validators,} from '@angular/forms';
+import {BehaviorSubject, tap} from 'rxjs';
+import {AsyncPipe} from '@angular/common';
+import {TranslateModule} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-calculate',
@@ -17,7 +12,8 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrl: './calculate.component.scss',
 })
 export class CalculateComponent implements OnInit {
-  rateControl = new FormControl('0', [Validators.max(100), Validators.min(0)]);
+  rateControl: FormControl<number | null> = new FormControl(0,
+    [Validators.max(100), Validators.min(0)]);
   isDecrementBtnDisabled$: BehaviorSubject<boolean> = new BehaviorSubject(true);
   isIncrementBtnDisabled$: BehaviorSubject<boolean> = new BehaviorSubject(
     false
@@ -31,17 +27,25 @@ export class CalculateComponent implements OnInit {
     },
     {
       id: 2,
-      title: '123546',
+      title: '123546+',
       subtitle: 'Доставленных товаров',
     },
     {
       id: 3,
-      title: '200',
+      title: '200+',
       subtitle: 'Довольных клиентов',
     },
   ];
 
   ngOnInit(): void {
+    const rateControlInput = document.getElementById('rateControlInput') as HTMLInputElement
+    rateControlInput.addEventListener('input', () => {
+      if (rateControlInput.value.length > 1 && rateControlInput.value.toString().startsWith('0')) {
+        rateControlInput.value = rateControlInput.value.slice(1)
+      }
+    })
+
+
     this.rateControl.valueChanges
       .pipe(
         tap((value) => {
@@ -54,35 +58,29 @@ export class CalculateComponent implements OnInit {
               ? this.isIncrementBtnDisabled$.next(true)
               : this.isIncrementBtnDisabled$.next(false);
           } else {
-            this.rateControl.setValue('0');
+            this.rateControl.setValue(0);
           }
         }),
         tap((value) => {
-          if (typeof value === 'number') {
-            value > 100
-              ? this.rateControl.setValue('100')
-              : value < 0
-              ? this.rateControl.setValue('0')
+          value !== null && value > 100
+            ? this.rateControl.setValue(100)
+            : value !== null && value < 0
+              ? this.rateControl.setValue(0)
               : null;
-          }
         })
       )
       .subscribe();
   }
 
   onIncrement() {
-    if (this.rateControl.value) {
-      this.rateControl.setValue((+this.rateControl.value + 1).toString());
-    } else {
-      this.rateControl.setValue('0');
-    }
+    this.rateControl.value !== null
+      ? this.rateControl.setValue(this.rateControl.value + 1)
+      : this.rateControl.setValue(0);
   }
 
   onDecrement() {
-    if (this.rateControl.value) {
-      this.rateControl.setValue((+this.rateControl.value - 1).toString());
-    } else {
-      this.rateControl.setValue('0');
-    }
+    this.rateControl.value !== null
+      ? this.rateControl.setValue(this.rateControl.value - 1)
+      : this.rateControl.setValue(0);
   }
 }

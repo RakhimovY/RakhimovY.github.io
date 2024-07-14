@@ -15,6 +15,7 @@ section {
       justify-content: space-between;
       align-items: center;
       cursor: pointer;
+      gap: 12px;
 
       h3 {
         margin: 16px 0;
@@ -38,6 +39,25 @@ section {
 
     .FAQ__answer {
       max-height: 1000px;
+    }
+  }
+}
+
+
+@media(max-width: 900px) {
+  section {
+    margin: 80px auto;
+
+    h1 {
+      margin-bottom: 32px;
+    }
+
+    .FAQ {
+      &__question {
+        h3 {
+          font-size: 16px;
+        }
+      }
     }
   }
 }

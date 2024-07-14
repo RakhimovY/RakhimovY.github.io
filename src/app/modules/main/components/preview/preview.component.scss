@@ -33,3 +33,38 @@ section {
     }
   }
 }
+
+
+@media (max-width: 900px) {
+  section {
+    margin: 32px 0 16px;
+
+    .subtitle {
+      img {
+        width: 32px;
+      }
+    }
+
+    .actions {
+      gap: 8px;
+      padding: 32px 0 0;
+
+      img {
+        width: 32px;
+      }
+
+      ::ng-deep button {
+        width: auto !important;
+        padding: 8px 12px;
+        font-size: 12px;
+        min-height: auto;
+
+        img {
+          width: 16px;
+        }
+      }
+    }
+  }
+}
+
+

@@ -10,7 +10,7 @@
 
   <section class="footer__main">
     <div class="first">
-      <img src="./assets/img/LOGO.svg" />
+      <img src="./assets/img/LOGO.svg"/>
       <h4 [innerHTML]="'FOOTER.MAIN.FIRST_COL.T1' | translate"></h4>
       <h5>{{ "FOOTER.MAIN.FIRST_COL.T2" | translate }}</h5>
     </div>
@@ -20,13 +20,13 @@
         <ul class="navbar-links">
           <li>
             <a (click)="navToSection('calculate')">{{
-              "NAVBAR.CALCULATOR" | translate
-            }}</a>
+                "NAVBAR.CALCULATOR" | translate
+              }}</a>
           </li>
           <li>
             <a (click)="navToSection('advantage')">{{
-              "NAVBAR.ADVANTAGES" | translate
-            }}</a>
+                "NAVBAR.ADVANTAGES" | translate
+              }}</a>
           </li>
           <li>
             <a (click)="navToSection('FAQ')">{{ "NAVBAR.FAQ" | translate }}</a>
@@ -41,15 +41,17 @@
       <h3>{{ "FOOTER.MAIN.THIRD_COL.SM" | translate }}</h3>
       <div class="socialMedia">
         <button>
-          <img alt="Instagram" src="./assets/img/Instagram.svg" />
+          <img alt="Instagram" src="./assets/img/Instagram.svg"/>
         </button>
         <button>
-          <img alt="WhatsUp" src="./assets/img/WhatsUp.svg" />
+          <img alt="WhatsUp" src="./assets/img/WhatsUp.svg"/>
         </button>
         <button>
-          <img alt="Telegram" src="./assets/img/Telegram.svg" />
+          <img alt="Telegram" src="./assets/img/Telegram.svg"/>
         </button>
       </div>
     </div>
+    <h5 class="mobile-text">{{ "FOOTER.MAIN.FIRST_COL.T2" | translate }}</h5>
+
   </section>
 </footer>

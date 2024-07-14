@@ -1,16 +1,16 @@
 <section
   class="calc"
-  data-aos="fade-up"
-  data-aos-anchor-placement="center-center"
+  data-aos="fade-right"
+  data-aos-anchor-placement="center-bottom"
   data-aos-duration="800"
   id="calculate"
 >
-  <img alt="ellipse" class="ellipse" src="assets/img/Ellipse.svg" />
+  <img alt="ellipse" class="ellipse" src="assets/img/Ellipse.svg"/>
 
   <div class="info">
     <div
       class="calc-box"
-      data-aos-duration="800"
+      data-aos-anchor-placement="center-bottom" data-aos-duration="800"
       data-aos-easing="ease-in-sine"
       data-aos-offset="300"
     >
@@ -28,9 +28,7 @@
           </button>
           <input
             [formControl]="rateControl"
-            [max]="100"
-            [min]="0"
-            required
+            id="rateControlInput"
             type="number"
           />
           <button
@@ -49,34 +47,35 @@
       </div>
     </div>
 
-    <div
-      class="text"
-      data-aos="fade-right"
-      data-aos-anchor-placement="center-center"
-      data-aos-duration="800"
-    >
+
+    <div class="text"
+         data-aos="fade-right"
+         data-aos-anchor-placement="center-center"
+         data-aos-duration="800">
       <h2>{{ "MAIN.CALCULATE.CALC.TEXT.TITLE" | translate }}</h2>
       <h4>
-        {{ "MAIN.CALCULATE.CALC.TEXT.SUBTITLE" | translate: { sum: "1990" } }}
+        {{ "MAIN.CALCULATE.CALC.TEXT.SUBTITLE" | translate: {sum: "1990"} }}
       </h4>
     </div>
   </div>
 </section>
 
+
 <section
   class="advantage"
   data-aos="fade-up"
-  data-aos-anchor-placement="center-center"
+  data-aos-anchor-placement="center-bottom"
   data-aos-duration="800"
 >
   @for (advantage of advantages; track advantage.id) {
-  <div
-    data-aos="fade-down"
-    data-aos-anchor-placement="center-center"
-    data-aos-duration="800"
-  >
-    <h1>{{ advantage.title }}</h1>
-    <p>{{ advantage.subtitle }}</p>
-  </div>
+
+    <div class="advantage__body"
+         data-aos="fade-down"
+         data-aos-duration="800"
+         data-aos-anchor-placement="center-bottom"
+    >
+      <h1>{{ advantage.title }}</h1>
+      <p>{{ advantage.subtitle }}</p>
+    </div>
   }
 </section>

@@ -11,9 +11,10 @@ section {
     grid-template-columns: 1fr 1fr 1fr;
     justify-content: space-between;
     gap: 20px;
+    align-items: center;
 
     .box {
-      width: 100%;
+      width: 328px;
       height: 328px;
       border-radius: 60px;
       overflow: hidden;
@@ -42,7 +43,25 @@ section {
         font-weight: 450;
         z-index: 2;
         color: rgba(255, 255, 255, 1);
-        padding: 60px;
+        padding: 16px;
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+
+  section {
+    margin: 80px auto;
+
+    .boxes {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      .box {
+        h2 {
+        }
       }
     }
   }

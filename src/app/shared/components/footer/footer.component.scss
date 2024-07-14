@@ -1,6 +1,6 @@
 .footer {
   &__question {
-    height: 71vh;
+    height: 645px;
     background-color: var(--light-yellow-10-oppacity);
     border-radius: 60px;
     text-align: center;
@@ -18,9 +18,9 @@
   &__main {
     color: var(--footer-text);
     border-radius: 60px 60px 0 0;
-    margin: -40vh 27px 0;
+    margin: -335px 27px 0;
     background-color: var(--lite-black);
-    height: 50vh;
+    height: 480px;
     position: relative;
     background-image: url("/assets/img/boxes.svg");
     background-repeat: no-repeat;
@@ -119,5 +119,70 @@
         }
       }
     }
+
+    .mobile-text {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .footer {
+    &__question {
+      height: 520px;
+      border-radius: 24px;
+
+      padding: 24px 16px;
+
+      h3 {
+        font-size: 16px;
+      }
+
+      ::ng-deep button {
+        width: 100% !important;
+        padding: 10px 12px;
+        min-height: auto;
+        font-size: 16px;
+      }
+    }
+
+    &__main {
+      padding: 32px 16px;
+      border-radius: 24px 24px 0 0;
+      margin: -330px 8px 0;
+      display: flex;
+      flex-direction: column;
+      height: auto;
+      gap: 20px;
+
+      .first {
+        h4 {
+          margin: 24px 0 0;
+        }
+
+        h5 {
+          display: none;
+        }
+      }
+
+      .second {
+        h3 {
+          font-size: 24px;
+          color: white;
+        }
+      }
+
+      .third {
+        h3 {
+          font-size: 24px;
+          color: white;
+        }
+      }
+
+      .mobile-text {
+        display: block;
+      }
+    }
+
   }
 }
