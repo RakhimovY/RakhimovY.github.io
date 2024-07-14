@@ -27,6 +27,15 @@ export class HeaderComponent implements AfterViewInit {
   }
 
   navToSection(tag: string) {
+    if (tag === 'authorization') {
+      this.router.navigate([ERouting.AUTH]).then(_ => {
+        setTimeout(() => {
+          navToElement(tag);
+        }, 100);
+      })
+      return
+    }
+
     this.router.url.includes(ERouting.MAIN)
       ? navToElement(tag)
       : this.router.navigate([ERouting.MAIN]).then((_) => {
