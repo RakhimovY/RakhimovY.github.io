@@ -1,8 +1,9 @@
-import {Routes} from '@angular/router';
-import {ERouting} from './shared/enums/routing.enum';
+import { Routes } from '@angular/router';
+import { ERouting } from './shared/enums/routing.enum';
+import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
-  {path: '', redirectTo: ERouting.CABINET, pathMatch: 'full'},
+  { path: '', redirectTo: ERouting.CABINET, pathMatch: 'full' },
   {
     path: ERouting.MAIN,
     loadChildren: () =>
@@ -12,12 +13,14 @@ export const routes: Routes = [
     path: ERouting.AUTH,
     loadChildren: () =>
       import('./modules/authorization/authorization.module').then(
-        (m) => m.AuthorizationModule
+        (m) => m.AuthorizationModule,
       ),
+    canActivate: [authGuard],
   },
   {
     path: ERouting.CABINET,
     loadChildren: () =>
       import('./modules/cabinet/cabinet.module').then((m) => m.CabinetModule),
+    canActivate: [authGuard],
   },
 ];

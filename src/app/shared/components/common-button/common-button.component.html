@@ -1,16 +1,20 @@
 <button
   (click)="clickBtn()"
   [disabled]="disabled"
-  [ngClass]="{ primary: type === 'primary', secondary: type === 'secondary' }"
+  [ngClass]="{
+    primary: type === 'primary',
+    secondary: type === 'secondary',
+    loading: isLoading,
+  }"
   [ngStyle]="{
     width: withFullWidth ? '100%' : width ? width : 'auto',
-    padding: '12px' + padding
+    padding: '12px' + padding,
   }"
   class="glare-btn"
 >
   <div class="glare"></div>
   @if (src) {
-    <img [ngClass]="{ shakeIcon: shakeIcon }" [src]="src" [alt]="src"/>
+    <img [ngClass]="{ shakeIcon: shakeIcon }" [src]="src" [alt]="src" />
   }
   {{ text }}
 </button>

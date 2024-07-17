@@ -4,16 +4,44 @@ header {
   position: sticky;
   top: 0;
   left: 0;
-  padding-bottom: 16px;
-  margin-top: 60px;
-  padding-top: 20px;
+  padding: 16px 16px 20px;
   grid-auto-flow: column;
   gap: 16px;
   background: white;
   z-index: 99;
+  max-width: 1024px;
+  margin: 60px auto auto;
 
   .logo {
     cursor: pointer;
+  }
+
+  ::ng-deep.p-dropdown {
+    height: 42px;
+    border: none !important;
+
+    &:not(.p-disabled).p-focus {
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+    }
+
+    .p-dropdown-trigger {
+      width: auto;
+      margin-right: 12px;
+    }
+
+    .p-highlight {
+      color: var(--orange);
+      font-weight: 600;
+    }
+
+    span {
+      font-size: 16px;
+      font-weight: 450;
+      font-family: "Futura PT", sans-serif;
+      color: var(--common-text);
+    }
   }
 
   .burger-body {
@@ -50,25 +78,35 @@ header {
     .burger::before {
       top: 0;
       box-shadow: 0 11px 0 var(--orange);
-      transition: box-shadow 0.3s 0.15s, top 0.3s 0.15s, transform 0.3s;
+      transition:
+        box-shadow 0.3s 0.15s,
+        top 0.3s 0.15s,
+        transform 0.3s;
     }
 
     .burger::after {
       bottom: 0;
-      transition: bottom 0.3s 0.15s, transform 0.3s;
+      transition:
+        bottom 0.3s 0.15s,
+        transform 0.3s;
     }
 
     .burger-checkbox:checked + .burger::before {
       top: 11px;
       transform: rotate(45deg);
       box-shadow: 0 6px 0 rgba(0, 0, 0, 0);
-      transition: box-shadow 0.15s, top 0.3s, transform 0.3s 0.15s;
+      transition:
+        box-shadow 0.15s,
+        top 0.3s,
+        transform 0.3s 0.15s;
     }
 
     .burger-checkbox:checked + .burger::after {
       bottom: 11px;
       transform: rotate(-45deg);
-      transition: bottom 0.3s, transform 0.3s 0.15s;
+      transition:
+        bottom 0.3s,
+        transform 0.3s 0.15s;
     }
   }
 
@@ -85,6 +123,10 @@ header {
 
       li {
         padding: 12px 0;
+
+        .active {
+          color: var(--orange) !important;
+        }
 
         a {
           position: relative;
@@ -131,7 +173,6 @@ header {
 @media (max-width: 900px) {
   header {
     margin-top: 0;
-    position: relative;
 
     .logo {
       width: 100px;

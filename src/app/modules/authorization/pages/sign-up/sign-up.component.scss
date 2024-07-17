@@ -10,6 +10,13 @@ section {
   text-align: center;
   width: fit-content;
 
+  form {
+
+    ::ng-deep h4 {
+      margin-top: 16px !important;
+    }
+  }
+
   h2 {
     padding-bottom: 16px;
     align-self: center;

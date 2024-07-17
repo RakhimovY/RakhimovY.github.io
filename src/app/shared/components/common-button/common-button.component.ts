@@ -20,6 +20,7 @@ export class CommonButtonComponent {
   @Input() type: 'primary' | 'tertiary' | 'secondary' = 'primary';
   @Input() disabled: boolean = false;
   @Input() withFullWidth: boolean = false;
+  @Input() isLoading: boolean = false;
   @Input() padding!: string;
   @Input() shakeIcon!: boolean;
   @Input() src!: string;

@@ -15,4 +15,10 @@ section {
     align-self: center;
     width: 100%;
   }
+
+  form {
+    ::ng-deep h4 {
+      margin-top: 16px !important;
+    }
+  }
 }
