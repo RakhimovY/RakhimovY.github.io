@@ -24,11 +24,8 @@ export class InputCityComponent implements OnInit {
 
   ngOnInit() {
     this.cities = [
-      { name: 'New York', code: 'NY' },
-      { name: 'Rome', code: 'RM' },
-      { name: 'London', code: 'LDN' },
-      { name: 'Istanbul', code: 'IST' },
-      { name: 'Paris', code: 'PRS' },
+      { name: 'Астана', code: '01' },
+      { name: 'Алматы', code: '02' },
     ];
   }
 }

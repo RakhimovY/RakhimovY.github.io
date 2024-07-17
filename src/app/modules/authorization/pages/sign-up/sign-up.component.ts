@@ -38,26 +38,17 @@ import { IPDropdown } from '../../../../shared/types/pDropdown.interface';
 })
 export class SignUpComponent {
   signUpForm = new FormGroup({
-    phoneNumberFormControl: new FormControl('', [
-      Validators.required,
-      Validators.nullValidator,
-    ]),
+    phoneNumberFormControl: new FormControl('', [Validators.required]),
     cityFormControl: new FormControl<IPDropdown | null>(null, [
       Validators.required,
-      Validators.nullValidator,
     ]),
     emailFormControl: new FormControl('', [
       Validators.required,
-      Validators.nullValidator,
       Validators.email,
     ]),
-    fullNameFormControl: new FormControl('', [
-      Validators.required,
-      Validators.nullValidator,
-    ]),
+    fullNameFormControl: new FormControl('', [Validators.required]),
     passwordFormControl: new FormControl('', [
       Validators.required,
-      Validators.nullValidator,
       Validators.minLength(4),
     ]),
   });
