@@ -31,9 +31,13 @@ export class AppComponent {
     };
     initializeApp(firebaseConfig);
 
-    this.translateService.setDefaultLang(
-      localStorage.getItem('language') ?? 'ru',
-    );
+    const localLanguage = localStorage.getItem('language');
+    if (localLanguage) {
+      this.translateService.setDefaultLang(localLanguage);
+    } else {
+      localStorage.setItem('language', 'ru');
+      this.translateService.setDefaultLang('ru');
+    }
 
     window.innerWidth <= 900
       ? this.authorizationController.isMobile.set(true)
