@@ -27,11 +27,20 @@
           }}</a>
         </li>
       } @else {
-        <li>
-          <a (click)="navToSection('cabinet')">{{
-            "NAVBAR.CABINET" | translate
-          }}</a>
-        </li>
+        @if (isAdmin()) {
+          <li>
+            <a (click)="navToSection('admin')">{{
+              "NAVBAR.ADMIN" | translate
+            }}</a>
+          </li>
+        }
+        @if (isUser()) {
+          <li>
+            <a (click)="navToSection('cabinet')">{{
+              "NAVBAR.CABINET" | translate
+            }}</a>
+          </li>
+        }
       }
       @if (isMobile()) {
         <li>

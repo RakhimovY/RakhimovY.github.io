@@ -7,13 +7,17 @@ export const authGuard: CanActivateFn = (route, state) => {
   const cookieService = inject(CookieService);
   const router = inject(Router);
   if (!cookieService.get(ECookie.ACCESS_TOKEN) && !state.url.includes('auth')) {
-    router.navigate(['auth']).then();
+    router.navigate(['auth']).then((_) => {
+      window.scrollTo(0, 0);
+    });
     return false;
   } else if (
     !!cookieService.get(ECookie.ACCESS_TOKEN) &&
     state.url.includes('auth')
   ) {
-    router.navigate(['cabinet']).then();
+    router.navigate(['cabinet']).then((_) => {
+      window.scrollTo(0, 0);
+    });
     return true;
   }
   return true;

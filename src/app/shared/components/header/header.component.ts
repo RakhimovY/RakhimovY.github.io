@@ -28,6 +28,8 @@ import { NgClass } from '@angular/common';
 export class HeaderComponent implements AfterViewInit {
   isAuthorized = computed(() => this.authorizationController.isAuthorized());
   isMobile = computed(() => this.authorizationController.isMobile());
+  isAdmin = computed(() => this.authorizationController.isAdmin());
+  isUser = computed(() => this.authorizationController.isUser());
   navbarLinks!: HTMLElement;
   burgerCheckbox!: HTMLInputElement;
   languageFormControl: FormControl<IPDropdown | null> = new FormControl({
