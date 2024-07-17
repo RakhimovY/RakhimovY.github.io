@@ -1,14 +1,22 @@
-import {Component} from '@angular/core';
-import {CommonButtonComponent} from '../../../../shared/components/common-button/common-button.component';
-import {TranslateModule} from '@ngx-translate/core';
-import {FormControl, Validators} from '@angular/forms';
-import {Router, RouterLink} from '@angular/router';
-import {ERouting} from '../../../../shared/enums/routing.enum';
-import {InputEmailComponent} from '../../../../shared/components/input-email/input-email.component';
-import {InputPasswordComponent} from '../../../../shared/components/input-password/input-password.component';
-import {InputFullNameComponent} from '../../../../shared/components/input-full-name/input-full-name.component';
-import {InputPhoneComponent} from '../../../../shared/components/input-phone/input-phone.component';
-import {InputCityComponent} from '../../../../shared/components/input-city/input-city.component';
+import { Component } from '@angular/core';
+import { CommonButtonComponent } from '../../../../shared/components/common-button/common-button.component';
+import { TranslateModule } from '@ngx-translate/core';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+import { ERouting } from '../../../../shared/enums/routing.enum';
+import { InputEmailComponent } from '../../../../shared/components/input-email/input-email.component';
+import { InputPasswordComponent } from '../../../../shared/components/input-password/input-password.component';
+import { InputFullNameComponent } from '../../../../shared/components/input-full-name/input-full-name.component';
+import { InputPhoneComponent } from '../../../../shared/components/input-phone/input-phone.component';
+import { InputCityComponent } from '../../../../shared/components/input-city/input-city.component';
+import { AuthorizationController } from '../../controllers/authorization.controller';
+import { ISignUp } from '../../types/auth.interface';
+import { IPDropdown } from '../../../../shared/types/pDropdown.interface';
 
 @Component({
   selector: 'app-sign-up',
@@ -22,21 +30,58 @@ import {InputCityComponent} from '../../../../shared/components/input-city/input
     InputPhoneComponent,
     RouterLink,
     InputCityComponent,
+    ReactiveFormsModule,
   ],
 
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.scss',
 })
 export class SignUpComponent {
-  phoneFormControl: FormControl = new FormControl('', [Validators.required]);
-  protected readonly ERouting = ERouting;
+  signUpForm = new FormGroup({
+    phoneNumberFormControl: new FormControl('', [
+      Validators.required,
+      Validators.nullValidator,
+    ]),
+    cityFormControl: new FormControl<IPDropdown | null>(null, [
+      Validators.required,
+      Validators.nullValidator,
+    ]),
+    emailFormControl: new FormControl('', [
+      Validators.required,
+      Validators.nullValidator,
+      Validators.email,
+    ]),
+    fullNameFormControl: new FormControl('', [
+      Validators.required,
+      Validators.nullValidator,
+    ]),
+    passwordFormControl: new FormControl('', [
+      Validators.required,
+      Validators.nullValidator,
+      Validators.minLength(4),
+    ]),
+  });
 
-  constructor(private router: Router) {
-  }
+  constructor(
+    private router: Router,
+    private authorizationController: AuthorizationController,
+  ) {}
 
   navToSignIn() {
     this.router.navigate([ERouting.AUTH, ERouting.SIGN_IN]);
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
+  }
 
+  signUp() {
+    if (this.signUpForm.valid) {
+      const body: ISignUp = {
+        city: this.signUpForm.value.cityFormControl?.name,
+        email: this.signUpForm.value.emailFormControl,
+        fullName: this.signUpForm.value.fullNameFormControl,
+        password: this.signUpForm.value.passwordFormControl,
+        phoneNumber: this.signUpForm.value.phoneNumberFormControl,
+      };
+      this.authorizationController.signUp(body);
+    }
   }
 }

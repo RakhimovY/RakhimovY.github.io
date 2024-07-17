@@ -2,8 +2,8 @@
   <h4>{{ "AUTHORIZATION.INPUTS.PHONE.TITLE" | translate }}</h4>
   <div class="field__input">
     <input
-      [formControl]="phoneFormControl"
-      [ngClass]="{ 'grey-color': !phoneFormControl.value }"
+      [formControl]="phoneNumberFormControl"
+      [ngClass]="{ 'grey-color': !phoneNumberFormControl.value }"
       [showMaskTyped]="true"
       mask="(000) 000 00 00"
       prefix="+7 "

@@ -9,20 +9,63 @@
     <ul class="navbar-links">
       <li>
         <a (click)="navToSection('calculate')">{{
-            "NAVBAR.CALCULATOR" | translate
-          }}</a>
+          "NAVBAR.CALCULATOR" | translate
+        }}</a>
       </li>
       <li>
         <a (click)="navToSection('advantage')">{{
-            "NAVBAR.ADVANTAGES" | translate
-          }}</a>
+          "NAVBAR.ADVANTAGES" | translate
+        }}</a>
       </li>
       <li>
         <a (click)="navToSection('FAQ')">{{ "NAVBAR.FAQ" | translate }}</a>
       </li>
-      <li>
-        <a (click)="navToSection('authorization')">{{ "NAVBAR.AUTHORIZATION" | translate }}</a>
-      </li>
+      @if (!isAuthorized()) {
+        <li>
+          <a (click)="navToSection('authorization')">{{
+            "NAVBAR.AUTHORIZATION" | translate
+          }}</a>
+        </li>
+      } @else {
+        <li>
+          <a (click)="navToSection('cabinet')">{{
+            "NAVBAR.CABINET" | translate
+          }}</a>
+        </li>
+      }
+      @if (isMobile()) {
+        <li>
+          <div>
+            <a
+              [ngClass]="{ active: languageFormControl.value?.code === 'ru' }"
+              (click)="setLanguage('ru')"
+              >Русский
+            </a>
+            <a>/</a>
+            <a
+              [ngClass]="{ active: languageFormControl.value?.code === 'en' }"
+              (click)="setLanguage('en')"
+              >English
+            </a>
+            <a>/</a>
+            <a
+              [ngClass]="{ active: languageFormControl.value?.code === 'kk' }"
+              (click)="setLanguage('kk')"
+              >Қазақша
+            </a>
+          </div>
+        </li>
+      } @else {
+        <li>
+          <p-dropdown
+            [formControl]="languageFormControl"
+            [options]="languageList"
+            class="ng-dirty ng-invalid"
+            dropdownIcon
+            optionLabel="name"
+          />
+        </li>
+      }
       <app-common-button
         [text]="'NAVBAR.CONTACT' | translate"
         [type]="'primary'"
@@ -31,10 +74,9 @@
       ></app-common-button>
     </ul>
   </nav>
-
   <div class="burger-body">
     <input
-      (click)="showMobileNavbar()"
+      (click)="mobileNavbarToggle()"
       class="burger-checkbox"
       id="burger-checkbox"
       type="checkbox"

@@ -1,12 +1,19 @@
 <section #authorization id="authorization">
   <h2>{{ "AUTHORIZATION.TITLE.SIGN_IN" | translate }}</h2>
-
-  <app-input-email></app-input-email>
-
-  <app-input-password></app-input-password>
+  <form [formGroup]="signInForm">
+    <app-input-email
+      [emailFormControl]="signInForm.controls.emailFormControl"
+    ></app-input-email>
+    <app-input-password
+      [passwordFormControl]="signInForm.controls.passwordFormControl"
+    >
+    </app-input-password>
+  </form>
 
   <app-common-button
-    [disabled]="true"
+    (clickBTN)="signIn()"
+    [disabled]="signInForm.invalid || isSignLoading()"
+    [isLoading]="isSignLoading()"
     [text]="'AUTHORIZATION.BUTTONS.SIGN_IN' | translate"
     [withFullWidth]="true"
   ></app-common-button>

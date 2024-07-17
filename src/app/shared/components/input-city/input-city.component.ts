@@ -1,13 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskDirective } from 'ngx-mask';
-
-interface City {
-  name: string;
-  code: string;
-}
+import { IPDropdown } from '../../types/pDropdown.interface';
 
 @Component({
   selector: 'app-input-city',
@@ -22,9 +18,9 @@ interface City {
   styleUrl: './input-city.component.scss',
 })
 export class InputCityComponent implements OnInit {
-  cities: City[] | undefined;
+  cities: IPDropdown[] | undefined;
 
-  selectedCity: FormControl<City | null> = new FormControl<City | null>(null);
+  @Input() cityFormControl!: FormControl;
 
   ngOnInit() {
     this.cities = [

@@ -15,8 +15,6 @@ button {
   &:disabled {
     background-color: var(--orange-lite) !important;
     cursor: not-allowed !important;
-    transition: none !important;
-    transform: none !important;
   }
 
   &.primary {
@@ -31,10 +29,14 @@ button {
     min-height: 45px;
   }
 
-  &.secondary:hover {
+  &.secondary:hover:not(:disabled) {
     .shakeIcon {
       animation: shake 0.5s ease-in-out;
     }
+  }
+
+  &.loading {
+    cursor: wait !important;
   }
 }
 
@@ -48,12 +50,12 @@ button {
   transition: all 0.3s linear;
 }
 
-.glare-btn:hover {
+.glare-btn:hover:not(:disabled) {
   cursor: pointer;
   transform: scale(1.05);
 }
 
-.glare-btn:hover .glare {
+.glare-btn:hover:not(:disabled) .glare {
   right: -50%;
   -webkit-transition: all 0.6s linear;
   transition: all 0.6s linear;
@@ -89,5 +91,3 @@ button {
   right: -15px;
   top: 0;
 }
-
-

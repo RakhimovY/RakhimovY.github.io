@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from '../../app/shared/components/header/header.component';
-import { FooterComponent } from '../../app/shared/components/footer/footer.component';
+import {Component} from '@angular/core';
+import {RouterOutlet} from '@angular/router';
+import {HeaderComponent} from '../../app/shared/components/header/header.component';
+import {FooterComponent} from '../../app/shared/components/footer/footer.component';
 
 @Component({
   selector: 'app-layout',
@@ -11,5 +11,6 @@ import { FooterComponent } from '../../app/shared/components/footer/footer.compo
   styleUrl: './layout.component.scss',
 })
 export class LayoutComponent {
-  constructor() {}
+  constructor() {
+  }
 }

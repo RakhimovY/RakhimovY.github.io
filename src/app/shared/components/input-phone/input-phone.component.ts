@@ -1,8 +1,8 @@
-import { Component, Input } from '@angular/core';
-import { TranslateModule } from '@ngx-translate/core';
-import { NgxMaskDirective } from 'ngx-mask';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgClass, NgStyle } from '@angular/common';
+import {Component, Input} from '@angular/core';
+import {TranslateModule} from '@ngx-translate/core';
+import {NgxMaskDirective} from 'ngx-mask';
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {NgClass, NgStyle} from '@angular/common';
 
 @Component({
   selector: 'app-input-phone',
@@ -19,5 +19,5 @@ import { NgClass, NgStyle } from '@angular/common';
   styleUrl: './input-phone.component.scss',
 })
 export class InputPhoneComponent {
-  @Input() phoneFormControl!: FormControl;
+  @Input() phoneNumberFormControl!: FormControl;
 }
