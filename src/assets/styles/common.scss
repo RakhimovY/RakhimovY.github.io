@@ -1,0 +1,51 @@
+.flex {
+  display: flex;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.gap-48 {
+  gap: 48px;
+}
+
+.jc-sb {
+  justify-content: space-between;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.dropdown__body {
+  .down_arrow {
+    transition: all 0.4s ease;
+
+    &.rotate180 {
+      transform: rotate(180deg);
+    }
+  }
+
+  .dropdown {
+    transition: all 0.4s ease;
+    opacity: 1;
+
+    &.hidden {
+      max-height: 0 !important;
+      margin-top: 0 !important;
+      overflow: hidden;
+      opacity: 0 !important;
+    }
+  }
+}
+
+.p-disabled,
+.p-component:disabled {
+  background-color: var(--disable);
+  opacity: 1;
+}

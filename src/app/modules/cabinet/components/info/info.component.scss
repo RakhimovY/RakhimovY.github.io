@@ -4,15 +4,23 @@ section {
   background-color: var(--gray-lite);
   border-radius: 8px;
   width: 100%;
-
   display: flex;
-  gap: 48px;
   flex-direction: column;
 
   .input-container {
+    margin-top: 48px;
     display: grid;
     grid-template-columns: repeat(auto-fill, 328px);
     justify-content: space-between;
     row-gap: 20px;
+  }
+
+  ::ng-deep.glare-btn {
+    height: 44px;
+    border-color: var(--orange);
+
+    &.secondary {
+      color: var(--orange);
+    }
   }
 }

@@ -1,4 +1,5 @@
 export const environment = {
   baseHost: 'http://94.247.129.77:8080/',
-  authService: 'http://94.247.129.77:8080/auth/'
-}
+  authAPI: 'http://94.247.129.77:8080/auth/',
+  userAPI: 'http://94.247.129.77:8080/user/',
+};

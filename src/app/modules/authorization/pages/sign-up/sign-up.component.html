@@ -1,21 +1,29 @@
 <section #authorization>
   <h2>{{ "AUTHORIZATION.TITLE.SIGN_UP" | translate }}</h2>
-  <form [formGroup]="signUpForm">
-    <app-input-full-name [fullNameFormControl]="signUpForm.controls.fullNameFormControl"></app-input-full-name>
-    <app-input-phone [phoneNumberFormControl]="signUpForm.controls.phoneNumberFormControl"></app-input-phone>
-    <app-input-email [emailFormControl]="signUpForm.controls.emailFormControl"></app-input-email>
-    <app-input-city [cityFormControl]="signUpForm.controls.cityFormControl"></app-input-city>
-    <app-input-password [isSignUp]="true"
-                        [passwordFormControl]="signUpForm.controls.passwordFormControl"></app-input-password>
+  <form (ngSubmit)="signUp()" [formGroup]="signUpForm">
+    <app-input-full-name
+      [fullNameFormControl]="signUpForm.controls.fullNameFormControl"
+    ></app-input-full-name>
+    <app-input-phone
+      [phoneNumberFormControl]="signUpForm.controls.phoneNumberFormControl"
+    ></app-input-phone>
+    <app-input-email
+      [emailFormControl]="signUpForm.controls.emailFormControl"
+    ></app-input-email>
+    <app-input-city
+      [cityFormControl]="signUpForm.controls.cityFormControl"
+    ></app-input-city>
+    <app-input-password
+      [isSignUp]="true"
+      [passwordFormControl]="signUpForm.controls.passwordFormControl"
+    ></app-input-password>
   </form>
-
 
   <app-common-button
     (clickBTN)="signUp()"
     [disabled]="signUpForm.invalid"
     [text]="'AUTHORIZATION.BUTTONS.SIGN_UP_TO_ACC' | translate"
     [withFullWidth]="true"
-
   ></app-common-button>
   <app-common-button
     (clickBTN)="navToSignIn()"

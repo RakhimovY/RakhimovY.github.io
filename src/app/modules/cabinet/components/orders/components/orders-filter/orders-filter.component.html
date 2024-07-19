@@ -5,29 +5,29 @@
     <input placeholder="Введите трек номер" />
   </div>
   <button (click)="showDialog()">Добавить новый товар</button>
-
-  <p-dialog
-    (onHide)="onHideModalWindow()"
-    [(visible)]="visible"
-    [draggable]="false"
-    [modal]="true"
-    [resizable]="false"
-    header="Добавить товар"
-  >
-    <div class="product-body">
-      <h4>Введите номер товара</h4>
-      <div class="product-filed">
-        <input
-          [formControl]="product"
-          autofocus
-          id="newProductInput"
-          maxlength="6"
-        />
-        <img (click)="onSaveProduct()" src="assets/img/addProductButton.svg" />
-      </div>
+</div>
+<p-dialog
+  (onHide)="onHideModalWindow()"
+  [(visible)]="visible"
+  [draggable]="false"
+  [modal]="true"
+  [resizable]="false"
+  header="Добавить товар"
+>
+  <div class="product-body">
+    <h4>Введите номер товара</h4>
+    <div class="product-filed">
+      <input
+        [formControl]="product"
+        autofocus
+        id="newProductInput"
+        maxlength="6"
+      />
+      <img (click)="onSaveProduct()" src="assets/img/addProductButton.svg" />
     </div>
+  </div>
 
-    @for (product of savedProductsLists; track product.id; let i = $index) {
+  @for (product of savedProductsLists; track product.id; let i = $index) {
     <div class="product-body">
       <div class="product-filed">
         <input maxlength="6" [value]="product.productID" disabled />
@@ -37,13 +37,12 @@
         />
       </div>
     </div>
-    }
+  }
 
-    <ng-template pTemplate="footer">
-      <app-common-button
-        (clickBTN)="addToMyOrders()"
-        [text]="'Добавить'"
-      ></app-common-button>
-    </ng-template>
-  </p-dialog>
-</div>
+  <ng-template pTemplate="footer">
+    <app-common-button
+      (clickBTN)="addToMyOrders()"
+      [text]="'Добавить'"
+    ></app-common-button>
+  </ng-template>
+</p-dialog>

@@ -7,17 +7,17 @@ import { ISignIn, ISignInResponse, ISignUp } from '../types/auth.interface';
   providedIn: 'root',
 })
 export class AuthorizationService {
-  authService = environment.authService;
+  authAPI = environment.authAPI;
 
   constructor(private httpClient: HttpClient) {}
 
   signUp(body: ISignUp) {
-    return this.httpClient.post(`${this.authService}sign-up`, body);
+    return this.httpClient.post(`${this.authAPI}sign-up`, body);
   }
 
   signIn(body: ISignIn) {
     return this.httpClient.post<ISignInResponse>(
-      `${this.authService}sign-in`,
+      `${this.authAPI}sign-in`,
       body,
     );
   }

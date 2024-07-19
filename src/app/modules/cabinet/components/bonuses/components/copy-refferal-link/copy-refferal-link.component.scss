@@ -1,0 +1,39 @@
+.info-box {
+  display: flex;
+  flex-direction: column;
+
+  ::ng-deep .glare-btn {
+    text-wrap: nowrap;
+    height: 44px;
+  }
+
+  p {
+    color: var(--p-text);
+  }
+
+  &__title {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--common-text);
+    margin-bottom: 4px;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+
+    .info-box__text {
+      padding: 12px;
+      border-radius: 8px;
+      background-color: var(--disable);
+      margin-bottom: 4px;
+      color: var(--gray-borders);
+      width: 100%;
+    }
+
+    img {
+      cursor: pointer;
+    }
+  }
+}

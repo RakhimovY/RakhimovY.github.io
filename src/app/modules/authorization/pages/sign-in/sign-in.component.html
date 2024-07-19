@@ -1,6 +1,6 @@
 <section #authorization id="authorization">
   <h2>{{ "AUTHORIZATION.TITLE.SIGN_IN" | translate }}</h2>
-  <form [formGroup]="signInForm">
+  <form (keydown.enter)="signIn()" [formGroup]="signInForm">
     <app-input-email
       [emailFormControl]="signInForm.controls.emailFormControl"
     ></app-input-email>

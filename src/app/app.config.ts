@@ -1,14 +1,24 @@
-import {ApplicationConfig, importProvidersFrom, LOCALE_ID,} from '@angular/core';
+import {
+  ApplicationConfig,
+  importProvidersFrom,
+  LOCALE_ID,
+} from '@angular/core';
 import localeKZ from '@angular/common/locales/ru-KZ';
-import {provideClientHydration} from '@angular/platform-browser';
-import {HttpBackend, HttpClient, provideHttpClient, withInterceptors,} from '@angular/common/http';
-import {registerLocaleData} from '@angular/common';
-import {RouterModule} from '@angular/router';
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {routes} from './app.routes';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {provideAnimations} from '@angular/platform-browser/animations';
-import {provideEnvironmentNgxMask} from "ngx-mask";
+import { provideClientHydration } from '@angular/platform-browser';
+import {
+  HttpBackend,
+  HttpClient,
+  provideHttpClient,
+  withInterceptors,
+} from '@angular/common/http';
+import { registerLocaleData } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { routes } from './app.routes';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideEnvironmentNgxMask } from 'ngx-mask';
+import { authInterceptor } from './core/interceptors/auth.interceptor';
 
 function HttpLoaderFactory(httpHandler: HttpBackend): TranslateHttpLoader {
   return new TranslateHttpLoader(
@@ -22,7 +32,7 @@ registerLocaleData(localeKZ);
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    {provide: LOCALE_ID, useValue: 'ru-KZ'},
+    { provide: LOCALE_ID, useValue: 'ru-KZ' },
     provideClientHydration(),
     importProvidersFrom([
       RouterModule.forRoot(routes),
@@ -35,9 +45,8 @@ export const appConfig: ApplicationConfig = {
         },
       }),
     ]),
-    provideHttpClient(withInterceptors([])),
+    provideHttpClient(withInterceptors([authInterceptor])),
     provideAnimations(),
     provideEnvironmentNgxMask(),
-
   ],
 };
