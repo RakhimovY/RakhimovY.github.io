@@ -37,4 +37,11 @@
       </tr>
     </tbody>
   </table>
+
+  <p-paginator
+    (onPageChange)="onPageChange($event)"
+    [first]="1"
+    [rows]="5"
+    [totalRecords]="120"
+  />
 </section>
