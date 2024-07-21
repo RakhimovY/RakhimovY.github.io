@@ -8,3 +8,11 @@ section {
   gap: 48px;
   flex-direction: column;
 }
+
+@media (max-width: 900px) {
+  section {
+    padding: 16px;
+    margin: 32px auto;
+    gap: 24px;
+  }
+}

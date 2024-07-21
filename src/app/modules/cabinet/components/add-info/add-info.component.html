@@ -1,5 +1,5 @@
-<section appDropdown class="dropdown__body" id="cabinet">
-  <div class="flex row jc-sb pointer">
+<section appDropdown class="dropdown__body">
+  <div class="flex row jc-sb pointer gap-12">
     <h2>Дополнительная информация</h2>
     <img
       alt="down_arrow"
@@ -18,14 +18,27 @@
           Silk (личный код) 17745319788 китайские иероглифы
           41号翠澳山房首层9788库房 (личный код и номер телефона) silk cargo
         </div>
-        <img alt="copy" src="assets/img/copy.svg" />
+        <img
+          (click)="
+            copyToClipboard(
+              '  Silk (личный код) 17745319788 китайские иероглифы\n' +
+                '          41号翠澳山房首层9788库房 (личный код и номер телефона) silk cargo'
+            )
+          "
+          alt="copy"
+          src="assets/img/copy.svg"
+        />
       </div>
     </div>
     <div class="info-box">
       <div class="info-box__title">Персональный код</div>
       <div class="info-box__field">
         <div class="info-box__text">123456</div>
-        <img alt="copy" src="assets/img/copy.svg" />
+        <img
+          (click)="copyToClipboard('123456')"
+          alt="copy"
+          src="assets/img/copy.svg"
+        />
       </div>
       <p>Этот код нужен для того, чтобы получить товар</p>
     </div>

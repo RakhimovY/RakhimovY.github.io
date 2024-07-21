@@ -30,10 +30,25 @@
       margin-bottom: 4px;
       color: var(--gray-borders);
       width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     img {
       cursor: pointer;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .info-box {
+    &__field {
+      flex-direction: column;
+
+      .mobile {
+        margin-top: -8px;
+      }
     }
   }
 }

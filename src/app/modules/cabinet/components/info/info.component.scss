@@ -24,3 +24,35 @@ section {
     }
   }
 }
+
+@media (max-width: 900px) {
+  section {
+    padding: 16px;
+    margin: 32px auto;
+
+    h2 {
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    img {
+      width: 24px;
+    }
+
+    .input-container {
+      display: flex;
+      flex-direction: column;
+      margin-top: 32px;
+
+      ::ng-deep .field {
+        max-width: inherit;
+        width: 100%;
+
+        input {
+          max-width: inherit;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

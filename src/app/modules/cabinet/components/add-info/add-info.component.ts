@@ -5,6 +5,8 @@ import { InputEmailComponent } from '../../../../shared/components/input-email/i
 import { InputFullNameComponent } from '../../../../shared/components/input-full-name/input-full-name.component';
 import { InputPasswordComponent } from '../../../../shared/components/input-password/input-password.component';
 import { InputPhoneComponent } from '../../../../shared/components/input-phone/input-phone.component';
+import { Clipboard } from '@angular/cdk/clipboard';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-info',
@@ -20,4 +22,14 @@ import { InputPhoneComponent } from '../../../../shared/components/input-phone/i
   templateUrl: './add-info.component.html',
   styleUrl: './add-info.component.scss',
 })
-export class AddInfoComponent {}
+export class AddInfoComponent {
+  constructor(
+    private clipboard: Clipboard,
+    private toastr: ToastrService,
+  ) {}
+
+  copyToClipboard(str: string) {
+    this.clipboard.copy(str);
+    this.toastr.success('Текст успешно скопирован');
+  }
+}

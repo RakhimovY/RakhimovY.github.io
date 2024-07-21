@@ -9,40 +9,55 @@
 <p-dialog
   (onHide)="onHideModalWindow()"
   [(visible)]="visible"
+  [dismissableMask]="true"
   [draggable]="false"
   [modal]="true"
   [resizable]="false"
   header="Добавить товар"
 >
   <div class="product-body">
-    <h4>Введите номер товара</h4>
     <div class="product-filed">
-      <input
-        [formControl]="product"
-        autofocus
-        id="newProductInput"
-        maxlength="6"
-      />
-      <img (click)="onSaveProduct()" src="assets/img/addProductButton.svg" />
+      <h4>Номер товара</h4>
+      <input [formControl]="product" autocomplete="off" id="newProductInput" />
     </div>
+    <div class="product-filed">
+      <h4>Наименование товара</h4>
+      <input
+        [formControl]="productName"
+        autocomplete="off"
+        id="newProductNameInput"
+      />
+    </div>
+    <button
+      (click)="onSaveProduct()"
+      [disabled]="this.product.invalid || this.productName.invalid"
+    >
+      +
+    </button>
   </div>
 
   @for (product of savedProductsLists; track product.id; let i = $index) {
     <div class="product-body">
       <div class="product-filed">
+        <h4>Номер товара</h4>
         <input maxlength="6" [value]="product.productID" disabled />
-        <img
-          (click)="onDeleteSavedProduct(product.id)"
-          src="assets/img/Trash.svg"
-        />
       </div>
+      <div class="product-filed">
+        <h4>Наименование товара</h4>
+        <input maxlength="6" [value]="product.productName" disabled />
+      </div>
+      <!--      <img (click)="onSaveProduct()" src="assets/img/Trash.svg" />-->
+      <button (click)="onDeleteSavedProduct(product.id)" class="trash">
+        <img src="assets/img/Trash.svg" />
+      </button>
     </div>
   }
 
   <ng-template pTemplate="footer">
     <app-common-button
       (clickBTN)="addToMyOrders()"
-      [text]="'Добавить'"
+      [disabled]="savedProductsLists.length <= 0"
+      [text]="'Сохранить'"
     ></app-common-button>
   </ng-template>
 </p-dialog>

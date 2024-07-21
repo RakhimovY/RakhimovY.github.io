@@ -19,6 +19,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideEnvironmentNgxMask } from 'ngx-mask';
 import { authInterceptor } from './core/interceptors/auth.interceptor';
+import { provideToastr } from 'ngx-toastr';
 
 function HttpLoaderFactory(httpHandler: HttpBackend): TranslateHttpLoader {
   return new TranslateHttpLoader(
@@ -47,6 +48,10 @@ export const appConfig: ApplicationConfig = {
     ]),
     provideHttpClient(withInterceptors([authInterceptor])),
     provideAnimations(),
+    provideToastr({
+      timeOut: 1000,
+      positionClass: 'toast-bottom-right',
+    }),
     provideEnvironmentNgxMask(),
   ],
 };

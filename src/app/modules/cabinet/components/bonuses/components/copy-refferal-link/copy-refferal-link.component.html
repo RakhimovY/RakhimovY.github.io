@@ -2,10 +2,12 @@
   <div class="info-box__title">Реферальная ссылка</div>
   <div class="info-box__field">
     <div class="info-box__text">https://dribbble.com/signup/new?returnв...</div>
+    <p class="mobile">Пригласите друзей и получите бонусы</p>
     <app-common-button
+      (click)="copyLink()"
       [text]="'Скопировать ссылку'"
       [withFullWidth]="true"
     ></app-common-button>
   </div>
-  <p>Пригласите друзей и получите бонусы</p>
+  <p class="web">Пригласите друзей и получите бонусы</p>
 </div>

@@ -52,3 +52,31 @@ table {
     }
   }
 }
+
+@media (max-width: 900px) {
+  h3 {
+    font-size: 18px;
+  }
+
+  table {
+    thead {
+      tr {
+        th {
+          padding: 12px;
+        }
+
+        th:nth-child(1) {
+          min-width: 30px;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        td {
+          padding: 12px;
+        }
+      }
+    }
+  }
+}

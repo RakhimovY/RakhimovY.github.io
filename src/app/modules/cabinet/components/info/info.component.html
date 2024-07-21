@@ -25,7 +25,7 @@
       <app-common-button
         [text]="'Сохранить'"
         [withFullWidth]="true"
-        style="align-self: end"
+        style="align-self: end; width: 100%"
         (clickBTN)="saveUserChanges()"
         [disabled]="infoForm.invalid"
         type="primary"
@@ -34,9 +34,10 @@
       <app-common-button
         [text]="'Редактировать'"
         [withFullWidth]="true"
-        style="align-self: end; color: #ff7c03"
+        style="align-self: end; color: #ff7c03; width: 100%"
         (clickBTN)="infoForm.enable()"
         type="secondary"
+        width="100%"
       ></app-common-button>
     }
   </div>

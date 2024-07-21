@@ -14,6 +14,10 @@
   gap: 48px;
 }
 
+.gap-12 {
+  gap: 12px;
+}
+
 .jc-sb {
   justify-content: space-between;
 }
@@ -48,4 +52,22 @@
 .p-component:disabled {
   background-color: var(--disable);
   opacity: 1;
+}
+
+@media (max-width: 900px) {
+  .web {
+    display: none;
+  }
+  .mobile {
+    display: block;
+  }
+}
+
+@media (min-width: 900px) {
+  .web {
+    display: block;
+  }
+  .mobile {
+    display: none;
+  }
 }

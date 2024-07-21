@@ -6,5 +6,6 @@ export interface IOrdersStatusButton {
 
 export interface ISavedProductsList {
   id: number;
-  productID: string;
+  productID: string | null;
+  productName: string | null;
 }

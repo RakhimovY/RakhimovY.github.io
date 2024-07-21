@@ -7,6 +7,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { ECookie } from '../../../core/enums/cookie.enum';
 import { EAuthority } from '../enums/authority.enum';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({ providedIn: 'root' })
 export class AuthorizationController {
@@ -20,6 +21,7 @@ export class AuthorizationController {
     private router: Router,
     private authService: AuthorizationService,
     private cookieService: CookieService,
+    private toastr: ToastrService,
   ) {}
 
   signUp(body: ISignUp) {
@@ -33,6 +35,7 @@ export class AuthorizationController {
         }),
         catchError((error: HttpErrorResponse) => {
           this.signLoading.set(false);
+          this.toastr.error(error.error.message ?? error.error.error);
           return throwError(() => error);
         }),
       )
@@ -56,27 +59,31 @@ export class AuthorizationController {
       .signIn(body)
       .pipe(
         tap((data) => {
-          this.signLoading.set(false);
-          console.log(data);
-          console.log(data.token);
-          console.log(data.privilege[0].authority);
           this.setCookie('access_token', data.token);
           this.setCookie('refresh_token', data.token);
           this.setCookie('role', data.privilege[0].authority);
           if (data.privilege[0].authority === EAuthority.ROLE_ADMIN) {
             this.isAdmin.set(true);
             this.isUser.set(false);
+            this.router.navigate(['admin']).then((_) => {
+              window.scrollTo(0, 0);
+            });
           } else if (data.privilege[0].authority === EAuthority.ROLE_USER) {
             this.isAdmin.set(false);
             this.isUser.set(true);
+            this.router.navigate(['cabinet']).then((_) => {
+              window.scrollTo(0, 0);
+            });
+          } else {
+            this.router.navigate(['main']).then((_) => {
+              window.scrollTo(0, 0);
+            });
           }
           this.isAuthorized.set(true);
-          this.router.navigate(['main']).then((_) => {
-            window.scrollTo(0, 0);
-          });
         }),
         catchError((error: HttpErrorResponse) => {
           this.signLoading.set(false);
+          this.toastr.error(error.error.message ?? error.error.error);
           return throwError(() => error);
         }),
       )
