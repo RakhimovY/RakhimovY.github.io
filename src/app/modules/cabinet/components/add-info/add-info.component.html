@@ -1,4 +1,4 @@
-<section appDropdown class="dropdown__body">
+<section appDropdown class="dropdown__body" id="appInfo">
   <div class="flex row jc-sb pointer gap-12">
     <h2>Дополнительная информация</h2>
     <img
@@ -14,17 +14,9 @@
     <div class="info-box">
       <div class="info-box__title">Адрес склада</div>
       <div class="info-box__field">
-        <div class="info-box__text">
-          Silk (личный код) 17745319788 китайские иероглифы
-          41号翠澳山房首层9788库房 (личный код и номер телефона) silk cargo
-        </div>
+        <div class="info-box__text">{{ userInfo()?.chineseAddress }}</div>
         <img
-          (click)="
-            copyToClipboard(
-              '  Silk (личный код) 17745319788 китайские иероглифы\n' +
-                '          41号翠澳山房首层9788库房 (личный код и номер телефона) silk cargo'
-            )
-          "
+          (click)="copyToClipboard(userInfo()?.chineseAddress)"
           alt="copy"
           src="assets/img/copy.svg"
         />
@@ -33,9 +25,9 @@
     <div class="info-box">
       <div class="info-box__title">Персональный код</div>
       <div class="info-box__field">
-        <div class="info-box__text">123456</div>
+        <div class="info-box__text">{{ userInfo()?.clientCode }}</div>
         <img
-          (click)="copyToClipboard('123456')"
+          (click)="copyToClipboard(userInfo()?.clientCode)"
           alt="copy"
           src="assets/img/copy.svg"
         />

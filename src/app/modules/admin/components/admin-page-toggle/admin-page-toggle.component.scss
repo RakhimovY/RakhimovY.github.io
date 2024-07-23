@@ -1,0 +1,44 @@
+section {
+  margin-bottom: 24px;
+  background-color: var(--gray-medium);
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  width: fit-content;
+  padding: 4px 3px;
+  align-items: center;
+  border-radius: 8px;
+  position: relative;
+  height: 44px;
+
+  .active-button-box {
+    width: 120px;
+    height: 36px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--orange);
+    cursor: pointer;
+    position: absolute;
+    transition: all 0.5s ease;
+    transform: translate(0);
+    left: 3px;
+  }
+
+  button {
+    font-size: 16px;
+    font-weight: 450;
+    text-align: center;
+    width: 120px;
+    height: 24px;
+    border: none;
+    background-color: initial;
+    cursor: pointer;
+    z-index: 0;
+    transition: all 0.5s ease;
+
+    &.active {
+      color: white;
+      border: none;
+    }
+  }
+}

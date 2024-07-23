@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed } from '@angular/core';
 import { DropdownDirective } from '../../../../shared/directives/dropdown.directive';
 import { InputCityComponent } from '../../../../shared/components/input-city/input-city.component';
 import { InputEmailComponent } from '../../../../shared/components/input-email/input-email.component';
@@ -7,6 +7,7 @@ import { InputPasswordComponent } from '../../../../shared/components/input-pass
 import { InputPhoneComponent } from '../../../../shared/components/input-phone/input-phone.component';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { ToastrService } from 'ngx-toastr';
+import { CabinetService } from '../../services/cabinet.service';
 
 @Component({
   selector: 'app-add-info',
@@ -23,13 +24,18 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './add-info.component.scss',
 })
 export class AddInfoComponent {
+  userInfo = computed(() => this.cabinetService.userInfo());
+
   constructor(
     private clipboard: Clipboard,
+    private cabinetService: CabinetService,
     private toastr: ToastrService,
   ) {}
 
-  copyToClipboard(str: string) {
-    this.clipboard.copy(str);
-    this.toastr.success('Текст успешно скопирован');
+  copyToClipboard(str?: string) {
+    if (str) {
+      this.clipboard.copy(str);
+      this.toastr.success('Текст успешно скопирован');
+    }
   }
 }

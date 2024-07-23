@@ -2,7 +2,7 @@
 <div class="filter-body">
   <div class="filter-body__field">
     <img alt="Search" src="assets/img/Search.svg" />
-    <input placeholder="Введите трек номер" />
+    <input [formControl]="searchFormControl" placeholder="Введите трек номер" />
   </div>
   <button (click)="showDialog()">Добавить новый товар</button>
 </div>
@@ -18,19 +18,26 @@
   <div class="product-body">
     <div class="product-filed">
       <h4>Номер товара</h4>
-      <input [formControl]="product" autocomplete="off" id="newProductInput" />
+      <input
+        [formControl]="trackNumberFormControl"
+        autocomplete="off"
+        id="newProductInput"
+      />
     </div>
     <div class="product-filed">
       <h4>Наименование товара</h4>
       <input
-        [formControl]="productName"
+        [formControl]="productNameFormControl"
         autocomplete="off"
         id="newProductNameInput"
       />
     </div>
     <button
       (click)="onSaveProduct()"
-      [disabled]="this.product.invalid || this.productName.invalid"
+      [disabled]="
+        this.trackNumberFormControl.invalid ||
+        this.productNameFormControl.invalid
+      "
     >
       +
     </button>
@@ -40,11 +47,11 @@
     <div class="product-body">
       <div class="product-filed">
         <h4>Номер товара</h4>
-        <input maxlength="6" [value]="product.productID" disabled />
+        <input [value]="product.trackNumber" disabled />
       </div>
       <div class="product-filed">
         <h4>Наименование товара</h4>
-        <input maxlength="6" [value]="product.productName" disabled />
+        <input [value]="product.productName" disabled />
       </div>
       <!--      <img (click)="onSaveProduct()" src="assets/img/Trash.svg" />-->
       <button (click)="onDeleteSavedProduct(product.id)" class="trash">

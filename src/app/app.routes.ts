@@ -23,4 +23,10 @@ export const routes: Routes = [
       import('./modules/cabinet/cabinet.module').then((m) => m.CabinetModule),
     canActivate: [authGuard],
   },
+  {
+    path: ERouting.ADMIN,
+    loadChildren: () =>
+      import('./modules/admin/admin.module').then((m) => m.AdminModule),
+    canActivate: [authGuard],
+  },
 ];

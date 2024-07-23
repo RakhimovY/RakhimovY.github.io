@@ -75,12 +75,23 @@
           />
         </li>
       }
-      <app-common-button
-        [text]="'NAVBAR.CONTACT' | translate"
-        [type]="'primary'"
-        [withFullWidth]="true"
-        style="width: 100%"
-      ></app-common-button>
+
+      @if (isAuthorized()) {
+        <app-common-button
+          [text]="'NAVBAR.LOGOUT' | translate"
+          [type]="'primary'"
+          [withFullWidth]="true"
+          style="width: 100%"
+          (clickBTN)="logout()"
+        ></app-common-button>
+      } @else {
+        <app-common-button
+          [text]="'NAVBAR.CONTACT' | translate"
+          [type]="'primary'"
+          [withFullWidth]="true"
+          style="width: 100%"
+        ></app-common-button>
+      }
     </ul>
   </nav>
   <div class="burger-body">

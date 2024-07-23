@@ -5,4 +5,8 @@ export enum ERouting {
   PASSWORD_RESET = 'password-reset',
   SIGN_UP = 'sign_up',
   CABINET = 'cabinet',
+  ADMIN = 'admin',
+  STORAGE = 'storage',
+  CLIENTS = 'clients',
+  MANAGE = 'manage',
 }

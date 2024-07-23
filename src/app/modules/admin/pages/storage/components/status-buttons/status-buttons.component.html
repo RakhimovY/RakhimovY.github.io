@@ -1,0 +1,7 @@
+<div class="buttons">
+  @for (button of buttons; track button.key) {
+    <button [ngClass]="{ active: button.active }" (click)="buttonClick(button)">
+      {{ button.name }}
+    </button>
+  }
+</div>

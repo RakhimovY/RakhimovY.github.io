@@ -2,10 +2,8 @@ import { Component } from '@angular/core';
 import { LayoutComponent } from '../core/layout/layout.component';
 import { RouterOutlet } from '@angular/router';
 import AOS from 'aos';
-import { initializeApp } from 'firebase/app';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthorizationController } from './modules/authorization/controllers/authorization.controller';
-import { EAuthority } from './modules/authorization/enums/authority.enum';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
@@ -32,10 +30,9 @@ export class AppComponent {
       appId: '1:477152129300:web:1b73ff94be3f2ed5631201',
       measurementId: 'G-XC90DJ4721',
     };
-    initializeApp(firebaseConfig);
+    // initializeApp(firebaseConfig);
 
     const localLanguage = localStorage.getItem('language');
-    const role = this.cookieService.get('role');
 
     if (localLanguage) {
       this.translateService.setDefaultLang(localLanguage);
@@ -44,16 +41,7 @@ export class AppComponent {
       this.translateService.setDefaultLang('ru');
     }
 
-    if (role === EAuthority.ROLE_USER) {
-      this.authorizationController.isUser.set(true);
-      this.authorizationController.isAdmin.set(false);
-    } else if (role === EAuthority.ROLE_ADMIN) {
-      this.authorizationController.isUser.set(false);
-      this.authorizationController.isAdmin.set(true);
-    } else {
-      this.authorizationController.isUser.set(false);
-      this.authorizationController.isAdmin.set(false);
-    }
+    this.authorizationController.checkAuthStatus();
 
     window.innerWidth <= 900
       ? this.authorizationController.isMobile.set(true)

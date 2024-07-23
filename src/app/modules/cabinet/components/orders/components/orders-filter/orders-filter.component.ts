@@ -3,6 +3,8 @@ import { CommonButtonComponent } from '../../../../../../shared/components/commo
 import { DialogModule } from 'primeng/dialog';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ISavedProductsList } from '../../../../interface/orders.interface';
+import { debounceTime, tap } from 'rxjs';
+import { CabinetService } from '../../../../services/cabinet.service';
 
 @Component({
   selector: 'app-orders-filter',
@@ -14,29 +16,47 @@ import { ISavedProductsList } from '../../../../interface/orders.interface';
 export class OrdersFilterComponent {
   visible: boolean = false;
 
-  product = new FormControl('', [Validators.required, Validators.minLength(4)]);
-  productName = new FormControl('', [
+  searchFormControl: FormControl<string | null> = new FormControl(null);
+  trackNumberFormControl = new FormControl('', [
+    Validators.required,
+    Validators.minLength(4),
+  ]);
+  productNameFormControl = new FormControl('', [
     Validators.required,
     Validators.minLength(2),
   ]);
 
   savedProductsLists: ISavedProductsList[] = [];
 
-  constructor() {}
+  constructor(private cabinetService: CabinetService) {
+    this.searchFormControl.valueChanges
+      .pipe(
+        debounceTime(400),
+        tap((value) => {
+          this.cabinetService.ordersParams.update((prevValue) => {
+            return { ...prevValue, searchByTrack: value ?? undefined };
+          });
+        }),
+      )
+      .subscribe();
+  }
 
   showDialog() {
     this.visible = true;
   }
 
   onSaveProduct() {
-    if (this.product.valid && this.productName.valid) {
+    if (
+      this.trackNumberFormControl.valid &&
+      this.productNameFormControl.valid
+    ) {
       this.savedProductsLists.unshift({
         id: this.savedProductsLists.length,
-        productID: this.product.value,
-        productName: this.productName.value,
+        trackNumber: this.trackNumberFormControl.value as string,
+        productName: this.productNameFormControl.value as string,
       });
-      this.product.reset();
-      this.productName.reset();
+      this.trackNumberFormControl.reset();
+      this.productNameFormControl.reset();
     }
   }
 
@@ -47,6 +67,14 @@ export class OrdersFilterComponent {
   }
 
   addToMyOrders() {
+    this.cabinetService.registerTrackNumber(
+      this.savedProductsLists.map((el) => {
+        return {
+          trackNumber: el.trackNumber,
+          productName: el.productName,
+        };
+      }),
+    );
     this.savedProductsLists = [];
     this.onHideModalWindow();
   }

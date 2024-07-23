@@ -6,7 +6,8 @@
     "AUTHORIZATION": "Вход / Регистрация",
     "CABINET": "Личный кабинет",
     "ADMIN": "Админка",
-    "CONTACT": "Связаться"
+    "CONTACT": "Связаться",
+    "LOGOUT": "Выйти"
   },
   "FOOTER": {
     "QUESTION": {

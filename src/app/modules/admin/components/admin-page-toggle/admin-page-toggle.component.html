@@ -1,0 +1,63 @@
+<section>
+  <div class="active-button-box"></div>
+
+  <button
+    (click)="changeState(EAdminPage.STORAGE)"
+    [ngClass]="{ active: getActiveStatus(EAdminPage.STORAGE) }"
+  >
+    Склад
+  </button>
+  <button
+    (click)="changeState(EAdminPage.CLIENTS)"
+    [ngClass]="{ active: getActiveStatus(EAdminPage.CLIENTS) }"
+  >
+    Клиенты
+  </button>
+  <button
+    (click)="changeState(EAdminPage.MANGE)"
+    [ngClass]="{ active: getActiveStatus(EAdminPage.MANGE) }"
+  >
+    Управление
+  </button>
+</section>
+
+<!--<section>-->
+<!--  <div class="active-button-box"></div>-->
+
+<!--  <button-->
+<!--    (click)="changeState(EAdminPage.STORAGE)"-->
+<!--    [ngClass]="{ active: getActiveStatus(EAdminPage.STORAGE) }"-->
+<!--    [ngStyle]="{-->
+<!--      'border-right': getActiveStatus(EAdminPage.CLIENT)-->
+<!--        ? '1px solid var(&#45;&#45;gray)'-->
+<!--        : '',-->
+<!--    }"-->
+<!--  >-->
+<!--    Склад-->
+<!--  </button>-->
+<!--  <button-->
+<!--    (click)="changeState(EAdminPage.CLIENT)"-->
+<!--    [ngClass]="{ active: getActiveStatus(EAdminPage.CLIENT) }"-->
+<!--    [ngStyle]="{-->
+<!--      'border-left': !getActiveStatus(EAdminPage.CLIENT)-->
+<!--        ? '1px solid var(&#45;&#45;gray)'-->
+<!--        : '',-->
+<!--      'border-right': !getActiveStatus(EAdminPage.CLIENT)-->
+<!--        ? '1px solid var(&#45;&#45;gray)'-->
+<!--        : '',-->
+<!--    }"-->
+<!--  >-->
+<!--    Клиенты-->
+<!--  </button>-->
+<!--  <button-->
+<!--    (click)="changeState(EAdminPage.MANGE)"-->
+<!--    [ngClass]="{ active: getActiveStatus(EAdminPage.MANGE) }"-->
+<!--    [ngStyle]="{-->
+<!--      'border-left': getActiveStatus(EAdminPage.CLIENT)-->
+<!--        ? '1px solid var(&#45;&#45;gray)'-->
+<!--        : '',-->
+<!--    }"-->
+<!--  >-->
+<!--    Управление-->
+<!--  </button>-->
+<!--</section>-->

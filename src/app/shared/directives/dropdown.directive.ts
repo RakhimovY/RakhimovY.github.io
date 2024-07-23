@@ -28,16 +28,54 @@ export class DropdownDirective implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     const dropdown = this.mainElement.querySelector('.dropdown') as HTMLElement;
-
-    dropdown.style.maxHeight = dropdown.offsetHeight + 30 + 'px';
+    setTimeout(() => {
+      dropdown.style.maxHeight = dropdown.offsetHeight + 60 + 'px';
+    }, 1000);
 
     this.mainElement.children.item(0)?.addEventListener('click', () => {
+      // let dropdownStatus = (
+      //   JSON.parse(
+      //     localStorage.getItem('dropdownStatus') as string,
+      //   ) as IDropdownStatuses[]
+      // ).map((el) => {
+      //   if (el.id === this.mainElement.id) {
+      //     el.hidden = !el.hidden;
+      //   }
+      //   return el;
+      // });
+      // localStorage.setItem('dropdownStatus', JSON.stringify(dropdownStatus));
+
       dropdown?.classList.toggle('hidden');
       this.mainElement
         .querySelector('.down_arrow')
         ?.classList.toggle('rotate180');
+      // setTimeout(() => {
+      //   dropdown.style.maxHeight = dropdown.offsetHeight + 60 + 'px';
+      // }, 500);
     });
-  }
 
-  toggleDropdown() {}
+    // if (!localStorage.getItem('dropdownStatus')) {
+    //   localStorage.setItem(
+    //     'dropdownStatus',
+    //     JSON.stringify([
+    //       { id: 'info', hidden: false },
+    //       { id: 'appInfo', hidden: false },
+    //       { id: 'bonuses', hidden: false },
+    //     ]),
+    //   );
+    // } else {
+    //   (
+    //     JSON.parse(
+    //       localStorage.getItem('dropdownStatus') as string,
+    //     ) as IDropdownStatuses[]
+    //   ).forEach((el) => {
+    //     if (el.hidden) {
+    //       document
+    //         .getElementById(el.id)
+    //         ?.children.item(1)
+    //         ?.classList.add('hidden');
+    //     }
+    //   });
+    // }
+  }
 }

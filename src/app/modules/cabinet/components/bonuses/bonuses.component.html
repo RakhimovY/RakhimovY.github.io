@@ -1,8 +1,12 @@
-<section appDropdown class="dropdown__body">
+<section appDropdown class="dropdown__body" id="bonuses">
   <div class="flex row jc-sb pointer">
     <div class="flex row">
       <h2>Бонусы</h2>
-      <h2 style="color: var(--orange); margin-left: 16px">5.000Б</h2>
+      @if (userInfo()?.bonuses) {
+        <h2 style="color: var(--orange); margin-left: 16px">
+          {{ userInfo()?.bonuses }}Б
+        </h2>
+      }
     </div>
     <img
       alt="down_arrow"

@@ -1,0 +1,51 @@
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 48px;
+
+  .inputs {
+    display: flex;
+    gap: 86px;
+
+    .inputs__field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      h4 {
+        font-size: 16px;
+        color: var(--common-text);
+        margin: 0;
+        font-weight: 400;
+      }
+
+      input {
+        padding: 12px;
+        border-radius: 8px;
+        width: 328px;
+        border: 1px solid var(--gray-borders);
+
+        &:focus {
+          border: 1px solid var(--common-text);
+        }
+      }
+
+      textarea {
+        resize: none;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid var(--gray-borders);
+        outline: none;
+
+        &:focus {
+          border: 1px solid var(--common-text);
+        }
+      }
+    }
+  }
+
+  ::ng-deep .glare-btn {
+    margin: 0;
+  }
+}

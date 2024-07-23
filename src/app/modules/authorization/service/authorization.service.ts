@@ -11,8 +11,12 @@ export class AuthorizationService {
 
   constructor(private httpClient: HttpClient) {}
 
-  signUp(body: ISignUp) {
-    return this.httpClient.post(`${this.authAPI}sign-up`, body);
+  signUp(body: ISignUp, refferalID?: string) {
+    return this.httpClient.post(
+      `${this.authAPI}sign-up`,
+      body,
+      refferalID ? { params: { ref: refferalID } } : undefined,
+    );
   }
 
   signIn(body: ISignIn) {

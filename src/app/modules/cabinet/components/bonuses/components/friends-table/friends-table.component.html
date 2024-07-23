@@ -1,47 +1,30 @@
-<section>
-  <h3>Мои друзья</h3>
+@if (!!referralFriends()?.totalElements) {
+  <section id="referralFriendsTable">
+    <h3>Мои друзья</h3>
 
-  <table>
-    <thead>
-      <tr>
-        <th>№</th>
-        <th>ФИО</th>
-        <th>Дата</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>Иванов Иван Иванович</td>
-        <td>17.05.2024</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Иванов Иван Иванович</td>
-        <td>17.05.2024</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Иванов Иван Иванович</td>
-        <td>17.05.2024</td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>Иванов Иван Иванович</td>
-        <td>17.05.2024</td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td>Иванов Иван Иванович</td>
-        <td>17.05.2024</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p-paginator
-    (onPageChange)="onPageChange($event)"
-    [first]="1"
-    [rows]="5"
-    [totalRecords]="120"
-  />
-</section>
+    <table>
+      <thead>
+        <tr>
+          <th>№</th>
+          <th>ФИО</th>
+          <th>Дата</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (friend of referralFriends()?.content; track i; let i = $index) {
+          <tr>
+            <td>{{ i + 1 }}</td>
+            <td>{{ friend.fullName }}</td>
+            <td>{{ friend.registerDate }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+    <p-paginator
+      (onPageChange)="onPageChange($event)"
+      [first]="1"
+      [rows]="5"
+      [totalRecords]="referralFriends()?.totalElements"
+    />
+  </section>
+}

@@ -86,6 +86,14 @@
   }
 }
 
+.web {
+  display: block;
+}
+
+.mobile {
+  display: none;
+}
+
 @media (max-width: 900px) {
   .web {
     display: none;

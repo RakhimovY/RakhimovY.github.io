@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, computed } from '@angular/core';
 import { CommonButtonComponent } from '../../../../../../shared/components/common-button/common-button.component';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { ToastrService } from 'ngx-toastr';
+import { CabinetService } from '../../../../services/cabinet.service';
 
 @Component({
   selector: 'app-copy-refferal-link',
@@ -11,15 +12,17 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './copy-refferal-link.component.scss',
 })
 export class CopyRefferalLinkComponent {
-  link = 'http://localhost:4300/auth/sign_up?ref=1';
+  link = 'http://localhost:4300/auth/sign_up?ref=';
+  userInfo = computed(() => this.cabinetService.userInfo());
 
   constructor(
     private clipboard: Clipboard,
     private toast: ToastrService,
+    private cabinetService: CabinetService,
   ) {}
 
-  copyLink() {
+  copyLink(fullLink: string) {
     this.toast.success('Текст успешно скопирован');
-    this.clipboard.copy(this.link);
+    this.clipboard.copy(fullLink);
   }
 }
