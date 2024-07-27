@@ -1,11 +1,15 @@
-import { HttpEventType, HttpInterceptorFn } from '@angular/common/http';
+import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { ECookie } from '../enums/cookie.enum';
 import { tap } from 'rxjs';
+import { AuthorizationController } from '../../modules/authorization/controllers/authorization.controller';
+import { ToastrService } from 'ngx-toastr';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const cookieService = inject(CookieService);
+  const authorizationController = inject(AuthorizationController);
+  const toastr = inject(ToastrService);
   const authToken = cookieService.get(ECookie.ACCESS_TOKEN);
 
   const authReq = req.clone({
@@ -13,12 +17,19 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
       Authorization: authToken ? `Bearer ${authToken}` : '',
     },
   });
-
   return next(authReq).pipe(
-    tap((event) => {
-      if (event.type === HttpEventType.Response) {
-        console.log(req.url, event.headers);
-      }
-    }),
+    tap(
+      () => {},
+      (error: any) => {
+        if (error instanceof HttpErrorResponse) {
+          if (error.status !== 401) {
+            toastr.error(error.error.massage ?? error.error.error);
+            return;
+          }
+          toastr.error('Ваша сессия истекла, повторите попытку');
+          authorizationController.logOut();
+        }
+      },
+    ),
   );
 };

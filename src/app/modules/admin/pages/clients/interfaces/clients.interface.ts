@@ -1,12 +1,12 @@
 export interface IClient {
-  amountToPay: number;
-  bonuses: number;
+  amountToPay: number | null;
+  bonuses: number | null;
   cameFrom: {
     bonuses: number;
     fullName: string;
     id: number;
-  };
-  chineseAddress: string;
+  } | null;
+  chineseAddress: string | null;
   registerDate: string;
   city: string;
   clientCode: string;

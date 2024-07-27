@@ -8,6 +8,7 @@ import {
   IOrdersParams,
 } from '../../../../cabinet/interface/orders.interface';
 import { toObservable } from '@angular/core/rxjs-interop';
+import { IAddIssueOrder } from '../interfaces/add-Issue-order.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -56,14 +57,35 @@ export class AdminStorageService {
       .subscribe();
   }
 
-  addTrackNumbers(trackNumber: number) {
+  addTrackNumbers(trackNumbers: string) {
     this.httpClient
-      .post(this.adminAPI + 'add-track-numbers', {
-        trackNumber,
+      .post<IAddIssueOrder>(this.adminAPI + 'add-track-numbers', null, {
+        params: { trackNumbers },
       })
       .pipe(
-        tap((ordersByClient) => {
-          this.toastr.success('Товар успешно добавлен');
+        tap((resp) => {
+          resp.success
+            ? (this.toastr.success(resp.text), this.getAllOrders())
+            : this.toastr.warning(resp.text);
+        }),
+        catchError((error) => {
+          this.toastr.error(error.error.massage ?? error.error.error);
+          return throwError(() => error);
+        }),
+      )
+      .subscribe();
+  }
+
+  issueGoods(trackNumber: string) {
+    this.httpClient
+      .post<IAddIssueOrder>(this.adminAPI + 'issue-goods', null, {
+        params: { trackNumber },
+      })
+      .pipe(
+        tap((resp) => {
+          resp.success
+            ? (this.toastr.success(resp.text), this.getAllOrders())
+            : this.toastr.warning(resp.text);
         }),
         catchError((error) => {
           this.toastr.error(error.error.massage ?? error.error.error);

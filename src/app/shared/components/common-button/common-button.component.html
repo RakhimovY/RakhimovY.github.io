@@ -9,8 +9,10 @@
   [ngStyle]="{
     width: withFullWidth ? '100%' : width ? width : 'auto',
     padding: '12px' + padding,
+    margin: withoutMargin ? 0 : null,
   }"
   class="glare-btn"
+  type="submit"
 >
   <div class="glare"></div>
   @if (src) {

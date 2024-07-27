@@ -22,7 +22,13 @@
           {{ (client.amountToPay | currency: "KZT") ?? "-" }}
         </td>
         <td>{{ client.registerDate | date: "dd.MM.YYYY" }}</td>
-        <td><img src="assets/img/dots.svg" alt="dots" /></td>
+        <td>
+          <img
+            src="assets/img/dots.svg"
+            alt="dots"
+            (click)="showDialog(client.clientCode)"
+          />
+        </td>
       </tr>
     } @empty {
       <tr>
@@ -42,3 +48,4 @@
     [totalRecords]="allClients()?.totalElements"
   />
 }
+<app-client-modal></app-client-modal>

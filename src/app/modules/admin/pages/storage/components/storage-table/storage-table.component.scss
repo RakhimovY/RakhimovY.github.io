@@ -3,7 +3,6 @@
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 48px;
 
   thead {
     tr {
@@ -56,6 +55,53 @@ table {
 
           &:hover:not(:disabled) {
             animation: shake 0.5s ease-in-out;
+          }
+        }
+      }
+    }
+  }
+}
+
+.table__title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  h3 {
+    margin: 0;
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: column;
+    margin: 12px 0;
+
+    .action {
+      align-items: center;
+      display: flex;
+      gap: 12px;
+      justify-content: space-between;
+
+      label {
+        cursor: pointer;
+      }
+
+      ::ng-deep.p-inputswitch {
+        height: 1.5rem;
+        outline: none;
+
+        &.p-inputswitch-checked {
+          .p-inputswitch-slider {
+            background: var(--orange);
+          }
+        }
+
+        .p-inputswitch-slider {
+          &:before {
+            height: 1rem;
+            width: 1rem;
+            margin-top: -0.5rem;
           }
         }
       }

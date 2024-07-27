@@ -78,7 +78,7 @@ export class AuthorizationController {
         tap((data) => {
           this.setCookie('access_token', data.token);
           this.setCookie('refresh_token', data.token);
-          this.setCookie('role', data.privilege[1].authority);
+          this.setCookie('role', data.privilege[0].authority);
           if (data.privilege[0].authority === EAuthority.ROLE_ADMIN) {
             this.isAdmin.set(true);
             this.isUser.set(false);

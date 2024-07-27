@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, tap } from 'rxjs';
 import { AdminStorageService } from '../../services/admin-storage.service';
@@ -24,15 +24,5 @@ export class InputsComponent {
         }),
       )
       .subscribe();
-  }
-
-  @HostListener('keyup', ['$event'])
-  onKeyUp(event: KeyboardEvent) {
-    const scanPattern = /^\[CODE]\d{13}$/; // Пример паттерна для EAN-13
-    if ((event?.target as any).value.match(scanPattern)) {
-      // Событие сканирования распознано
-
-      console.log((event?.target as any).value.replace(scanPattern, '$1'));
-    }
   }
 }

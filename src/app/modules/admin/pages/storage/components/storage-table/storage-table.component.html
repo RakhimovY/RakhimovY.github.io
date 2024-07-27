@@ -1,3 +1,18 @@
+<div class="table__title">
+  <h3>Все заказы</h3>
+
+  <div class="actions">
+    <div class="action">
+      <label for="isAddingOrder">Добавить заказ:</label>
+      <p-inputSwitch [formControl]="isAddingOrder" inputId="isAddingOrder" />
+    </div>
+    <div class="action">
+      <label for="isIssueOrder">Выдать заказ:</label>
+      <p-inputSwitch [formControl]="isIssueOrder" inputId="isIssueOrder" />
+    </div>
+  </div>
+</div>
+
 <table>
   <thead>
     <tr>
@@ -17,7 +32,7 @@
           {{ order.trackNumber }}
           <p>{{ order.updatedDate ?? order.insertDate }}</p>
         </td>
-        <td>{{ order.user }}</td>
+        <td>{{ order?.user?.fullName ?? "-" }}</td>
         <td>123456</td>
         <td>{{ order.status }}</td>
         <td>

@@ -4,11 +4,12 @@ import { AdminClientsService } from '../../services/admin-clients.service';
 import { CurrencyPipe, DatePipe } from '@angular/common';
 import { tap } from 'rxjs';
 import { SubscriptionAccumulator } from '../../../../../../core/helpers/SubscriptionAccumulator';
+import { ClientModalComponent } from './components/client-modal/client-modal.component';
 
 @Component({
   selector: 'app-clients-table',
   standalone: true,
-  imports: [PaginatorModule, DatePipe, CurrencyPipe],
+  imports: [PaginatorModule, DatePipe, CurrencyPipe, ClientModalComponent],
   templateUrl: './clients-table.component.html',
   styleUrl: './clients-table.component.scss',
 })
@@ -26,6 +27,10 @@ export class ClientsTableComponent extends SubscriptionAccumulator {
         )
         .subscribe(),
     );
+  }
+
+  showDialog(clientCode: string) {
+    this.adminClientsService.getClientByCode(clientCode);
   }
 
   onPageChange(event: PaginatorState) {
