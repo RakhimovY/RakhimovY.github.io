@@ -34,5 +34,5 @@ jobs:
         echo "$SSH_PRIVATE_KEY" > private_key
         chmod 600 private_key
         cat private_key
-        rsync -avz -e "ssh -i private_key -o StrictHostKeyChecking=no" dist/project-cargo/browser/ $USER@$HOST:$REMOTE_PATH
+        rsync -avz -e "ssh -vvv -i private_key -o StrictHostKeyChecking=no" dist/project-cargo/browser/ $USER@$HOST:$REMOTE_PATH
         rm private_key
