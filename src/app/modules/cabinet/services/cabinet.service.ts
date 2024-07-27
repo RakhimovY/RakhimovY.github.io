@@ -7,7 +7,7 @@ import { toObservable } from '@angular/core/rxjs-interop';
 import { ToastrService } from 'ngx-toastr';
 import { IFriends } from '../interface/friends.interface';
 import {
-  IOrderByClient,
+  IOrders,
   IOrdersParams,
   IRegisteredTrackNumber,
   IRegisteredTrackNumberReq,
@@ -21,7 +21,7 @@ export class CabinetService {
   productAPI = environment.productAPI;
   userInfo: WritableSignal<IUserInfo | null> = signal(null);
   referralFriends: WritableSignal<IFriends | null> = signal(null);
-  ordersByClient: WritableSignal<IOrderByClient | null> = signal(null);
+  ordersByClient: WritableSignal<IOrders | null> = signal(null);
   ordersParams: WritableSignal<IOrdersParams> = signal({
     size: 5,
     page: 0,
@@ -84,6 +84,21 @@ export class CabinetService {
         `${this.productAPI}register-track-number`,
         products,
       )
+      .pipe(
+        tap((_) => {
+          this.getOrdersByClient();
+          products.forEach((product) => {
+            this.toastr.success(
+              product.trackNumber + ': ' + product.productName,
+              'Заказ успесно добавлен',
+            );
+          });
+        }),
+        catchError((error) => {
+          this.toastr.error(error.error.massage ?? error.error.error);
+          return throwError(() => error);
+        }),
+      )
       .subscribe();
   }
 
@@ -102,7 +117,7 @@ export class CabinetService {
     }
 
     this.httpClient
-      .get<IOrderByClient>(`${this.productAPI}get-track-numbers`, {
+      .get<IOrders>(`${this.productAPI}get-track-numbers`, {
         params,
       })
       .pipe(

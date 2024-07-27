@@ -63,7 +63,7 @@ export class AuthorizationController {
   }
 
   logOut() {
-    this.cookieService.deleteAll();
+    this.cookieService.deleteAll('/');
     this.isAuthorized.set(false);
     this.router.navigate(['auth']).then(() => {
       window.scrollTo(0, 0);
@@ -79,13 +79,13 @@ export class AuthorizationController {
           this.setCookie('access_token', data.token);
           this.setCookie('refresh_token', data.token);
           this.setCookie('role', data.privilege[1].authority);
-          if (data.privilege[1].authority === EAuthority.ROLE_ADMIN) {
+          if (data.privilege[0].authority === EAuthority.ROLE_ADMIN) {
             this.isAdmin.set(true);
             this.isUser.set(false);
             this.router.navigate(['admin']).then((_) => {
               window.scrollTo(0, 0);
             });
-          } else if (data.privilege[1].authority === EAuthority.ROLE_USER) {
+          } else if (data.privilege[0].authority === EAuthority.ROLE_USER) {
             this.isAdmin.set(false);
             this.isUser.set(true);
             this.router.navigate(['cabinet']).then((_) => {

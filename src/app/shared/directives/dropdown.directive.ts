@@ -54,7 +54,6 @@ export class DropdownDirective implements AfterViewInit, OnDestroy {
       // }, 500);
     });
 
-    // if (!localStorage.getItem('dropdownStatus')) {
     //   localStorage.setItem(
     //     'dropdownStatus',
     //     JSON.stringify([

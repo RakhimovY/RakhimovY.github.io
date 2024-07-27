@@ -23,6 +23,14 @@
   }
 }
 
+.gap-20 {
+  gap: 20px;
+}
+
+h3 {
+  margin: 0;
+}
+
 @media (max-width: 900px) {
   .title {
     flex-direction: column;

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IOrdersStatusButton } from '../../../../../cabinet/interface/orders.interface';
 import { NgClass } from '@angular/common';
 import { EOrderStatuses } from '../../../../../cabinet/enums/order-statuses.enum';
+import { AdminStorageService } from '../../services/admin-storage.service';
 
 @Component({
   selector: 'app-status-buttons',
@@ -23,6 +24,8 @@ export class StatusButtonsComponent {
       active: false,
     },
   ];
+
+  constructor(private adminStorageService: AdminStorageService) {}
 
   buttonClick(button: IOrdersStatusButton) {
     if (button.key === EOrderStatuses.ALL) {
@@ -53,5 +56,14 @@ export class StatusButtonsComponent {
       this.buttonClick(this.buttons[0]);
     }
     localStorage.setItem('buttons', JSON.stringify(this.buttons));
+    this.adminStorageService.allOrdersParams.update((prevValue) => {
+      return {
+        ...prevValue,
+        filter: this.buttons
+          .filter((obj) => obj.active && obj.key !== EOrderStatuses.ALL)
+          .map((obj) => obj.key)
+          .join(','),
+      };
+    });
   }
 }

@@ -1,10 +1,38 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { debounceTime, tap } from 'rxjs';
+import { AdminStorageService } from '../../services/admin-storage.service';
 
 @Component({
   selector: 'app-inputs',
   standalone: true,
-  imports: [],
+  imports: [ReactiveFormsModule],
   templateUrl: './inputs.component.html',
   styleUrl: './inputs.component.scss',
 })
-export class InputsComponent {}
+export class InputsComponent {
+  storageSearchFormControl = new FormControl(null);
+
+  constructor(private adminStorageService: AdminStorageService) {
+    this.storageSearchFormControl.valueChanges
+      .pipe(
+        debounceTime(400),
+        tap((value) => {
+          this.adminStorageService.allOrdersParams.update((prevValue) => {
+            return { ...prevValue, searchByTrack: value ?? undefined };
+          });
+        }),
+      )
+      .subscribe();
+  }
+
+  @HostListener('keyup', ['$event'])
+  onKeyUp(event: KeyboardEvent) {
+    const scanPattern = /^\[CODE]\d{13}$/; // Пример паттерна для EAN-13
+    if ((event?.target as any).value.match(scanPattern)) {
+      // Событие сканирования распознано
+
+      console.log((event?.target as any).value.replace(scanPattern, '$1'));
+    }
+  }
+}

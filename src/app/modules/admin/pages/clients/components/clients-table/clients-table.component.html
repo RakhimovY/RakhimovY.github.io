@@ -1,4 +1,4 @@
-<table>
+<table id="adminClientTable">
   <thead>
     <tr>
       <th>№</th>
@@ -10,67 +10,35 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>1</td>
-      <td>
-        BW2765PG
-        <p>17.05.2024</p>
-      </td>
-      <td>Иванов Иван Ивавнович</td>
-      <td>5.000 тг</td>
-      <td>21.07.2024</td>
-      <td><img src="assets/img/dots.svg" /></td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>
-        BW2765PG
-        <p>17.05.2024</p>
-      </td>
-      <td>Иванов Иван Ивавнович</td>
-      <td>5.000 тг</td>
-      <td>21.07.2024</td>
-      <td><img src="assets/img/dots.svg" /></td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>
-        BW2765PG
-        <p>17.05.2024</p>
-      </td>
-      <td>Иванов Иван Ивавнович</td>
-      <td>5.000 тг</td>
-      <td>21.07.2024</td>
-      <td><img src="assets/img/dots.svg" /></td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>
-        BW2765PG
-        <p>17.05.2024</p>
-      </td>
-      <td>Иванов Иван Ивавнович</td>
-      <td>5.000 тг</td>
-      <td>21.07.2024</td>
-      <td><img src="assets/img/dots.svg" /></td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>
-        BW2765PG
-        <p>17.05.2024</p>
-      </td>
-      <td>Иванов Иван Ивавнович</td>
-      <td>5.000 тг</td>
-      <td>21.07.2024</td>
-      <td><img src="assets/img/dots.svg" /></td>
-    </tr>
+    @for (client of allClients()?.content; track i; let i = $index) {
+      <tr>
+        <td>{{ i + 1 }}</td>
+        <td>
+          {{ client.clientCode }}
+          <p>{{ client.registerDate }}</p>
+        </td>
+        <td>{{ client.fullName }}</td>
+        <td>
+          {{ (client.amountToPay | currency: "KZT") ?? "-" }}
+        </td>
+        <td>{{ client.registerDate | date: "dd.MM.YYYY" }}</td>
+        <td><img src="assets/img/dots.svg" alt="dots" /></td>
+      </tr>
+    } @empty {
+      <tr>
+        <td colspan="6" style="text-align: center; padding-right: 16px">
+          Список пуст
+        </td>
+      </tr>
+    }
   </tbody>
 </table>
 
-<p-paginator
-  (onPageChange)="onPageChange($event)"
-  [first]="1"
-  [rows]="5"
-  [totalRecords]="120"
-/>
+@if (!!allClients()?.totalElements) {
+  <p-paginator
+    (onPageChange)="onPageChange($event)"
+    [first]="1"
+    [rows]="5"
+    [totalRecords]="allClients()?.totalElements"
+  />
+}

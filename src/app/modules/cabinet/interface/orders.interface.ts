@@ -10,7 +10,7 @@ export interface ISavedProductsList {
   productName: string;
 }
 
-export interface IOrderByClient {
+export interface IOrders {
   content: IRegisterTrackNumber[];
   empty: boolean;
   first: boolean;
@@ -47,7 +47,7 @@ export interface IRegisterTrackNumber {
   status: string;
   statusEn: string;
   trackNumber: string;
-  updatedDate: string;
+  updatedDate: string | null;
   user: {
     amountToPay: number;
     bonuses: number;

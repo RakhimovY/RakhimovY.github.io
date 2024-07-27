@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, computed } from '@angular/core';
 import { IOrdersStatusButton } from '../../../../interface/orders.interface';
-import { NgClass } from '@angular/common';
+import { CurrencyPipe, NgClass } from '@angular/common';
 import { EOrderStatuses } from '../../../../enums/order-statuses.enum';
 import { CabinetService } from '../../../../services/cabinet.service';
 import { SubscriptionAccumulator } from '../../../../../../core/helpers/SubscriptionAccumulator';
@@ -9,7 +9,7 @@ import { tap } from 'rxjs';
 @Component({
   selector: 'app-orders-title',
   standalone: true,
-  imports: [NgClass],
+  imports: [NgClass, CurrencyPipe],
   templateUrl: './orders-title.component.html',
   styleUrl: './orders-title.component.scss',
 })
@@ -26,6 +26,8 @@ export class OrdersTitleComponent extends SubscriptionAccumulator {
       active: false,
     },
   ];
+
+  user = computed(() => this.cabinetService.userInfo());
 
   constructor(private cabinetService: CabinetService) {
     super();
