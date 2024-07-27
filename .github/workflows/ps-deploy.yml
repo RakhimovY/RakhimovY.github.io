@@ -34,5 +34,5 @@ jobs:
         HOST: ${{ secrets.HOST }}
         USER: ${{ secrets.USER }}
         REMOTE_PATH: ${{ secrets.REMOTE_PATH }}
-      run: rsync -avz -e "ssh -o StrictHostKeyChecking=no" dist/your-angular-app/ $USER@$HOST:$REMOTE_PATH
+      run: rsync -avz -e "ssh -vvv -o StrictHostKeyChecking=no" dist/project-cargo/browser/ $USER@$HOST:$REMOTE_PATH
 
