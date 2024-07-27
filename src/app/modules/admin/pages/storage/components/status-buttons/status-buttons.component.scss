@@ -1,0 +1,51 @@
+.buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: end;
+  margin-bottom: 24px;
+  height: 44px;
+  margin-top: -68px;
+  align-items: center;
+
+  button {
+    padding: 6px 16px 6px 16px;
+    gap: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--orange);
+    color: var(--orange);
+    cursor: pointer;
+    height: 33px;
+  }
+
+  .active {
+    color: #fff;
+    background-color: var(--orange);
+  }
+}
+
+@media (max-width: 900px) {
+  .buttons {
+    display: flex;
+    gap: 12px;
+    overflow: scroll;
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+    &::-webkit-scrollbar {
+      display: none; /* Safari and Chrome */
+    }
+
+    button {
+      padding: 6px 16px 6px 16px;
+      gap: 10px;
+      border-radius: 8px;
+      border: 1px solid var(--orange);
+      color: var(--orange);
+      cursor: pointer;
+    }
+
+    .active {
+      color: #fff;
+      background-color: var(--orange);
+    }
+  }
+}

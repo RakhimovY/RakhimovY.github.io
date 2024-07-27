@@ -31,10 +31,12 @@
               "src/_redirects"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [
-              "src/assets/scripts/aos.js"
+              "src/assets/scripts/aos.js",
+              "src/assets/scripts/onscan.min.js"
             ],
             "prerender": false,
             "ssr": false

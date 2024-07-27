@@ -28,6 +28,8 @@ import { NgClass } from '@angular/common';
 export class HeaderComponent implements AfterViewInit {
   isAuthorized = computed(() => this.authorizationController.isAuthorized());
   isMobile = computed(() => this.authorizationController.isMobile());
+  isAdmin = computed(() => this.authorizationController.isAdmin());
+  isUser = computed(() => this.authorizationController.isUser());
   navbarLinks!: HTMLElement;
   burgerCheckbox!: HTMLInputElement;
   languageFormControl: FormControl<IPDropdown | null> = new FormControl({
@@ -47,8 +49,6 @@ export class HeaderComponent implements AfterViewInit {
   ) {}
 
   ngAfterViewInit(): void {
-    this.authorizationController.checkAuthStatus();
-
     const header = document.getElementsByTagName('header')[0] as HTMLElement;
     this.navbarLinks = document.querySelector('.navbar-links') as HTMLElement;
     this.burgerCheckbox = document.querySelector(
@@ -91,7 +91,15 @@ export class HeaderComponent implements AfterViewInit {
       });
       return;
     }
-
+    if (tag === 'admin') {
+      this.router.navigate([ERouting.ADMIN]).then((_) => {
+        setTimeout(() => {
+          navToElement(tag);
+          this.burgerCheckbox.click();
+        }, 100);
+      });
+      return;
+    }
     this.router.url.includes(ERouting.MAIN)
       ? (navToElement(tag), this.closeMobileNavbar())
       : this.router.navigate([ERouting.MAIN]).then((_) => {
@@ -118,5 +126,9 @@ export class HeaderComponent implements AfterViewInit {
         return language.code === code;
       })[0],
     );
+  }
+
+  logout() {
+    this.authorizationController.logOut();
   }
 }

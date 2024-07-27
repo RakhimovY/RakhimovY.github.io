@@ -1,0 +1,104 @@
+.flex {
+  display: flex;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.gap-48 {
+  gap: 48px;
+}
+
+.gap-12 {
+  gap: 12px;
+}
+
+.jc-sb {
+  justify-content: space-between;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.dropdown__body {
+  .down_arrow {
+    transition: all 0.4s ease;
+
+    &.rotate180 {
+      transform: rotate(180deg);
+    }
+  }
+
+  .dropdown {
+    transition: all 0.4s ease;
+    opacity: 1;
+
+    &.hidden {
+      max-height: 0 !important;
+      margin-top: 0 !important;
+      overflow: hidden;
+      opacity: 0 !important;
+    }
+  }
+}
+
+.p-disabled,
+.p-component:disabled {
+  background-color: var(--disable);
+  opacity: 1;
+}
+
+.p-paginator {
+  background: none;
+  padding: 12px 0;
+
+  .p-ripple {
+    border: 1.5px solid var(--orange);
+    border-radius: 4px;
+    color: var(--orange);
+    height: 2rem;
+    min-width: 2em;
+  }
+
+  .p-paginator-prev {
+    margin-left: 4px;
+  }
+
+  .p-paginator-last {
+    margin-left: 4px;
+  }
+
+  .p-paginator-page {
+    font-weight: 600;
+    border: none !important;
+    color: black !important;
+  }
+
+  .p-highlight {
+    background: none;
+    color: var(--orange) !important;
+  }
+}
+
+.web {
+  display: block;
+}
+
+.mobile {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .web {
+    display: none;
+  }
+  .mobile {
+    display: block;
+  }
+}

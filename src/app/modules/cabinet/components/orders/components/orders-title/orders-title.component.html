@@ -1,10 +1,16 @@
-<div class="title">
-  <h2>Мои заказы</h2>
-  <div class="buttons">
-    @for (button of buttons; track button.key) {
-    <button [ngClass]="{ active: button.active }" (click)="buttonClick(button)">
-      {{ button.name }}
-    </button>
-    }
+<section class="flex column gap-20">
+  <div class="title">
+    <h2>Мои заказы</h2>
+    <div class="buttons">
+      @for (button of buttons; track button.key) {
+        <button
+          [ngClass]="{ active: button.active }"
+          (click)="buttonClick(button)"
+        >
+          {{ button.name }}
+        </button>
+      }
+    </div>
   </div>
-</div>
+  <h3 style="color: var(--orange);">Сумма к оплате: {{ user()?.amountToPay | currency: "KZT" }}</h3>
+</section>

@@ -1,0 +1,30 @@
+@if (!!referralFriends()?.totalElements) {
+  <section id="referralFriendsTable">
+    <h3>Мои друзья</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>№</th>
+          <th>ФИО</th>
+          <th>Дата</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (friend of referralFriends()?.content; track i; let i = $index) {
+          <tr>
+            <td>{{ i + 1 }}</td>
+            <td>{{ friend.fullName }}</td>
+            <td>{{ friend.registerDate }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+    <p-paginator
+      (onPageChange)="onPageChange($event)"
+      [first]="1"
+      [rows]="5"
+      [totalRecords]="referralFriends()?.totalElements"
+    />
+  </section>
+}

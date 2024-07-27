@@ -1,0 +1,63 @@
+<div class="table__title">
+  <h3>Все заказы</h3>
+
+  <div class="actions">
+    <div class="action">
+      <label for="isAddingOrder">Добавить заказ:</label>
+      <p-inputSwitch [formControl]="isAddingOrder" inputId="isAddingOrder" />
+    </div>
+    <div class="action">
+      <label for="isIssueOrder">Выдать заказ:</label>
+      <p-inputSwitch [formControl]="isIssueOrder" inputId="isIssueOrder" />
+    </div>
+  </div>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>№</th>
+      <th>Трек номер №</th>
+      <th>ФИО</th>
+      <th>Код клиента</th>
+      <th>Статут заказа</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (order of allOrders()?.content; track i; let i = $index) {
+      <tr>
+        <td>{{ i + 1 }}</td>
+        <td>
+          {{ order.trackNumber }}
+          <p>{{ order.updatedDate ?? order.insertDate }}</p>
+        </td>
+        <td>{{ order?.user?.fullName ?? "-" }}</td>
+        <td>123456</td>
+        <td>{{ order.status }}</td>
+        <td>
+          <img
+            src="assets/img/Trash.svg"
+            (click)="onProductDelete(order.id)"
+            alt="Trash"
+          />
+        </td>
+      </tr>
+    } @empty {
+      <tr>
+        <td colspan="6" style="text-align: center; padding-right: 16px">
+          Список пуст
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+@if (!!allOrders()?.totalElements) {
+  <p-paginator
+    (onPageChange)="onPageChange($event)"
+    [first]="1"
+    [rows]="5"
+    [totalRecords]="allOrders()?.totalElements"
+  />
+}

@@ -45,9 +45,53 @@ table {
         padding-left: 0 !important;
       }
 
+      td:nth-child(2) {
+        p {
+          display: none;
+        }
+      }
+
       td:nth-child(4) {
         text-align: end;
         padding-right: 0 !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  table {
+    thead {
+      tr {
+        th {
+          padding: 12px;
+        }
+
+        th:nth-child(1) {
+          min-width: 30px;
+        }
+
+        th:nth-child(3) {
+          display: none;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        td {
+          padding: 12px;
+        }
+
+        td:nth-child(2) {
+          p {
+            display: block;
+          }
+        }
+
+        td:nth-child(3) {
+          display: none;
+        }
       }
     }
   }

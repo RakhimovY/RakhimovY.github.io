@@ -91,3 +91,9 @@ button {
   right: -15px;
   top: 0;
 }
+
+@media (max-width: 900px) {
+  .glare-btn:hover:not(:disabled) {
+    transform: none;
+  }
+}

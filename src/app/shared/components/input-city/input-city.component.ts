@@ -1,9 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskDirective } from 'ngx-mask';
 import { IPDropdown } from '../../types/pDropdown.interface';
+import { cities } from '../../../core/helpers/common';
 
 @Component({
   selector: 'app-input-city',
@@ -17,18 +18,8 @@ import { IPDropdown } from '../../types/pDropdown.interface';
   templateUrl: './input-city.component.html',
   styleUrl: './input-city.component.scss',
 })
-export class InputCityComponent implements OnInit {
-  cities: IPDropdown[] | undefined;
+export class InputCityComponent {
+  cities: IPDropdown[] = cities;
 
   @Input() cityFormControl!: FormControl;
-
-  ngOnInit() {
-    this.cities = [
-      { name: 'New York', code: 'NY' },
-      { name: 'Rome', code: 'RM' },
-      { name: 'London', code: 'LDN' },
-      { name: 'Istanbul', code: 'IST' },
-      { name: 'Paris', code: 'PRS' },
-    ];
-  }
 }

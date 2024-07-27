@@ -40,7 +40,7 @@ export class SignInComponent {
     passwordFormControl: new FormControl('', [
       Validators.required,
       Validators.nullValidator,
-      Validators.minLength(4),
+      Validators.minLength(3),
     ]),
   });
 

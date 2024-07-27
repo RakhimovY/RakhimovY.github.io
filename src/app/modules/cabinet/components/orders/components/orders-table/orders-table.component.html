@@ -1,4 +1,4 @@
-<table>
+<table id="ordersByClientTable">
   <thead>
     <tr>
       <th>№</th>
@@ -8,35 +8,34 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>1</td>
-      <td>BW2765PG1</td>
-      <td>17.05.2024</td>
-      <td>Прибыл на скалд</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>BW2765PG2</td>
-      <td>17.05.2024</td>
-      <td>Зарегистрирован</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>BW2765PG3</td>
-      <td>17.05.2024</td>
-      <td>Выдан</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>BW2765PG4</td>
-      <td>17.05.2024</td>
-      <td>Прибыл на скалд</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>BW2765PG5</td>
-      <td>17.05.2024</td>
-      <td>Выдан</td>
-    </tr>
+    @for (order of ordersByClient()?.content; track i; let i = $index) {
+      <tr>
+        <td>{{ i + 1 }}</td>
+        <td>
+          {{ order?.trackNumber }}
+          <p>
+            {{ order?.insertDate ?? order?.updatedDate | date: "dd.MM.YYYY" }}
+          </p>
+        </td>
+        <td>
+          {{ order?.insertDate ?? order?.updatedDate | date: "dd.MM.YYYY" }}
+        </td>
+        <td>{{ order?.status }}</td>
+      </tr>
+    } @empty {
+      <tr>
+        <td colspan="5" style="text-align: center; padding-right: 16px">
+          Нет товаров
+        </td>
+      </tr>
+    }
   </tbody>
 </table>
+@if (!!ordersByClient()?.totalElements) {
+  <p-paginator
+    (onPageChange)="onPageChange($event)"
+    [first]="1"
+    [rows]="5"
+    [totalRecords]="ordersByClient()?.totalElements"
+  />
+}

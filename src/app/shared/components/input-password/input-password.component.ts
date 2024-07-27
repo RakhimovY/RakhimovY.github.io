@@ -1,8 +1,8 @@
-import {Component, Input} from '@angular/core';
-import {TranslateModule} from '@ngx-translate/core';
-import {Router, RouterLink} from '@angular/router';
-import {ERouting} from '../../enums/routing.enum';
-import {FormControl, ReactiveFormsModule} from "@angular/forms";
+import { Component, Input } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
+import { Router, RouterLink } from '@angular/router';
+import { ERouting } from '../../enums/routing.enum';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-input-password',
@@ -13,19 +13,17 @@ import {FormControl, ReactiveFormsModule} from "@angular/forms";
 })
 export class InputPasswordComponent {
   @Input() isSignUp: boolean = false;
-  @Input() passwordFormControl!: FormControl
-  passwordHidden: boolean = true;
+  @Input() passwordFormControl!: FormControl;
 
+  passwordHidden: boolean = true;
 
   protected readonly ERouting = ERouting;
 
-
-  constructor(private router: Router) {
-  }
+  constructor(private router: Router) {}
 
   showOrHidePass() {
     const passwordInput: HTMLInputElement | null = document.getElementById(
-      'passwordInput'
+      'passwordInput',
     ) as HTMLInputElement;
     if (passwordInput?.type === 'password') {
       passwordInput.type = 'text';

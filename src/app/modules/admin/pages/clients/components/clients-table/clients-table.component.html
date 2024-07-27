@@ -1,0 +1,51 @@
+<table id="adminClientTable">
+  <thead>
+    <tr>
+      <th>№</th>
+      <th>Код клиента</th>
+      <th>ФИО</th>
+      <th>Сумма к оплате</th>
+      <th>Дата регистрации</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (client of allClients()?.content; track i; let i = $index) {
+      <tr>
+        <td>{{ i + 1 }}</td>
+        <td>
+          {{ client.clientCode }}
+          <p>{{ client.registerDate }}</p>
+        </td>
+        <td>{{ client.fullName }}</td>
+        <td>
+          {{ (client.amountToPay | currency: "KZT") ?? "-" }}
+        </td>
+        <td>{{ client.registerDate | date: "dd.MM.YYYY" }}</td>
+        <td>
+          <img
+            src="assets/img/dots.svg"
+            alt="dots"
+            (click)="showDialog(client.clientCode)"
+          />
+        </td>
+      </tr>
+    } @empty {
+      <tr>
+        <td colspan="6" style="text-align: center; padding-right: 16px">
+          Список пуст
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+@if (!!allClients()?.totalElements) {
+  <p-paginator
+    (onPageChange)="onPageChange($event)"
+    [first]="1"
+    [rows]="5"
+    [totalRecords]="allClients()?.totalElements"
+  />
+}
+<app-client-modal></app-client-modal>

@@ -4,15 +4,55 @@ section {
   background-color: var(--gray-lite);
   border-radius: 8px;
   width: 100%;
-
   display: flex;
-  gap: 48px;
   flex-direction: column;
 
   .input-container {
+    margin-top: 48px;
     display: grid;
     grid-template-columns: repeat(auto-fill, 328px);
     justify-content: space-between;
     row-gap: 20px;
+  }
+
+  ::ng-deep.glare-btn {
+    height: 44px;
+    border-color: var(--orange);
+
+    &.secondary {
+      color: var(--orange);
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  section {
+    padding: 16px;
+    margin: 32px auto;
+
+    h2 {
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    img {
+      width: 24px;
+    }
+
+    .input-container {
+      display: flex;
+      flex-direction: column;
+      margin-top: 32px;
+
+      ::ng-deep .field {
+        max-width: inherit;
+        width: 100%;
+
+        input {
+          max-width: inherit;
+          width: 100%;
+        }
+      }
+    }
   }
 }

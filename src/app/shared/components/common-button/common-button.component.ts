@@ -26,6 +26,7 @@ export class CommonButtonComponent {
   @Input() src!: string;
   @Input() width!: string;
   @Input() to!: string;
+  @Input() withoutMargin!: boolean;
   @Output() clickBTN: EventEmitter<any> = new EventEmitter();
 
   clickBtn() {
