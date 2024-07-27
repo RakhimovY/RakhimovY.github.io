@@ -1,0 +1,48 @@
+::ng-deep.p-dialog-content {
+  padding: 40px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  font-family: "Futura PT", sans-serif;
+
+  .clientInfo-container {
+    display: grid;
+    grid-template-columns: repeat(2, 328px);
+    justify-content: space-between;
+    gap: 24px;
+
+    .box {
+      .title {
+        font-size: 16px;
+        font-weight: 400;
+        text-align: left;
+        color: var(--common-text);
+        margin-bottom: 4px;
+        white-space: nowrap;
+        overflow: hidden !important;
+        text-overflow: ellipsis;
+      }
+
+      .info {
+        font-size: 16px;
+        font-weight: 450;
+        padding: 12px;
+        border-radius: 8px;
+        background-color: var(--disable);
+        color: var(--common-text);
+        width: 328px;
+      }
+
+      input {
+        background-color: white !important;
+        border: 1px solid var(--input-border-gray);
+        margin-bottom: 4px;
+      }
+    }
+  }
+}
+
+//::ng-deep.glare-btn {
+//  margin: 0 !important;
+//}
