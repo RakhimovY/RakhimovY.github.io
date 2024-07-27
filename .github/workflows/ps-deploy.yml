@@ -24,16 +24,14 @@ jobs:
     - name: Build Angular project
       run: npm run build --prod 
 
-    - name: Add SSH key
-      run: |
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key
-        chmod 600 private_key
-        eval $(ssh-agent -s)
-        ssh-add private_key
+    - name: Install sshpass
+      run: sudo apt-get install -y sshpass
+
     - name: Deploy to Server
       env:
         HOST: ${{ secrets.HOST }}
         USER: ${{ secrets.USER }}
+        PASSWORD: ${{ secrets.SSH_PASSWORD }}
         REMOTE_PATH: ${{ secrets.REMOTE_PATH }}
-      run: rsync -avz -e "ssh -vvv -o StrictHostKeyChecking=no" dist/project-cargo/browser/ $USER@$HOST:$REMOTE_PATH
-
+      run: |
+        sshpass -p $PASSWORD rsync -avz -e "ssh -o StrictHostKeyChecking=no" dist/project-cargo/browser/ $USER@$HOST:$REMOTE_PATH
