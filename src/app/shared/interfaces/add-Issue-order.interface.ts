@@ -1,4 +1,4 @@
-export interface IAddIssueOrder {
+export interface ICommonResp {
   success: boolean;
   text: string;
 }

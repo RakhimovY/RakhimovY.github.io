@@ -10,6 +10,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { tap } from 'rxjs';
 import { IPDropdown } from '../../types/pDropdown.interface';
 import { NgClass } from '@angular/common';
+import { openMail } from '../../functions/openMail.function';
 
 @Component({
   selector: 'app-header',
@@ -41,6 +42,7 @@ export class HeaderComponent implements AfterViewInit {
     { name: 'Kk', code: 'kk' },
     { name: 'En', code: 'en' },
   ];
+  protected readonly openMail = openMail;
 
   constructor(
     private router: Router,

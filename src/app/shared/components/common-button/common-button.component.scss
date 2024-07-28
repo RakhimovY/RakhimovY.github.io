@@ -13,13 +13,18 @@ button {
   gap: 2px;
 
   &:disabled {
-    background-color: var(--orange-lite) !important;
+    color: var(--orange-lite);
     cursor: not-allowed !important;
   }
 
   &.primary {
     background: var(--orange);
     color: white;
+
+    &:disabled {
+      background-color: var(--orange-lite);
+      cursor: not-allowed !important;
+    }
   }
 
   &.secondary {
@@ -27,6 +32,11 @@ button {
     color: var(--common-text);
     border: 1px solid var(--common-text);
     min-height: 45px;
+
+    &:disabled {
+      background-color: var(--orange-lite);
+      cursor: not-allowed !important;
+    }
   }
 
   &.secondary:hover:not(:disabled) {

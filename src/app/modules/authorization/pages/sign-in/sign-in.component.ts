@@ -11,7 +11,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { ISignIn } from '../../types/auth.interface';
+import { ISignIn } from '../../interfaces/auth.interface';
 import { AuthorizationController } from '../../controllers/authorization.controller';
 import { PaginatorModule } from 'primeng/paginator';
 

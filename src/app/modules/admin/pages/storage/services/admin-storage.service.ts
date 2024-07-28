@@ -1,6 +1,6 @@
 import { Injectable, signal, WritableSignal } from '@angular/core';
 import { environment } from '../../../../../../environments/environment';
-import { catchError, tap, throwError } from 'rxjs';
+import { tap } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import {
@@ -8,7 +8,7 @@ import {
   IOrdersParams,
 } from '../../../../cabinet/interface/orders.interface';
 import { toObservable } from '@angular/core/rxjs-interop';
-import { IAddIssueOrder } from '../interfaces/add-Issue-order.interface';
+import { ICommonResp } from '../../../../../shared/interfaces/add-Issue-order.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -49,17 +49,13 @@ export class AdminStorageService {
         tap((ordersByClient) => {
           this.allOrders.set(ordersByClient);
         }),
-        catchError((error) => {
-          this.toastr.error(error.error.massage ?? error.error.error);
-          return throwError(() => error);
-        }),
       )
       .subscribe();
   }
 
   addTrackNumbers(trackNumbers: string) {
     this.httpClient
-      .post<IAddIssueOrder>(this.adminAPI + 'add-track-numbers', null, {
+      .post<ICommonResp>(this.adminAPI + 'add-track-numbers', null, {
         params: { trackNumbers },
       })
       .pipe(
@@ -68,17 +64,13 @@ export class AdminStorageService {
             ? (this.toastr.success(resp.text), this.getAllOrders())
             : this.toastr.warning(resp.text);
         }),
-        catchError((error) => {
-          this.toastr.error(error.error.massage ?? error.error.error);
-          return throwError(() => error);
-        }),
       )
       .subscribe();
   }
 
   issueGoods(trackNumber: string) {
     this.httpClient
-      .post<IAddIssueOrder>(this.adminAPI + 'issue-goods', null, {
+      .post<ICommonResp>(this.adminAPI + 'issue-goods', null, {
         params: { trackNumber },
       })
       .pipe(
@@ -86,10 +78,6 @@ export class AdminStorageService {
           resp.success
             ? (this.toastr.success(resp.text), this.getAllOrders())
             : this.toastr.warning(resp.text);
-        }),
-        catchError((error) => {
-          this.toastr.error(error.error.massage ?? error.error.error);
-          return throwError(() => error);
         }),
       )
       .subscribe();
@@ -100,13 +88,7 @@ export class AdminStorageService {
       .delete(this.adminAPI + 'delete-track-number-by-id', {
         params: { id: orderID },
       })
-      .pipe(
-        tap((_) => this.getAllOrders()),
-        catchError((error) => {
-          this.toastr.error(error.error.massage ?? error.error.error);
-          return throwError(() => error);
-        }),
-      )
+      .pipe(tap((_) => this.getAllOrders()))
       .subscribe();
   }
 }

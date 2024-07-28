@@ -1,24 +1,37 @@
-import {Component, OnInit} from '@angular/core';
-import {FormControl, FormsModule, ReactiveFormsModule, Validators,} from '@angular/forms';
-import {BehaviorSubject, tap} from 'rxjs';
-import {AsyncPipe} from '@angular/common';
-import {TranslateModule} from '@ngx-translate/core';
+import { Component, computed, OnInit } from '@angular/core';
+import {
+  FormControl,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { BehaviorSubject, tap } from 'rxjs';
+import { AsyncPipe, CurrencyPipe } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
+import { MainService } from '../../services/main.service';
 
 @Component({
   selector: 'app-calculate',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, AsyncPipe, TranslateModule],
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    AsyncPipe,
+    TranslateModule,
+    CurrencyPipe,
+  ],
   templateUrl: './calculate.component.html',
   styleUrl: './calculate.component.scss',
 })
 export class CalculateComponent implements OnInit {
-  rateControl: FormControl<number | null> = new FormControl(0,
-    [Validators.max(100), Validators.min(0)]);
+  rateControl: FormControl<number | null> = new FormControl(0, [
+    Validators.max(100),
+    Validators.min(0),
+  ]);
   isDecrementBtnDisabled$: BehaviorSubject<boolean> = new BehaviorSubject(true);
   isIncrementBtnDisabled$: BehaviorSubject<boolean> = new BehaviorSubject(
-    false
+    false,
   );
-
   advantages = [
     {
       id: 1,
@@ -37,14 +50,22 @@ export class CalculateComponent implements OnInit {
     },
   ];
 
-  ngOnInit(): void {
-    const rateControlInput = document.getElementById('rateControlInput') as HTMLInputElement
-    rateControlInput.addEventListener('input', () => {
-      if (rateControlInput.value.length > 1 && rateControlInput.value.toString().startsWith('0')) {
-        rateControlInput.value = rateControlInput.value.slice(1)
-      }
-    })
+  wightAmount = computed(() => this.mainService.wightAmount());
 
+  constructor(private mainService: MainService) {}
+
+  ngOnInit(): void {
+    const rateControlInput = document.getElementById(
+      'rateControlInput',
+    ) as HTMLInputElement;
+    rateControlInput.addEventListener('input', () => {
+      if (
+        rateControlInput.value.length > 1 &&
+        rateControlInput.value.toString().startsWith('0')
+      ) {
+        rateControlInput.value = rateControlInput.value.slice(1);
+      }
+    });
 
     this.rateControl.valueChanges
       .pipe(
@@ -67,9 +88,11 @@ export class CalculateComponent implements OnInit {
             : value !== null && value < 0
               ? this.rateControl.setValue(0)
               : null;
-        })
+        }),
       )
       .subscribe();
+
+    this.mainService.getWightAmount();
   }
 
   onIncrement() {

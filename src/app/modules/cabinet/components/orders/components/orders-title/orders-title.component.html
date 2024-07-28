@@ -12,5 +12,8 @@
       }
     </div>
   </div>
-  <h3 style="color: var(--orange);">Сумма к оплате: {{ user()?.amountToPay | currency: "KZT" }}</h3>
+
+  <h3 style="color: var(--orange)">
+    Сумма к оплате: {{ user()?.amountToPay ?? 0 | currency: "KZT" }}
+  </h3>
 </section>

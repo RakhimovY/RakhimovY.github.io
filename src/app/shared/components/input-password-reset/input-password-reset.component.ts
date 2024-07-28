@@ -1,7 +1,7 @@
-import {Component, Input} from '@angular/core';
-import {TranslateModule} from "@ngx-translate/core";
-import {NgxMaskDirective} from "ngx-mask";
-import {FormControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { Component, Input } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
+import { NgxMaskDirective } from 'ngx-mask';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-input-password-reset',
@@ -10,10 +10,10 @@ import {FormControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
     TranslateModule,
     NgxMaskDirective,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
   templateUrl: './input-password-reset.component.html',
-  styleUrl: './input-password-reset.component.scss'
+  styleUrl: './input-password-reset.component.scss',
 })
 export class InputPasswordResetComponent {
   @Input() passwordResendFormControl!: FormControl;

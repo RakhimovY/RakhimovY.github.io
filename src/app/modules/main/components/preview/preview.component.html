@@ -10,6 +10,7 @@
 
   <div class="actions" data-aos="fade-right" data-aos-duration="800">
     <app-common-button
+      (clickBTN)="callToNumberFunction()"
       [shakeIcon]="true"
       [src]="'assets/img/calling.svg'"
       [text]="'MAIN.PREVIEW.BUTTONS.CONNECT' | translate"
@@ -17,12 +18,18 @@
       [width]="'200px'"
     ></app-common-button>
     <app-common-button
+      (clickBTN)="navToCalc()"
       [shakeIcon]="true"
       [src]="'assets/img/calculate.svg'"
       [text]="'MAIN.PREVIEW.BUTTONS.CALCULATE' | translate"
       [type]="'secondary'"
       [width]="'200px'"
     ></app-common-button>
-    <img alt="dark-instagram" src="assets/img/dark-instagram.svg" />
+    <a
+      href="https://www.instagram.com/silk_cargo?igsh=Z3FtcWhxYXkxZnBu&utm_source=qr"
+      target="_blank"
+    >
+      <img alt="dark-instagram" src="assets/img/dark-instagram.svg" />
+    </a>
   </div>
 </section>

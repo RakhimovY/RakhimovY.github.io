@@ -2,7 +2,7 @@ import { Injectable, signal, WritableSignal } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { IEditUserInfo, IUserInfo } from '../interface/user.interface';
-import { catchError, tap, throwError } from 'rxjs';
+import { tap } from 'rxjs';
 import { toObservable } from '@angular/core/rxjs-interop';
 import { ToastrService } from 'ngx-toastr';
 import { IFriends } from '../interface/friends.interface';
@@ -37,13 +37,7 @@ export class CabinetService {
   getUserInfo() {
     this.httpClient
       .get<IUserInfo>(`${this.userAPI}user-info`)
-      .pipe(
-        tap((userInfo) => this.userInfo.set(userInfo)),
-        catchError((error) => {
-          this.toastr.error(error.error.massage ?? error.error.error);
-          return throwError(() => error);
-        }),
-      )
+      .pipe(tap((userInfo) => this.userInfo.set(userInfo)))
       .subscribe();
   }
 
@@ -55,10 +49,6 @@ export class CabinetService {
           this.userInfo.set(userInfo);
           this.toastr.success('Данные успешно изменены');
         }),
-        catchError((error) => {
-          this.toastr.error(error.error.massage ?? error.error.error);
-          return throwError(() => error);
-        }),
       )
       .subscribe();
   }
@@ -69,10 +59,6 @@ export class CabinetService {
       .pipe(
         tap((referralFriends) => {
           this.referralFriends.set(referralFriends);
-        }),
-        catchError((error) => {
-          this.toastr.error(error.error.massage ?? error.error.error);
-          return throwError(() => error);
         }),
       )
       .subscribe();
@@ -93,10 +79,6 @@ export class CabinetService {
               'Заказ успесно добавлен',
             );
           });
-        }),
-        catchError((error) => {
-          this.toastr.error(error.error.massage ?? error.error.error);
-          return throwError(() => error);
         }),
       )
       .subscribe();
@@ -123,10 +105,6 @@ export class CabinetService {
       .pipe(
         tap((ordersByClient) => {
           this.ordersByClient.set(ordersByClient);
-        }),
-        catchError((error) => {
-          this.toastr.error(error.error.massage ?? error.error.error);
-          return throwError(() => error);
         }),
       )
       .subscribe();
