@@ -106,7 +106,7 @@ export class PasswordResetComponent
     const params: IChangePass = {
       email: this.emailFormControl.value,
       newPassword: this.newPassFormControl.value,
-      сonfirmPassword: this.newPassCheckFormControl.value,
+      confirmPassword: this.newPassCheckFormControl.value,
       code: this.codeFormControl.value,
     };
     this.authController.changePass(params);
