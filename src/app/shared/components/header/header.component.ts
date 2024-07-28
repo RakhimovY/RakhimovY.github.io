@@ -87,7 +87,7 @@ export class HeaderComponent implements AfterViewInit {
     if (tag === 'cabinet') {
       this.router.navigate([ERouting.CABINET]).then((_) => {
         setTimeout(() => {
-          navToElement(tag);
+          window.scrollTo(0, 0);
           this.burgerCheckbox.click();
         }, 100);
       });
@@ -96,7 +96,7 @@ export class HeaderComponent implements AfterViewInit {
     if (tag === 'admin') {
       this.router.navigate([ERouting.ADMIN]).then((_) => {
         setTimeout(() => {
-          navToElement(tag);
+          window.scrollTo(0, 0);
           this.burgerCheckbox.click();
         }, 100);
       });
@@ -117,7 +117,7 @@ export class HeaderComponent implements AfterViewInit {
   }
 
   closeMobileNavbar() {
-    if (this.navbarLinks.classList.contains('open')) {
+    if (this.navbarLinks?.classList?.contains('open')) {
       this.burgerCheckbox.click();
     }
   }

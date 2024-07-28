@@ -12,7 +12,7 @@ import { CabinetService } from '../../../../services/cabinet.service';
   styleUrl: './copy-refferal-link.component.scss',
 })
 export class CopyRefferalLinkComponent {
-  link = 'http://localhost:4300/auth/sign_up?ref=';
+  link = 'http://94.247.129.77/auth/sign_up?ref=';
   userInfo = computed(() => this.cabinetService.userInfo());
 
   constructor(

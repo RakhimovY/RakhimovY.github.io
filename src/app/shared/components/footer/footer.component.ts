@@ -43,7 +43,7 @@ export class FooterComponent {
       this.router.navigate([ERouting.AUTH]).then((_) => {
         setTimeout(() => {
           navToElement(tag);
-          this.burgerCheckbox.click();
+          this.burgerCheckbox?.click();
         }, 100);
       });
       return;
@@ -52,8 +52,8 @@ export class FooterComponent {
     if (tag === 'cabinet') {
       this.router.navigate([ERouting.CABINET]).then((_) => {
         setTimeout(() => {
-          navToElement(tag);
-          this.burgerCheckbox.click();
+          window.scrollTo(0, 0);
+          this.burgerCheckbox?.click();
         }, 100);
       });
       return;
@@ -61,8 +61,8 @@ export class FooterComponent {
     if (tag === 'admin') {
       this.router.navigate([ERouting.ADMIN]).then((_) => {
         setTimeout(() => {
-          navToElement(tag);
-          this.burgerCheckbox.click();
+          window.scrollTo(0, 0);
+          this.burgerCheckbox?.click();
         }, 100);
       });
       return;
@@ -78,8 +78,8 @@ export class FooterComponent {
   }
 
   closeMobileNavbar() {
-    if (this.navbarLinks.classList.contains('open')) {
-      this.burgerCheckbox.click();
+    if (this.navbarLinks?.classList?.contains('open')) {
+      this.burgerCheckbox?.click();
     }
   }
 }

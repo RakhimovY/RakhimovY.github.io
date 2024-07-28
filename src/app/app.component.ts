@@ -1,10 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { LayoutComponent } from '../core/layout/layout.component';
 import { RouterOutlet } from '@angular/router';
 import AOS from 'aos';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthorizationController } from './modules/authorization/controllers/authorization.controller';
-import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-root',
@@ -13,13 +12,12 @@ import { CookieService } from 'ngx-cookie-service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
   title = 'SilkCargo';
 
   constructor(
     private translateService: TranslateService,
     private authorizationController: AuthorizationController,
-    private cookieService: CookieService,
   ) {
     const localLanguage = localStorage.getItem('language');
 
@@ -37,5 +35,9 @@ export class AppComponent {
       : this.authorizationController.isMobile.set(false);
 
     AOS.init();
+  }
+
+  ngOnDestroy(): void {
+    this.authorizationController.logOut();
   }
 }
