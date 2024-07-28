@@ -21,6 +21,7 @@ export class AuthorizationController {
   isUser: WritableSignal<boolean> = signal(false);
   isCodeSent: WritableSignal<boolean> = signal(false);
   isCodeSent$ = toObservable(this.isCodeSent);
+  sendOTPLoading = signal(false);
 
   constructor(
     private router: Router,
@@ -116,20 +117,30 @@ export class AuthorizationController {
   }
 
   sendOTPCode(email: string) {
+    this.sendOTPLoading.set(true);
     this.authService
       .sendOTPCode(email)
       .pipe(
         tap((value) => {
+          this.sendOTPLoading.set(false);
           value.success
             ? this.toastr.success(value.text)
             : this.toastr.warning(value.text);
           this.isCodeSent.set(value.success);
+        }),
+        catchError((err) => {
+          this.sendOTPLoading.set(false);
+          return throwError(() => err);
         }),
       )
       .subscribe();
   }
 
   changePass(params: IChangePass) {
+    if (params.newPassword !== params.confirmPassword) {
+      this.toastr.warning('Пароли не совпадают');
+      return;
+    }
     this.authService
       .changePass(params)
       .pipe(

@@ -14,22 +14,22 @@ export const authGuard: CanActivateFn = (route, state) => {
     return false;
   } else if (
     authorizationController.isAuthorized() &&
-    state.url.includes('auth') &&
+    (state.url.includes('auth') || state.url.includes('cabinet')) &&
     authorizationController.isAdmin()
   ) {
     router.navigate(['admin']).then((_) => {
       window.scrollTo(0, 0);
     });
-    return true;
+    return false;
   } else if (
     authorizationController.isAuthorized() &&
-    state.url.includes('auth') &&
+    (state.url.includes('auth') || state.url.includes('admin')) &&
     authorizationController.isUser()
   ) {
     router.navigate(['cabinet']).then((_) => {
       window.scrollTo(0, 0);
     });
-    return true;
+    return false;
   }
   return true;
 };

@@ -1,6 +1,6 @@
 import { Injectable, signal, WritableSignal } from '@angular/core';
 import { environment } from '../../../../../../environments/environment';
-import { catchError, tap, throwError } from 'rxjs';
+import { tap } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import {
@@ -49,10 +49,6 @@ export class AdminStorageService {
         tap((ordersByClient) => {
           this.allOrders.set(ordersByClient);
         }),
-        catchError((error) => {
-          this.toastr.error(error.error.massage ?? error.error.error);
-          return throwError(() => error);
-        }),
       )
       .subscribe();
   }
@@ -67,10 +63,6 @@ export class AdminStorageService {
           resp.success
             ? (this.toastr.success(resp.text), this.getAllOrders())
             : this.toastr.warning(resp.text);
-        }),
-        catchError((error) => {
-          this.toastr.error(error.error.massage ?? error.error.error);
-          return throwError(() => error);
         }),
       )
       .subscribe();
@@ -87,10 +79,6 @@ export class AdminStorageService {
             ? (this.toastr.success(resp.text), this.getAllOrders())
             : this.toastr.warning(resp.text);
         }),
-        catchError((error) => {
-          this.toastr.error(error.error.massage ?? error.error.error);
-          return throwError(() => error);
-        }),
       )
       .subscribe();
   }
@@ -100,13 +88,7 @@ export class AdminStorageService {
       .delete(this.adminAPI + 'delete-track-number-by-id', {
         params: { id: orderID },
       })
-      .pipe(
-        tap((_) => this.getAllOrders()),
-        catchError((error) => {
-          this.toastr.error(error.error.massage ?? error.error.error);
-          return throwError(() => error);
-        }),
-      )
+      .pipe(tap((_) => this.getAllOrders()))
       .subscribe();
   }
 }

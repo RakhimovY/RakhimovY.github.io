@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, computed, OnInit } from '@angular/core';
 import { CommonButtonComponent } from '../../../../shared/components/common-button/common-button.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormControl, Validators } from '@angular/forms';
@@ -61,6 +61,8 @@ export class PasswordResetComponent
   ableToResendOTP$: Observable<boolean> = this.countDownMilliseconds$.pipe(
     map((countDown) => countDown <= 0),
   );
+  sendOTPLoading = computed(() => this.authController.sendOTPLoading());
+  timerStarted = false;
 
   constructor(private authController: AuthorizationController) {
     super();
@@ -93,13 +95,9 @@ export class PasswordResetComponent
     this.countDownMilliseconds$.next(120000);
   }
 
-  resendOTP() {
-    this.authController.sendOTPCode(this.emailFormControl.value);
-  }
-
   sendOTP() {
     this.authController.sendOTPCode(this.emailFormControl.value);
-    this.startTimer();
+    if (!this.timerStarted) this.startTimer();
   }
 
   changePass() {
@@ -113,6 +111,7 @@ export class PasswordResetComponent
   }
 
   private startTimer(): void {
+    this.timerStarted = true;
     this.addSubscriber(
       timer(0, 1000)
         .pipe(

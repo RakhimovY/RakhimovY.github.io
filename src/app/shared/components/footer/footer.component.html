@@ -3,6 +3,7 @@
     <h1>{{ "FOOTER.QUESTION.TITLE" | translate }}</h1>
     <h3>{{ "FOOTER.QUESTION.SUBTITLE" | translate }}</h3>
     <app-common-button
+      (clickBTN)="openMail()"
       [text]="'FOOTER.QUESTION.CONTACT_BTN' | translate"
       [type]="'primary'"
     ></app-common-button>
@@ -59,15 +60,21 @@
     <div class="third">
       <h3>{{ "FOOTER.MAIN.THIRD_COL.SM" | translate }}</h3>
       <div class="socialMedia">
-        <button>
+        <a
+          href="https://www.instagram.com/silk_cargo?igsh=Z3FtcWhxYXkxZnBu&utm_source=qr"
+          target="_blank"
+        >
           <img alt="Instagram" src="./assets/img/Instagram.svg" />
-        </button>
-        <button>
+        </a>
+        <a
+          href="https://wa.me/+77788743572?text=Здравствуйте.%20У%20меня%20вопрос%20на%20счет%20доставки."
+          target="_blank"
+        >
           <img alt="WhatsUp" src="./assets/img/WhatsUp.svg" />
-        </button>
-        <button>
+        </a>
+        <a href="https://t.me/silkcargonews" target="_blank">
           <img alt="Telegram" src="./assets/img/Telegram.svg" />
-        </button>
+        </a>
       </div>
     </div>
     <h5 class="mobile-text">{{ "FOOTER.MAIN.FIRST_COL.T2" | translate }}</h5>

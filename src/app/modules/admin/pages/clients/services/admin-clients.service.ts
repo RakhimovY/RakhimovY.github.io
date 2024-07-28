@@ -1,6 +1,6 @@
 import { Injectable, signal, WritableSignal } from '@angular/core';
 import { environment } from '../../../../../../environments/environment';
-import { catchError, tap, throwError } from 'rxjs';
+import { tap } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { IOrdersParams } from '../../../../cabinet/interface/orders.interface';
@@ -45,10 +45,6 @@ export class AdminClientsService {
         tap((allClients) => {
           this.allClients.set(allClients);
         }),
-        catchError((error) => {
-          this.toastr.error(error.error.massage ?? error.error.error);
-          return throwError(() => error);
-        }),
       )
       .subscribe();
   }
@@ -61,10 +57,6 @@ export class AdminClientsService {
       .pipe(
         tap((client) => {
           this.client.set(client);
-        }),
-        catchError((error) => {
-          this.toastr.error(error.error.massage ?? error.error.error);
-          return throwError(() => error);
         }),
       )
       .subscribe();
@@ -89,10 +81,6 @@ export class AdminClientsService {
         tap((resp) => {
           this.toastr.success(resp ?? 'Данные успесно сохранены');
           this.getClients();
-        }),
-        catchError((error) => {
-          this.toastr.error(error.error.massage ?? error.error.error);
-          return throwError(() => error);
         }),
       )
       .subscribe();
