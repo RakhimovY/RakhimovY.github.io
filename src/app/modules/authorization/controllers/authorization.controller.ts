@@ -1,6 +1,6 @@
 import { Injectable, signal, WritableSignal } from '@angular/core';
 import { AuthorizationService } from '../service/authorization.service';
-import { ISignIn, ISignUp } from '../types/auth.interface';
+import { ISignIn, ISignUp } from '../interfaces/auth.interface';
 import { catchError, tap, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -9,6 +9,8 @@ import { ECookie } from '../../../core/enums/cookie.enum';
 import { EAuthority } from '../enums/authority.enum';
 import { ToastrService } from 'ngx-toastr';
 import { ERouting } from '../../../shared/enums/routing.enum';
+import { toObservable } from '@angular/core/rxjs-interop';
+import { IChangePass } from '../interfaces/change-pass.interface';
 
 @Injectable({ providedIn: 'root' })
 export class AuthorizationController {
@@ -17,6 +19,8 @@ export class AuthorizationController {
   isMobile: WritableSignal<boolean> = signal(false);
   isAdmin: WritableSignal<boolean> = signal(false);
   isUser: WritableSignal<boolean> = signal(false);
+  isCodeSent: WritableSignal<boolean> = signal(false);
+  isCodeSent$ = toObservable(this.isCodeSent);
 
   constructor(
     private router: Router,
@@ -24,6 +28,10 @@ export class AuthorizationController {
     private cookieService: CookieService,
     private toastr: ToastrService,
   ) {}
+
+  setCookie(name: string, value: any) {
+    this.cookieService.set(name, value, undefined, '/');
+  }
 
   signUp(body: ISignUp, refferalID?: string) {
     this.signLoading.set(true);
@@ -60,14 +68,6 @@ export class AuthorizationController {
       this.isUser.set(false);
       this.isAdmin.set(false);
     }
-  }
-
-  logOut() {
-    this.cookieService.deleteAll('/');
-    this.isAuthorized.set(false);
-    this.router.navigate(['auth']).then(() => {
-      window.scrollTo(0, 0);
-    });
   }
 
   signIn(body: ISignIn) {
@@ -107,7 +107,39 @@ export class AuthorizationController {
       .subscribe();
   }
 
-  setCookie(name: string, value: any) {
-    this.cookieService.set(name, value, undefined, '/');
+  logOut() {
+    this.cookieService.deleteAll('/');
+    this.isAuthorized.set(false);
+    this.router.navigate(['auth']).then(() => {
+      window.scrollTo(0, 0);
+    });
+  }
+
+  sendOTPCode(email: string) {
+    this.authService
+      .sendOTPCode(email)
+      .pipe(
+        tap((value) => {
+          value.success
+            ? this.toastr.success(value.text)
+            : this.toastr.warning(value.text);
+          this.isCodeSent.set(value.success);
+        }),
+      )
+      .subscribe();
+  }
+
+  changePass(params: IChangePass) {
+    this.authService
+      .changePass(params)
+      .pipe(
+        tap((resp) => {
+          resp.success
+            ? (this.toastr.success(resp.text),
+              this.router.navigate(['auth']).then())
+            : this.toastr.warning(resp.text);
+        }),
+      )
+      .subscribe();
   }
 }

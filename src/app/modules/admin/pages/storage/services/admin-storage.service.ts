@@ -8,7 +8,7 @@ import {
   IOrdersParams,
 } from '../../../../cabinet/interface/orders.interface';
 import { toObservable } from '@angular/core/rxjs-interop';
-import { IAddIssueOrder } from '../interfaces/add-Issue-order.interface';
+import { ICommonResp } from '../../../../../shared/interfaces/add-Issue-order.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -59,7 +59,7 @@ export class AdminStorageService {
 
   addTrackNumbers(trackNumbers: string) {
     this.httpClient
-      .post<IAddIssueOrder>(this.adminAPI + 'add-track-numbers', null, {
+      .post<ICommonResp>(this.adminAPI + 'add-track-numbers', null, {
         params: { trackNumbers },
       })
       .pipe(
@@ -78,7 +78,7 @@ export class AdminStorageService {
 
   issueGoods(trackNumber: string) {
     this.httpClient
-      .post<IAddIssueOrder>(this.adminAPI + 'issue-goods', null, {
+      .post<ICommonResp>(this.adminAPI + 'issue-goods', null, {
         params: { trackNumber },
       })
       .pipe(

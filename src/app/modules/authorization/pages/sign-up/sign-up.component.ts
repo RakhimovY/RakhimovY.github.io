@@ -15,7 +15,7 @@ import { InputFullNameComponent } from '../../../../shared/components/input-full
 import { InputPhoneComponent } from '../../../../shared/components/input-phone/input-phone.component';
 import { InputCityComponent } from '../../../../shared/components/input-city/input-city.component';
 import { AuthorizationController } from '../../controllers/authorization.controller';
-import { ISignUp } from '../../types/auth.interface';
+import { ISignUp } from '../../interfaces/auth.interface';
 import { IPDropdown } from '../../../../shared/types/pDropdown.interface';
 
 @Component({
@@ -49,7 +49,7 @@ export class SignUpComponent implements AfterViewInit {
     fullNameFormControl: new FormControl('', [Validators.required]),
     passwordFormControl: new FormControl('', [
       Validators.required,
-      Validators.minLength(4),
+      Validators.minLength(6),
     ]),
   });
 

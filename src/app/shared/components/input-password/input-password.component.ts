@@ -13,6 +13,8 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 })
 export class InputPasswordComponent {
   @Input() isSignUp: boolean = false;
+  @Input() isReset: boolean = false;
+  @Input() uniqID: string = 'passwordInput';
   @Input() passwordFormControl!: FormControl;
 
   passwordHidden: boolean = true;
@@ -23,7 +25,7 @@ export class InputPasswordComponent {
 
   showOrHidePass() {
     const passwordInput: HTMLInputElement | null = document.getElementById(
-      'passwordInput',
+      this.uniqID,
     ) as HTMLInputElement;
     if (passwordInput?.type === 'password') {
       passwordInput.type = 'text';
