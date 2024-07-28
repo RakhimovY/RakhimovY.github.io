@@ -2,12 +2,26 @@
   <div class="inputs">
     <div class="inputs__field">
       <h4>Адрес склада</h4>
-      <textarea style="height: 150px; width: 414px"></textarea>
+      <textarea
+        [formControl]="chineseAddressFormControl"
+        style="height: 150px; width: 414px"
+      ></textarea>
+
+      <p>Код клиента: <span>CLIENT_CODE</span></p>
+      <p>Номер клиента: <span>PHONE_NUMBER</span></p>
     </div>
     <div class="inputs__field">
       <h4>Сумма за кг.</h4>
-      <input value="1500 тг" />
+      <input
+        [formControl]="weightAmountFormControl"
+        inputmode="numeric"
+        pattern="[0-9]*"
+        type="number"
+      />
     </div>
   </div>
-  <app-common-button [text]="'Сохранить'"></app-common-button>
+  <app-common-button
+    (clickBTN)="saveChanges()"
+    [text]="'Сохранить'"
+  ></app-common-button>
 </section>

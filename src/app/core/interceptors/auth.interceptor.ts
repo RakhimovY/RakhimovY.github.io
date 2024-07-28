@@ -22,12 +22,14 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
       () => {},
       (error: any) => {
         if (error instanceof HttpErrorResponse) {
-          if (error.status !== 401) {
-            toastr.error(error.error.massage ?? error.error.error);
-            return;
+          if (error.status === 401 && authorizationController.isAuthorized()) {
+            toastr.error('Ваша сессия истекла, повторите попытку');
+            authorizationController.logOut();
+          } else if (error.error.message || error.error.error) {
+            toastr.error(error.error.message ?? error.error.error);
+          } else {
+            toastr.error('Что-то пошло не так.', ' Попробуйте позже.');
           }
-          toastr.error('Ваша сессия истекла, повторите попытку');
-          authorizationController.logOut();
         }
       },
     ),
