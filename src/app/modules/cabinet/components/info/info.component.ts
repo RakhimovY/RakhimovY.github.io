@@ -47,7 +47,12 @@ export class InfoComponent implements OnInit, AfterViewInit {
 
   constructor(private cabinetService: CabinetService) {}
 
-  ngAfterViewInit(): void {
+  ngAfterViewInit(): void {}
+
+  ngOnInit(): void {
+    this.infoForm.disable();
+    this.cabinetService.getUserInfo();
+
     this.cabinetService.userInfo$
       .pipe(
         tap((userInfo) => {
@@ -65,11 +70,6 @@ export class InfoComponent implements OnInit, AfterViewInit {
         }),
       )
       .subscribe();
-  }
-
-  ngOnInit(): void {
-    this.infoForm.disable();
-    this.cabinetService.getUserInfo();
   }
 
   saveUserChanges(): void {

@@ -1,5 +1,5 @@
 export function openMail() {
-  const email = 'example@example.com';
+  const email = 'Silkcargo2@gmail.com';
   const subject = 'To SikCargo';
   const body = 'Здравствуйте. У меня вопрос на счет доставки.';
 
