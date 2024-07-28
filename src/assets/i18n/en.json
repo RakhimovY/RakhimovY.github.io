@@ -1,112 +1,112 @@
 {
   "NAVBAR": {
-    "CALCULATOR": "Калькулятор стоимости",
-    "ADVANTAGES": "Преимущества",
+    "CALCULATOR": "Cost Calculator",
+    "ADVANTAGES": "Advantages",
     "FAQ": "FAQ’s",
-    "AUTHORIZATION": "Вход / Регистрация",
-    "CABINET": "Личный кабинет",
-    "ADMIN": "Админка",
-    "CONTACT": "Связаться",
-    "LOGOUT": "Выйти"
+    "AUTHORIZATION": "Login / Register",
+    "CABINET": "Personal Cabinet",
+    "ADMIN": "Admin Panel",
+    "CONTACT": "Contact Us",
+    "LOGOUT": "Logout"
   },
   "FOOTER": {
     "QUESTION": {
-      "TITLE": "Остались вопросы?",
-      "SUBTITLE": "Нажмите на кнопку ниже и наши специалисты свяжутся с вами",
-      "CONTACT_BTN": "Связаться"
+      "TITLE": "Still have questions?",
+      "SUBTITLE": "Click the button below and our specialists will contact you",
+      "CONTACT_BTN": "Contact Us"
     },
     "MAIN": {
       "FIRST_COL": {
-        "T1": "Доставка из Китая в Казахстан</br>всего за 4$",
-        "T2": "2024. Все права защищены"
+        "T1": "Delivery from China to Kazakhstan</br>for just $4",
+        "T2": "2024. All rights reserved"
       },
       "SECOND_COL": {
-        "MENU": "Меню"
+        "MENU": "Menu"
       },
       "THIRD_COL": {
-        "SM": "Мы в соц. сетях"
+        "SM": "We are on social media"
       }
     }
   },
   "AUTHORIZATION": {
     "TITLE": {
-      "SIGN_IN": "Вход в SILK CARGO",
-      "PASSWORD_RESET": "Забыли пароль? ",
-      "SIGN_UP": "Регистрация"
+      "SIGN_IN": "Login to SILK CARGO",
+      "PASSWORD_RESET": "Forgot password?",
+      "SIGN_UP": "Registration"
     },
     "INPUTS": {
       "EMAIL": {
         "TITLE": "E-mail",
-        "PLACEHOLDER": "Введите ваш почтовый адрес"
+        "PLACEHOLDER": "Enter your email address"
       },
       "PASSWORD": {
-        "TITLE": "Пароль",
-        "PLACEHOLDER": "Введите ваш пароль",
-        "P": "Забыли пароль?"
+        "TITLE": "Password",
+        "PLACEHOLDER": "Enter your password",
+        "P": "Forgot password?"
       },
       "CHECK_PASSWORD": {
-        "TITLE": "Проверка пароля",
-        "PLACEHOLDER": "Повторите ваш пароль",
-        "P": "Забыли пароль?"
+        "TITLE": "Confirm Password",
+        "PLACEHOLDER": "Repeat your password",
+        "P": "Forgot password?"
       },
       "PASSWORD_RESET": {
-        "TITLE": "Код для сброса пароля"
+        "TITLE": "Password Reset Code"
       },
       "FULL_NAME": {
-        "TITLE": "ФИО",
-        "PLACEHOLDER": "Введите ваше ФИО"
+        "TITLE": "Full Name",
+        "PLACEHOLDER": "Enter your full name"
       },
       "PHONE": {
-        "TITLE": "Номер телефона"
+        "TITLE": "Phone Number"
       },
       "CITY": {
-        "TITLE": "Город",
-        "PLACEHOLDER": "Выберите город"
+        "TITLE": "City",
+        "PLACEHOLDER": "Select city"
       },
       "PASSWORD_CREAT": {
-        "TITLE": "Пароль",
-        "PLACEHOLDER": "Создайте пароль"
+        "TITLE": "Create Password",
+        "PLACEHOLDER": "Create a password"
       }
     },
     "BUTTONS": {
-      "SIGN_IN": "Войти",
-      "SIGN_UP": "Регистрация",
-      "RESET_PASSWORD": "Обновить пароль",
-      "RESET_PASSWORD_TIMER": "Отправить повторно через {{ count }}",
-      "RESET_PASSWORD_SEND": "Отправить код",
-      "SIGN_IN_TO_ACC": "Войти в аккаунт",
-      "SIGN_UP_TO_ACC": "Зарегистрироваться"
+      "SIGN_IN": "Login",
+      "SIGN_UP": "Register",
+      "RESET_PASSWORD": "Update Password",
+      "RESET_PASSWORD_TIMER": "Resend in {{ count }}",
+      "RESET_PASSWORD_SEND": "Send Code",
+      "SIGN_IN_TO_ACC": "Login to Account",
+      "SIGN_UP_TO_ACC": "Register"
     }
   },
   "MAIN": {
     "PREVIEW": {
-      "TITLE": "Доставка из Китая в Казахстан",
-      "SUBTITLE": "4$ за кг",
+      "TITLE": "Delivery from China to Kazakhstan",
+      "SUBTITLE": "$4 per kg",
       "BUTTONS": {
-        "CONNECT": "Связаться",
-        "CALCULATE": "Посчитать доставку"
+        "CONNECT": "Contact Us",
+        "CALCULATE": "Calculate Delivery"
       }
     },
     "CALCULATE": {
       "CALC": {
-        "TITLE": "Калькулятор",
+        "TITLE": "Calculator",
         "INPUT": {
-          "TITLE": "Напишите количество в кг",
-          "SUBTITLE": "Мин 0 - Макс 100"
+          "TITLE": "Enter the amount in kg",
+          "SUBTITLE": "Min 0 - Max 100"
         },
-        "AMOUNT": "Итоговая сумма",
+        "AMOUNT": "Total Amount",
         "TEXT": {
-          "TITLE": "Узнайте цену доставки груза из Китая в Казахстан",
-          "SUBTITLE": "Тариф розничные заказы от {{ sum }}тг за кг"
+          "TITLE": "Find out the delivery price from China to Kazakhstan",
+          "SUBTITLE": "Retail rates from {{ sum }}tg per kg"
         }
       }
     },
     "ADVANTAGE": {
-      "TITLE": "Наши преимущества",
+      "TITLE": "Our Advantages",
       "BOXES": {
-        "BOX_1": "Быстрая доставка грузов",
-        "BOX_2": "Сроки <br /> 7-12 дней",
-        "BOX_3": "Персональный код"
+        "BOX_1": "Fast Cargo Delivery",
+        "BOX_2": "Delivery time <br /> 7-12 days",
+        "BOX_3": "Personal Code"
       }
     }
   }

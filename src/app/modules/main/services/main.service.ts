@@ -2,6 +2,7 @@ import { Injectable, signal, WritableSignal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
 import { tap } from 'rxjs';
+import { toObservable } from '@angular/core/rxjs-interop';
 
 @Injectable({
   providedIn: 'root',
@@ -9,6 +10,7 @@ import { tap } from 'rxjs';
 export class MainService {
   infoAPI = environment.infoAPI;
   wightAmount: WritableSignal<number> = signal(0);
+  wightAmount$ = toObservable(this.wightAmount);
 
   constructor(private httmClient: HttpClient) {}
 

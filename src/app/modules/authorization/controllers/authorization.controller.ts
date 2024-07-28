@@ -45,7 +45,6 @@ export class AuthorizationController {
         }),
         catchError((error: HttpErrorResponse) => {
           this.signLoading.set(false);
-          this.toastr.error(error.error.message ?? error.error.error);
           return throwError(() => error);
         }),
       )
@@ -101,7 +100,6 @@ export class AuthorizationController {
         }),
         catchError((error: HttpErrorResponse) => {
           this.signLoading.set(false);
-          this.toastr.error(error.error.message ?? error.error.error);
           return throwError(() => error);
         }),
       )

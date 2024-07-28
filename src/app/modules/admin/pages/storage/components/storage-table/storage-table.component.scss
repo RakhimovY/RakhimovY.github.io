@@ -21,6 +21,11 @@ table {
 
       th:nth-child(2) {
         text-align: left;
+        width: 180px;
+      }
+
+      th:nth-child(3) {
+        width: 250px;
       }
 
       th:nth-child(5) {
