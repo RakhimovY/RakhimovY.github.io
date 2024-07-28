@@ -1,0 +1,37 @@
+name: Build and Deploy Angular App
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '20'
+
+    - name: Install dependencies
+      run: npm install --legacy-peer-deps
+
+    - name: Build Angular project
+      run: npm run build --prod 
+
+    - name: Install sshpass
+      run: sudo apt-get install -y sshpass
+
+    - name: Deploy to Server
+      env:
+        HOST: ${{ secrets.HOST }}
+        USER: ${{ secrets.USER }}
+        PASSWORD: ${{ secrets.SSH_PASSWORD }}
+        REMOTE_PATH: ${{ secrets.REMOTE_PATH }}
+      run: |
+        sshpass -p $PASSWORD rsync -avz -e "ssh -o StrictHostKeyChecking=no" dist/project-cargo/browser/ $USER@$HOST:$REMOTE_PATH
