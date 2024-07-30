@@ -10,7 +10,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { tap } from 'rxjs';
 import { IPDropdown } from '../../types/pDropdown.interface';
 import { NgClass } from '@angular/common';
-import { openMail } from '../../functions/openMail.function';
+import { openWhatsapp } from '../../functions/openWhatsapp.function';
 
 @Component({
   selector: 'app-header',
@@ -42,7 +42,7 @@ export class HeaderComponent implements AfterViewInit {
     { name: 'Kk', code: 'kk' },
     { name: 'En', code: 'en' },
   ];
-  protected readonly openMail = openMail;
+  protected readonly openWhatsapp = openWhatsapp;
 
   constructor(
     private router: Router,
@@ -132,5 +132,6 @@ export class HeaderComponent implements AfterViewInit {
 
   logout() {
     this.authorizationController.logOut();
+    this.navbarLinks.classList.remove('open');
   }
 }

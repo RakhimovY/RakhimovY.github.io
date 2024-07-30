@@ -63,7 +63,11 @@
   <ng-template pTemplate="footer">
     <app-common-button
       (clickBTN)="addToMyOrders()"
-      [disabled]="savedProductsLists.length <= 0"
+      [disabled]="
+        this.savedProductsLists.length <= 0 &&
+        (this.trackNumberFormControl.invalid ||
+          this.productNameFormControl.invalid)
+      "
       [text]="'Сохранить'"
     ></app-common-button>
   </ng-template>

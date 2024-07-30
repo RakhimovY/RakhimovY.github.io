@@ -15,13 +15,13 @@
       <div class="title">ФИО</div>
       <div class="info">{{ client()?.fullName }}</div>
     </div>
-    <div class="box">
-      <div class="title">Код клиента</div>
-      <div class="info">{{ client()?.clientCode }}</div>
-    </div>
+    <!--    <div class="box">-->
+    <!--      <div class="title">Код клиента</div>-->
+    <!--      <div class="info">{{ client()?.clientCode }}</div>-->
+    <!--    </div>-->
     <div class="box">
       <div class="title">Номер телефона</div>
-      <div class="info">{{ client()?.phoneNumber }}</div>
+      <div class="info">+7{{ client()?.phoneNumber }}</div>
     </div>
     <div class="box">
       <div class="title">Почта</div>
@@ -45,6 +45,10 @@
         pattern="[0-9]*"
         type="number"
       />
+    </div>
+    <div class="box">
+      <div class="title">Код клиента</div>
+      <input class="info" formControlName="clientCode" />
     </div>
     @if (client()?.cameFrom) {
       <div class="box">

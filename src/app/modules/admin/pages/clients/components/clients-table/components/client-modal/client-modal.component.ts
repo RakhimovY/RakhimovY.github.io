@@ -34,6 +34,7 @@ export class ClientModalComponent extends SubscriptionAccumulator {
       Validators.nullValidator,
     ]),
     bonusesToMainClient: new FormControl<number | null>(null),
+    clientCode: new FormControl<string | null>(null),
   });
 
   visible: boolean = false;
@@ -52,6 +53,9 @@ export class ClientModalComponent extends SubscriptionAccumulator {
               );
               this.clientModalForm.controls.bonusesToMainClient.setValue(
                 value.bonuses,
+              );
+              this.clientModalForm.controls.clientCode.setValue(
+                value.clientCode,
               );
             }
           }),
