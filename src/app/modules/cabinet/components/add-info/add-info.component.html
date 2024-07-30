@@ -14,7 +14,10 @@
     <div class="info-box">
       <div class="info-box__title">Адрес склада</div>
       <div class="info-box__field">
-        <div class="info-box__text">{{ userInfo()?.chineseAddress }}</div>
+        <div
+          [innerText]="userInfo()?.chineseAddress"
+          class="info-box__text"
+        ></div>
         <img
           (click)="copyToClipboard(userInfo()?.chineseAddress)"
           alt="copy"

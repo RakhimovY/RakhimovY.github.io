@@ -7,7 +7,7 @@ import { navToElement } from '../../functions/nav.functions';
 import { AuthorizationController } from '../../../modules/authorization/controllers/authorization.controller';
 import { IPDropdown } from '../../types/pDropdown.interface';
 import { FormControl } from '@angular/forms';
-import { openMail } from '../../functions/openMail.function';
+import { openWhatsapp } from '../../functions/openWhatsapp.function';
 
 @Component({
   selector: 'app-footer',
@@ -31,7 +31,7 @@ export class FooterComponent {
     { name: 'Kk', code: 'kk' },
     { name: 'En', code: 'en' },
   ];
-  protected readonly openMail = openMail;
+  protected readonly openWhatsapp = openWhatsapp;
 
   constructor(
     private router: Router,

@@ -79,7 +79,7 @@ export class AdminClientsService {
       })
       .pipe(
         tap((resp) => {
-          this.toastr.success(resp ?? 'Данные успесно сохранены');
+          this.toastr.success(resp ?? 'Данные успешно сохранены');
           this.getClients();
         }),
       )

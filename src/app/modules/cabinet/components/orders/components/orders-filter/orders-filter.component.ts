@@ -67,14 +67,33 @@ export class OrdersFilterComponent {
   }
 
   addToMyOrders() {
-    this.cabinetService.registerTrackNumber(
+    if (
       this.savedProductsLists.map((el) => {
         return {
           trackNumber: el.trackNumber,
           productName: el.productName,
         };
-      }),
-    );
+      }).length > 0
+    ) {
+      this.cabinetService.registerTrackNumber(
+        this.savedProductsLists.map((el) => {
+          return {
+            trackNumber: el.trackNumber,
+            productName: el.productName,
+          };
+        }),
+      );
+    } else if (
+      this.trackNumberFormControl.valid &&
+      this.productNameFormControl.valid
+    ) {
+      this.cabinetService.registerTrackNumber([
+        {
+          trackNumber: this.trackNumberFormControl.value as string,
+          productName: this.productNameFormControl.value as string,
+        },
+      ]);
+    }
     this.savedProductsLists = [];
     this.onHideModalWindow();
   }

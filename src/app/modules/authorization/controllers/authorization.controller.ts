@@ -97,6 +97,7 @@ export class AuthorizationController {
             });
           }
           this.isAuthorized.set(true);
+          this.signLoading.set(false);
         }),
         catchError((error: HttpErrorResponse) => {
           this.signLoading.set(false);
