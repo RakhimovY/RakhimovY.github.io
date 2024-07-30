@@ -13,6 +13,7 @@ import { AuthorizationController } from './modules/authorization/controllers/aut
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnDestroy {
+
   title = 'SilkCargo';
 
   constructor(
