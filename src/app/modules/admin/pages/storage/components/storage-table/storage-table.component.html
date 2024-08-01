@@ -2,14 +2,19 @@
   <h3>Все заказы</h3>
 
   <div class="actions">
-    <div class="action">
-      <label for="isAddingOrder">Добавить заказ:</label>
-      <p-inputSwitch [formControl]="isAddingOrder" inputId="isAddingOrder" />
+    <div class="actions__toggles">
+      <div class="action">
+        <label for="isAddingOrder">Добавить заказ:</label>
+        <p-inputSwitch [formControl]="isAddingOrder" inputId="isAddingOrder" />
+      </div>
+      <div class="action">
+        <label for="isIssueOrder">Выдать заказ:</label>
+        <p-inputSwitch [formControl]="isIssueOrder" inputId="isIssueOrder" />
+      </div>
     </div>
-    <div class="action">
-      <label for="isIssueOrder">Выдать заказ:</label>
-      <p-inputSwitch [formControl]="isIssueOrder" inputId="isIssueOrder" />
-    </div>
+    <button (click)="openUploadModal()">
+      <i class="pi pi-folder-open" style="font-size: 2rem"></i>
+    </button>
   </div>
 </div>
 
@@ -61,3 +66,5 @@
     [totalRecords]="allOrders()?.totalElements"
   />
 }
+
+<app-upload-file></app-upload-file>

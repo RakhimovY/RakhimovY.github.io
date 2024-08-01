@@ -1,0 +1,50 @@
+<p-dialog
+  (onHide)="onHideModalWindow()"
+  [(visible)]="visible"
+  [dismissableMask]="true"
+  [draggable]="false"
+  [modal]="true"
+  [resizable]="false"
+  [showHeader]="false"
+>
+  <div class="base">
+    <div class="card">
+      <h3>Загрузка файла</h3>
+      <div
+        (dragover)="onDragOver($event)"
+        (drop)="onDrop($event)"
+        class="file-drop drop_box"
+      >
+        @if (!file) {
+          <header>
+            <h4>Выберите или перетащите файл</h4>
+          </header>
+          <p>Поддерживаемые файлы: XLS</p>
+          <input
+            #fileInput
+            (change)="onFileSelected($event)"
+            accept=".xls"
+            hidden
+            id="fileInput"
+            style="display: none"
+            type="file"
+          />
+          <button (click)="openFile()" class="btn">Выберите файл</button>
+        } @else {
+          <header>
+            <h4>
+              {{ file.name }}
+              <i
+                class="pi pi-times"
+                style="font-size: 1rem"
+                (click)="deleteFile()"
+              ></i>
+            </h4>
+          </header>
+          <p>Поддерживаемые файлы: XLS</p>
+          <button (click)="sendFile()" class="btn">Отправить</button>
+        }
+      </div>
+    </div>
+  </div>
+</p-dialog>

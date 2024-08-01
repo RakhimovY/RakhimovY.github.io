@@ -12,7 +12,9 @@ import { IClient, IClients } from '../interfaces/clients.interface';
 })
 export class AdminClientsService {
   adminAPI = environment.adminAPI;
+
   allClients: WritableSignal<IClients | null> = signal(null);
+
   clientsParams: WritableSignal<IOrdersParams> = signal({
     size: 5,
     page: 0,
@@ -62,7 +64,11 @@ export class AdminClientsService {
       .subscribe();
   }
 
-  submitClientChanges(amountToPay: number, bonusesToMainClient: number) {
+  submitClientChanges(
+    amountToPay: number,
+    bonusesToMainClient: number,
+    clientCode: string,
+  ) {
     let params = new HttpParams()
       .set('amountToPay', amountToPay)
       .set('clientId', this.client()?.id as number);
@@ -70,6 +76,9 @@ export class AdminClientsService {
       params = params
         .append('bonusesToMainClient', bonusesToMainClient)
         .append('cameFromClientId', this.client()?.cameFrom?.id as number);
+    }
+    if (clientCode) {
+      params = params.append('clientCode', clientCode);
     }
 
     this.httpClient

@@ -1,7 +1,11 @@
 import { Injectable, signal, WritableSignal } from '@angular/core';
 import { environment } from '../../../../../../environments/environment';
-import { tap } from 'rxjs';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { catchError, tap, throwError } from 'rxjs';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpParams,
+} from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import {
   IOrders,
@@ -21,6 +25,11 @@ export class AdminStorageService {
     page: 0,
   });
   allOrdersParams$ = toObservable(this.allOrdersParams);
+  isUploadModalVisible = signal(false);
+  isUploadModalVisible$ = toObservable(this.isUploadModalVisible);
+
+  isFileUploaded: WritableSignal<boolean> = signal(false);
+  isFileUploaded$ = toObservable(this.isFileUploaded);
 
   constructor(
     private httpClient: HttpClient,
@@ -89,6 +98,24 @@ export class AdminStorageService {
         params: { id: orderID },
       })
       .pipe(tap((_) => this.getAllOrders()))
+      .subscribe();
+  }
+
+  uploadFile(file: FormData) {
+    this.httpClient
+      .post(this.adminAPI + 'upload-file', file)
+      .pipe(
+        tap((resp) => {
+          this.isFileUploaded.set(true);
+          this.isFileUploaded.set(false);
+          this.toastr.success('Файл успешно загружен');
+        }),
+        catchError((error: HttpErrorResponse) => {
+          this.isFileUploaded.set(true);
+          this.isFileUploaded.set(false);
+          return throwError(() => error);
+        }),
+      )
       .subscribe();
   }
 }
