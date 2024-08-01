@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { StorageComponent } from './pages/storage/storage.component';
 import { AdminPageToggleComponent } from './components/admin-page-toggle/admin-page-toggle.component';
@@ -10,4 +10,10 @@ import { AdminPageToggleComponent } from './components/admin-page-toggle/admin-p
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.scss',
 })
-export class AdminComponent {}
+export class AdminComponent implements AfterViewInit {
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 500);
+  }
+}

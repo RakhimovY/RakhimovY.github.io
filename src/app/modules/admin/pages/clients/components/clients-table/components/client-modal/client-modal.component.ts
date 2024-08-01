@@ -73,9 +73,11 @@ export class ClientModalComponent extends SubscriptionAccumulator {
       .value as number;
     const bonusesToMainClient = this.clientModalForm.controls
       .bonusesToMainClient.value as number;
+    const clientCode = this.clientModalForm.controls.clientCode.value as string;
     this.adminClientsService.submitClientChanges(
       amountToPay,
       bonusesToMainClient,
+      clientCode,
     );
     this.visible = false;
   }

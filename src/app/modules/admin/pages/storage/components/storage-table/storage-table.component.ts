@@ -9,11 +9,17 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { hasKazakhChars } from '../../../../../../shared/functions/hasKazakhChars.function';
 import { hasRussianChars } from '../../../../../../shared/functions/hasRussianChars.function';
+import { UploadFileComponent } from '../upload-file/upload-file.component';
 
 @Component({
   selector: 'app-storage-table',
   standalone: true,
-  imports: [PaginatorModule, InputSwitchModule, ReactiveFormsModule],
+  imports: [
+    PaginatorModule,
+    InputSwitchModule,
+    ReactiveFormsModule,
+    UploadFileComponent,
+  ],
   templateUrl: './storage-table.component.html',
   styleUrl: './storage-table.component.scss',
 })
@@ -101,5 +107,9 @@ export class StorageTableComponent
 
   onProductDelete(orderID: number) {
     this.adminStorageService.deleteTrackNumberByID(orderID);
+  }
+
+  openUploadModal() {
+    this.adminStorageService.isUploadModalVisible.set(true);
   }
 }
