@@ -105,8 +105,8 @@ export class StorageTableComponent
       ?.scrollIntoView({ block: 'center', behavior: 'smooth' });
   }
 
-  onProductDelete(orderID: number) {
-    this.adminStorageService.deleteTrackNumberByID(orderID);
+  onProductDelete(orderID: number, trackNumber: string) {
+    this.adminStorageService.deleteTrackNumberByID(orderID, trackNumber);
   }
 
   openUploadModal() {

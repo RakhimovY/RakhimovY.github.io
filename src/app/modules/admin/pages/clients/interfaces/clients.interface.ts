@@ -5,6 +5,7 @@ export interface IClient {
     bonuses: number;
     fullName: string;
     id: number;
+    clientCode: string;
   } | null;
   chineseAddress: string | null;
   registerDate: string;
