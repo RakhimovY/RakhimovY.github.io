@@ -92,23 +92,33 @@ export class AdminStorageService {
       .subscribe();
   }
 
-  deleteTrackNumberByID(orderID: number) {
+  deleteTrackNumberByID(orderID: number, trackNumber: string) {
     this.httpClient
       .delete(this.adminAPI + 'delete-track-number-by-id', {
         params: { id: orderID },
       })
-      .pipe(tap((_) => this.getAllOrders()))
+      .pipe(
+        tap((_) => {
+          this.toastr.info(`Заказ №${trackNumber} удален`);
+          this.getAllOrders();
+        }),
+      )
       .subscribe();
   }
 
   uploadFile(file: FormData) {
     this.httpClient
-      .post(this.adminAPI + 'upload-file', file)
+      .post<ICommonResp>(this.adminAPI + 'upload-file', file)
       .pipe(
-        tap((resp) => {
+        tap((resp: ICommonResp) => {
           this.isFileUploaded.set(true);
           this.isFileUploaded.set(false);
-          this.toastr.success('Файл успешно загружен');
+          if (resp.success) {
+            this.getAllOrders();
+            this.toastr.success(resp.text);
+          } else {
+            this.toastr.warning(resp.text);
+          }
         }),
         catchError((error: HttpErrorResponse) => {
           this.isFileUploaded.set(true);

@@ -63,8 +63,10 @@
 
         <p>Этот пользователь пришел от:</p>
         <p>ФИО: {{ client()?.cameFrom?.fullName }}</p>
-        <p>Код клиента: {{ client()?.cameFrom?.id }}</p>
-        <p>Бонусы: {{ client()?.cameFrom?.bonuses | currency: "KZT" }}</p>
+        <p>Код клиента: {{ client()?.cameFrom?.clientCode }}</p>
+        <p>
+          Бонусы: {{ (client()?.cameFrom?.bonuses | currency: "KZT") ?? "0" }}
+        </p>
       </div>
     }
   </form>
