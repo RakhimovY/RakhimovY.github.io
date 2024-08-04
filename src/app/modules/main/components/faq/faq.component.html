@@ -7,18 +7,18 @@
     Часто задаваемые вопросы
   </h1>
 
-  <div data-aos="fade-up"
-       data-aos-anchor-placement="top-center"
-       data-aos-duration="800">
+  <div
+    data-aos="fade-up"
+    data-aos-anchor-placement="top-center"
+    data-aos-duration="800"
+  >
     @for (FAQ of FAQ_List; track FAQ.id) {
       <div class="FAQ">
         <div class="FAQ__question">
           <h3>{{ FAQ.question }}</h3>
-          <img alt="down_square.svg" src="assets/img/down_square.svg"/>
+          <img alt="down_square.svg" src="assets/img/down_square.svg" />
         </div>
-        <div class="FAQ__answer">
-          {{ FAQ.answer }}
-        </div>
+        <div class="FAQ__answer" [innerHTML]="FAQ.answer"></div>
       </div>
     }
   </div>

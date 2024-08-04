@@ -39,7 +39,7 @@ export class StorageTableComponent
     this.addSubscriber(
       this.adminStorageService.allOrdersParams$
         .pipe(
-          tap((params) => {
+          tap(() => {
             this.adminStorageService.getAllOrders();
           }),
         )
@@ -74,9 +74,6 @@ export class StorageTableComponent
       onScan: (sCode, iQty) => {
         // Alternative to document.addEventListener('scan')
 
-        console.log(hasKazakhChars(sCode));
-        console.log(hasRussianChars(sCode));
-        console.log(sCode);
         if (hasKazakhChars(sCode) || hasRussianChars(sCode)) {
           this.toastr.warning('Переключитесь на английскую раскладку');
           return;
@@ -93,6 +90,7 @@ export class StorageTableComponent
   }
 
   override ngOnDestroy(): void {
+    this.unsubscribeAll();
     onScan.detachFrom(document);
   }
 

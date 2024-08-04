@@ -40,12 +40,12 @@ export class CalculateComponent implements OnInit {
     },
     {
       id: 2,
-      title: '123546+',
+      title: '378819+',
       subtitle: 'Доставленных товаров',
     },
     {
       id: 3,
-      title: '200+',
+      title: '1000+',
       subtitle: 'Довольных клиентов',
     },
   ];

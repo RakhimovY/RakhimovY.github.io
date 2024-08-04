@@ -3,7 +3,7 @@ import { ERouting } from './shared/enums/routing.enum';
 import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
-  { path: '', redirectTo: ERouting.CABINET, pathMatch: 'full' },
+  { path: '', redirectTo: ERouting.MAIN, pathMatch: 'full' },
   {
     path: ERouting.MAIN,
     loadChildren: () =>

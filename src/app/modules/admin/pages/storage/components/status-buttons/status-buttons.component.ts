@@ -32,20 +32,35 @@ export class StatusButtonsComponent {
       this.buttons.forEach((item) => (item.active = false));
       button.active = !button.active;
       localStorage.setItem('buttons', JSON.stringify(this.buttons));
+      this.adminStorageService.allOrdersParams.update((prevValue) => {
+        return {
+          ...prevValue,
+          filter: undefined,
+        };
+      });
       return;
-    } else if (
-      this.buttons.filter(
-        (item) =>
-          item.key !== EOrderStatuses.ALL &&
-          !item.active &&
-          button.key !== item.key,
-      ).length
-    ) {
-      button.active = !button.active;
-      this.buttons[0].active = false;
     } else {
-      this.buttonClick(this.buttons[0]);
+      this.buttons.forEach((item) => {
+        if (item.key === button.key) {
+          button.active = !button.active;
+        } else {
+          item.active = false;
+        }
+      });
     }
+    // else if (
+    //   this.buttons.filter(
+    //     (item) =>
+    //       item.key !== EOrderStatuses.ALL &&
+    //       !item.active &&
+    //       button.key !== item.key,
+    //   ).length
+    // ) {
+    //   button.active = !button.active;
+    //   this.buttons[0].active = false;
+    // } else {
+    //   this.buttonClick(this.buttons[0]);
+    // }
 
     if (
       !this.buttons.filter((item) => {
